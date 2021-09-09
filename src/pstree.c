@@ -465,51 +465,62 @@ static int out_int(int x)
     return digits;
 }
 
+#ifdef WITH_SELINUX
+static bool out_selinux_context(const PROC *current)
+{
+    static void (*my_freecon)(char*) = 0;
+    static int (*my_getpidcon)(pid_t pid, char **context) = 0;
+    static int (*my_is_selinux_enabled)(void) = 0;
+    static int selinux_enabled = 0;
+    static int tried_load = 0;
+    bool ret = false;
+    char *context;
+
+    if (!my_getpidcon && !tried_load) {
+        void *handle = dlopen("libselinux.so.1", RTLD_NOW);
+        if (handle) {
+            my_freecon = dlsym(handle, "freecon");
+            if (dlerror())
+                my_freecon = 0;
+            dlerror();
+            my_getpidcon = dlsym(handle, "getpidcon");
+            if (dlerror())
+                my_getpidcon = 0;
+            my_is_selinux_enabled = dlsym(handle, "is_selinux_enabled");
+            if (dlerror())
+                my_is_selinux_enabled = 0;
+            else
+                selinux_enabled = my_is_selinux_enabled();
+        }
+        tried_load++;
+    }
+    if (my_getpidcon && selinux_enabled && !my_getpidcon(current->pid, &context)) {
+        out_string(context);
+        my_freecon(context);
+        ret = true;
+    }
+    return ret;
+}
+#endif /* WITH_SELINUX */
+
 /*
  * Print the security context of the current process. This is largely lifted
  * from pr_context from procps ps/output.c
  */
 static void out_scontext(const PROC *current)
 {
-    static void (*my_freecon)(char*) = 0;
-    static int (*my_getpidcon)(pid_t pid, char **context) = 0;
-    static int selinux_enabled = 0;
-    char *context;
+    bool success = false;
+    out_string("`");
 
 #ifdef WITH_SELINUX
-    static int (*my_is_selinux_enabled)(void) = 0;
-    static int tried_load = 0;
-
-    if(!my_getpidcon && !tried_load){
-    void *handle = dlopen("libselinux.so.1", RTLD_NOW);
-    if(handle) {
-	my_freecon = dlsym(handle, "freecon");
-	if(dlerror())
-	    my_freecon = 0;
-	dlerror();
-	my_getpidcon = dlsym(handle, "getpidcon");
-	if(dlerror())
-	    my_getpidcon = 0;
-	my_is_selinux_enabled = dlsym(handle, "is_selinux_enabled");
-	if(dlerror())
-	    my_is_selinux_enabled = 0;
-	else
-	    selinux_enabled = my_is_selinux_enabled();
-    }
-    tried_load++;
-    }
+    success = out_selinux_context(current);
 #endif /* WITH_SELINUX */
 
-    out_string("`");
-    
-    if (my_getpidcon && selinux_enabled && !my_getpidcon(current->pid, &context)) {
-	out_string(context);
-	my_freecon(context);
-    } else {
+    if (!success) {
         FILE *file;
         char path[50];
         char readbuf[BUFSIZ+1];
-	int num_read;
+        int num_read;
         snprintf(path, sizeof path, "/proc/%d/attr/current", current->pid);
         if ( (file = fopen(path, "r")) != NULL) {
             if (fgets(readbuf, BUFSIZ, file) != NULL) {
@@ -519,8 +530,8 @@ static void out_scontext(const PROC *current)
             }
             fclose(file);
         }
-        out_string("'");
     }
+    out_string("'");
 }
 
 static void out_newline(void)
