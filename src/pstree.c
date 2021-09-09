@@ -50,9 +50,16 @@
 #ifdef WITH_SELINUX
 #include <dlfcn.h>
 #include <selinux/selinux.h>
-#else
+#endif /*WITH_SELINUX */
+
+#ifdef WITH_APPARMOR
+#include <dlfcn.h>
+#include <sys/apparmor.h>
+#endif /* WITH_APPARMOR */
+
+#if !defined(WITH_SELINUX) && !defined(WITH_APPARMOR)
 typedef void* security_context_t; /* DUMMY to remove most ifdefs */
-#endif                                /*WITH_SELINUX */
+#endif /* !WITH_SELINUX && !WITH_APPARMOR  */
 
 extern const char *__progname;
 
@@ -503,6 +510,39 @@ static bool out_selinux_context(const PROC *current)
 }
 #endif /* WITH_SELINUX */
 
+#ifdef WITH_APPARMOR
+static bool out_apparmor_context(const PROC *current)
+{
+    static int (*my_aa_gettaskcon)(pid_t pid, char **context, char **mode) = 0;
+    static int (*my_aa_is_enabled)(void) = 0;
+    static int apparmor_enabled = 0;
+    static int tried_load = 0;
+    bool ret = false;
+    char *context;
+
+    if (!my_aa_gettaskcon && !tried_load) {
+        void *handle = dlopen("libapparmor.so.1", RTLD_NOW);
+        if (handle) {
+            my_aa_gettaskcon = dlsym(handle, "aa_gettaskcon");
+            if (dlerror())
+                my_aa_gettaskcon = 0;
+            my_aa_is_enabled = dlsym(handle, "aa_is_enabled");
+            if (dlerror())
+                my_aa_is_enabled = 0;
+            else
+                apparmor_enabled = my_aa_is_enabled();
+        }
+        tried_load++;
+    }
+    if (my_aa_gettaskcon && apparmor_enabled && my_aa_gettaskcon(current->pid, &context, NULL) >= 0) {
+        out_string(context);
+        free(context);
+        ret = true;
+    }
+    return ret;
+}
+#endif /* WITH_APPARMOR */
+
 /*
  * Print the security context of the current process. This is largely lifted
  * from pr_context from procps ps/output.c
@@ -515,6 +555,10 @@ static void out_scontext(const PROC *current)
 #ifdef WITH_SELINUX
     success = out_selinux_context(current);
 #endif /* WITH_SELINUX */
+
+#ifdef WITH_APPARMOR
+    success |= out_apparmor_context(current);
+#endif /* WITH_APPARMOR */
 
     if (!success) {
         FILE *file;

@@ -46,6 +46,23 @@ if test "$enable_selinux" = "yes"; then
 fi
 AC_SUBST([DL_LIB])
 
+# AppArmor support - off by default
+DL_LIB=
+AC_SUBST([WITH_AppArmor])
+AC_ARG_ENABLE([apparmor],
+  [AS_HELP_STRING([--enable-apparmor], [Enable AppArmor features])],
+  [enable_apparmor=$enableval],
+  [enable_apparmor="no"])
+if test "$enable_apparmor" = "yes"; then
+  AC_DEFINE([WITH_APPARMOR], [1], [Use AppArmor features])
+  AC_SEARCH_LIBS([dlopen], [dl], [],
+		 [AC_MSG_ERROR([dynamic linking unavailable, circumvent with --disable-apparmor])])
+  if test "x$ac_cv_search_dlopen" != "xnone required"; then
+      DL_LIB="$ac_cv_search_dlopen"
+  fi
+fi
+AC_SUBST([DL_LIB])
+
 # Call fork before all stat calls to stop hanging on NFS mounts
 AC_SUBST([WITH_TIMEOUT_STAT])
 AC_ARG_ENABLE([timeout_stat],
