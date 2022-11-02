@@ -6,7 +6,7 @@
 .\" the Free Software Foundation; either version 2 of the License, or
 .\" (at your option) any later version.
 .\"
-.TH FUSER 1 "2022-09-21" "psmisc" "User Commands"
+.TH FUSER 1 "2022-11-02" "psmisc" "User Commands"
 .SH NAME
 fuser \- identify processes using files or sockets
 .SH SYNOPSIS
@@ -275,6 +275,11 @@ The
 option only works on processes.  If the user is the kernel,
 .B fuser
 will print an advice, but take no action beyond that.
+.PP
+.B fuser
+will not see block devices mounted by processes in a different mount namespace.
+This is due to the device ID shown in the process' file descriptor table being
+from the process namespace, not fuser's; meaning it won't match.
 .SH BUGS
 .PP
 .B fuser \-m  /dev/sgX
@@ -289,6 +294,7 @@ the mount point.
 .BR kill (1),
 .BR killall (1),
 .BR lsof (8),
+.BR mount_namespaces (7),
 .BR pkill (1),
 .BR ps (1),
 .BR kill (2).
