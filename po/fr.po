@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: psmisc-23.5rc1\n"
 "Report-Msgid-Bugs-To: csmall@dropbear.xyz\n"
-"POT-Creation-Date: 2022-05-09 20:30+1000\n"
+"POT-Creation-Date: 2022-11-02 21:39+1100\n"
 "PO-Revision-Date: 2022-03-23 20:33+0100\n"
 "Last-Translator: Frédéric Marchal <fmarchal@perso.be>\n"
 "Language-Team: French <traduc@traduc.org>\n"
@@ -84,10 +84,8 @@ msgstr ""
 "  -6,--ipv6             cherche des sockets IPv6 seulement\n"
 
 #: src/fuser.c:176
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"  -                     reset options\n"
-"\n"
 "  udp/tcp names: [local_port][,[rmt_host][,[rmt_port]]]\n"
 "\n"
 msgstr ""
@@ -96,12 +94,12 @@ msgstr ""
 "  noms udp/tcp: [port_local][,[hôte_distant][,[port_distant]]]\n"
 "\n"
 
-#: src/fuser.c:183
+#: src/fuser.c:182
 #, c-format
 msgid "fuser (PSmisc) %s\n"
 msgstr "fuser (PSmisc) %s\n"
 
-#: src/fuser.c:185 src/killall.c:865
+#: src/fuser.c:184 src/killall.c:870
 #, c-format
 msgid ""
 "Copyright (C) 1993-2022 Werner Almesberger and Craig Small\n"
@@ -110,8 +108,8 @@ msgstr ""
 "Copyright © 1993-2022 Werner Almesberger et Craig Small\n"
 "\n"
 
-#: src/fuser.c:187 src/killall.c:867 src/peekfd.c:195 src/prtstat.c:68
-#: src/pstree.c:1269
+#: src/fuser.c:186 src/killall.c:872 src/peekfd.c:195 src/prtstat.c:68
+#: src/pstree.c:1324
 #, c-format
 msgid ""
 "PSmisc comes with ABSOLUTELY NO WARRANTY.\n"
@@ -124,113 +122,113 @@ msgstr ""
 "en respectant les termes de la licence GNU General Public License.\n"
 "Pour plus de précisions à ce sujet, voir les fichiers nommés COPYING.\n"
 
-#: src/fuser.c:209
+#: src/fuser.c:208
 #, c-format
 msgid "Cannot open /proc directory: %s\n"
 msgstr "Impossible d'ouvrir le répertoire /proc: %s\n"
 
-#: src/fuser.c:411 src/fuser.c:470 src/fuser.c:2190
+#: src/fuser.c:410 src/fuser.c:469 src/fuser.c:2189
 #, c-format
 msgid "Cannot allocate memory for matched proc: %s\n"
 msgstr "Impossible d'allouer de la mémoire au processus correspondant: %s\n"
 
-#: src/fuser.c:501
+#: src/fuser.c:500
 #, c-format
 msgid "Specified filename %s does not exist.\n"
 msgstr "Le nom de fichier %s n'existe pas.\n"
 
-#: src/fuser.c:504
+#: src/fuser.c:503
 #, c-format
 msgid "Cannot stat %s: %s\n"
 msgstr "Impossible d'obtenir les stat de %s: %s\n"
 
-#: src/fuser.c:656
+#: src/fuser.c:655
 #, c-format
 msgid "Cannot resolve local port %s: %s\n"
 msgstr "Ne peut résoudre le port local %s: %s\n"
 
-#: src/fuser.c:677
+#: src/fuser.c:676
 #, c-format
 msgid "Unknown local port AF %d\n"
 msgstr "Port local AF inconnu %d\n"
 
-#: src/fuser.c:760
+#: src/fuser.c:759
 #, c-format
 msgid "Cannot open protocol file \"%s\": %s\n"
 msgstr "Impossible d'ouvrir le fichier protocole « %s »: %s\n"
 
-#: src/fuser.c:1086
+#: src/fuser.c:1085
 #, c-format
 msgid "Specified filename %s is not a mountpoint.\n"
 msgstr "Le nom de fichier %s n'est pas un point de montage.\n"
 
-#: src/fuser.c:1182
+#: src/fuser.c:1181
 #, c-format
 msgid "%s: Invalid option %s\n"
 msgstr "%s: Option %s incorrecte\n"
 
-#: src/fuser.c:1239
+#: src/fuser.c:1238
 msgid "Namespace option requires an argument."
 msgstr "L'option « --namespace » requiert un paramètre."
 
-#: src/fuser.c:1251
+#: src/fuser.c:1250
 msgid "Invalid namespace name"
 msgstr "Paramètre incorrect pour « --namespace »"
 
-#: src/fuser.c:1318
+#: src/fuser.c:1317
 msgid "You can only use files with mountpoint options"
 msgstr ""
 "Vous ne pouvez utiliser que des fichiers avec les options de point de montage"
 
-#: src/fuser.c:1365
+#: src/fuser.c:1364
 msgid "No process specification given"
 msgstr "Aucune spécification de processus donnée"
 
-#: src/fuser.c:1382
+#: src/fuser.c:1381
 msgid "all option cannot be used with silent option."
 msgstr "l'option « --all » ne peut être utilisée avec l'option « --silent »"
 
-#: src/fuser.c:1387
+#: src/fuser.c:1386
 msgid "You cannot search for only IPv4 and only IPv6 sockets at the same time"
 msgstr ""
 "Vous ne pouvez pas rechercher simultanément et exclusivement les sockets "
 "IPv4 et IPv6"
 
-#: src/fuser.c:1483
+#: src/fuser.c:1482
 #, c-format
 msgid "%*s USER        PID ACCESS COMMAND\n"
 msgstr "%*s UTIL.       PID ACCÈS  COMMANDE\n"
 
-#: src/fuser.c:1517 src/fuser.c:1563
+#: src/fuser.c:1516 src/fuser.c:1562
 msgid "(unknown)"
 msgstr "(inconnu)"
 
-#: src/fuser.c:1659 src/fuser.c:1715
+#: src/fuser.c:1658 src/fuser.c:1714
 #, c-format
 msgid "Cannot stat file %s: %s\n"
 msgstr "Impossible d'obtenir les stat du fichier %s: %s\n"
 
-#: src/fuser.c:1812
+#: src/fuser.c:1811
 #, c-format
 msgid "Cannot open /proc/net/unix: %s\n"
 msgstr "Impossible d'ouvrir /proc/net/unix : %s\n"
 
-#: src/fuser.c:1918
+#: src/fuser.c:1917
 #, c-format
 msgid "Kill process %d ? (y/N) "
 msgstr "Tuer le processus %d ? (y/N) "
 
-#: src/fuser.c:1959
+#: src/fuser.c:1958
 #, c-format
 msgid "Could not kill process %d: %s\n"
 msgstr "Impossible de tuer le processus %d : %s\n"
 
-#: src/fuser.c:1975
+#: src/fuser.c:1974
 #, c-format
 msgid "Cannot open a network socket.\n"
 msgstr "Impossible d'ouvrir un socket réseau.\n"
 
-#: src/fuser.c:1980
+#: src/fuser.c:1979
 #, c-format
 msgid "Cannot find socket's device number.\n"
 msgstr "Impossible de trouver le numéro du périphérique des sockets\n"
@@ -250,32 +248,32 @@ msgstr "Envoyer signal %s(%s%d) ? (y/N) "
 msgid "killall: Cannot get UID from process status\n"
 msgstr "killall: Impossible d'obtenir l'UID à partir de l'état du processus\n"
 
-#: src/killall.c:363
+#: src/killall.c:368
 #, c-format
 msgid "killall: Bad regular expression: %s\n"
 msgstr "killall: Mauvaise expression régulière : %s\n"
 
-#: src/killall.c:520
+#: src/killall.c:525
 #, c-format
 msgid "killall: skipping partial match %s(%d)\n"
 msgstr "killall: Ignore la correspondance partielle %s(%d)\n"
 
-#: src/killall.c:770
+#: src/killall.c:775
 #, c-format
 msgid "Killed %s(%s%d) with signal %d\n"
 msgstr "Tué %s(%s%d) avec le signal %d\n"
 
-#: src/killall.c:791
+#: src/killall.c:796
 #, c-format
 msgid "%s: no process found\n"
 msgstr "%s: aucun processus trouvé\n"
 
-#: src/killall.c:832
+#: src/killall.c:837
 #, c-format
 msgid "Usage: killall [OPTION]... [--] NAME...\n"
 msgstr "Usage : killall [OPTION]... [--] NOM...\n"
 
-#: src/killall.c:834
+#: src/killall.c:839
 #, c-format
 msgid ""
 "       killall -l, --list\n"
@@ -323,7 +321,7 @@ msgstr ""
 "espace\n"
 "                        de nom que PID\n"
 
-#: src/killall.c:854
+#: src/killall.c:859
 #, c-format
 msgid ""
 "  -Z,--context REGEXP kill only process(es) having context\n"
@@ -333,30 +331,30 @@ msgstr ""
 "context\n"
 "                      (doit précéder les autres arguments)\n"
 
-#: src/killall.c:950 src/killall.c:956
+#: src/killall.c:955 src/killall.c:961
 msgid "Invalid time format"
 msgstr "Format de temps incorrect"
 
-#: src/killall.c:976
+#: src/killall.c:981
 #, c-format
 msgid "Cannot find user %s\n"
 msgstr "Utilisateur %s introuvable\n"
 
-#: src/killall.c:1011
+#: src/killall.c:1016
 msgid "Invalid namespace PID"
 msgstr "PID d'espace de nom invalide"
 
-#: src/killall.c:1018
+#: src/killall.c:1023
 #, c-format
 msgid "Bad regular expression: %s\n"
 msgstr "Mauvaise expression régulière : %s\n"
 
-#: src/killall.c:1052
+#: src/killall.c:1057
 #, c-format
 msgid "killall: Maximum number of names is %d\n"
 msgstr "killall: Le nombre maximum de noms est %d\n"
 
-#: src/killall.c:1057
+#: src/killall.c:1062
 #, c-format
 msgid "killall: %s lacks process entries (not mounted ?)\n"
 msgstr "killall: %s n'a aucune entrée de processus (pas monté ?)\n"
@@ -580,12 +578,12 @@ msgid "/proc is not mounted, cannot stat /proc/self/stat.\n"
 msgstr ""
 "/proc n'est pas monté, impossible d'obtenir les stat de /proc/self/stat.\n"
 
-#: src/pstree.c:1184
+#: src/pstree.c:1239
 #, c-format
 msgid "%s is empty (not mounted ?)\n"
 msgstr "%s est vide (pas monté ?)\n"
 
-#: src/pstree.c:1217
+#: src/pstree.c:1272
 #, c-format
 msgid ""
 "Usage: pstree [-acglpsStTuZ] [ -h | -H PID ] [ -n | -N type ]\n"
@@ -596,7 +594,7 @@ msgstr ""
 "              [ -A | -G | -U ] [ PID | UTILISATEUR ]\n"
 "   ou: pstree -V\n"
 
-#: src/pstree.c:1221
+#: src/pstree.c:1276
 #, c-format
 msgid ""
 "\n"
@@ -607,7 +605,7 @@ msgstr ""
 "Affiche un arbre des processus.\n"
 "\n"
 
-#: src/pstree.c:1224
+#: src/pstree.c:1279
 #, c-format
 msgid ""
 "  -a, --arguments     show command line arguments\n"
@@ -618,7 +616,7 @@ msgstr ""
 "  -A, --ascii         utiliser les caractères de dessin de lignes ASCII\n"
 "  -c, --compact-not   ne pas compacter des sous-arbres identiques\n"
 
-#: src/pstree.c:1228
+#: src/pstree.c:1283
 #, c-format
 msgid ""
 "  -C, --color=TYPE    color process by attribute\n"
@@ -627,7 +625,7 @@ msgstr ""
 "  -C, --color=TYPE    coloriser les processus par attribut\n"
 "                      (age)\n"
 
-#: src/pstree.c:1231
+#: src/pstree.c:1286
 #, c-format
 msgid ""
 "  -g, --show-pgids    show process group ids; implies -c\n"
@@ -636,7 +634,7 @@ msgstr ""
 "  -g, --show-pgids    montrer les ids de groupes de processus ; implique -c\n"
 "  -G, --vt100         utiliser les caractères de dessin de lignes du VT100\n"
 
-#: src/pstree.c:1234
+#: src/pstree.c:1289
 #, c-format
 msgid ""
 "  -h, --highlight-all highlight current process and its ancestors\n"
@@ -650,7 +648,7 @@ msgstr ""
 "                      mettre en évidence ce processus et ses ancêtres\n"
 "  -l, --long          ne pas tronquer les longues lignes\n"
 
-#: src/pstree.c:1239
+#: src/pstree.c:1294
 #, c-format
 msgid ""
 "  -n, --numeric-sort  sort output by PID\n"
@@ -665,7 +663,7 @@ msgstr ""
 "                              (cgroup, ipc, mnt, net, pid, time, user, uts)\n"
 "  -p, --show-pids     montrer les PID ; implique -c\n"
 
-#: src/pstree.c:1245
+#: src/pstree.c:1300
 #, c-format
 msgid ""
 "  -s, --show-parents  show parents of the selected process\n"
@@ -678,7 +676,7 @@ msgstr ""
 "  -t, --thread-names  montrer les noms complets des threads\n"
 "  -T, --hide-threads  cacher les threads, montrer uniquement les processus\n"
 
-#: src/pstree.c:1250
+#: src/pstree.c:1305
 #, c-format
 msgid ""
 "  -u, --uid-changes   show uid transitions\n"
@@ -690,7 +688,7 @@ msgstr ""
 "les lignes\n"
 "  -V, --version       afficher les informations de la version\n"
 
-#: src/pstree.c:1254
+#: src/pstree.c:1309
 #, c-format
 msgid ""
 "  -Z, --security-context\n"
@@ -699,7 +697,7 @@ msgstr ""
 "  -Z, --security-context\n"
 "                      montre les attributs de sécurité\n"
 
-#: src/pstree.c:1256
+#: src/pstree.c:1311
 #, c-format
 msgid ""
 "\n"
@@ -713,12 +711,12 @@ msgstr ""
 "utilisateur\n"
 "\n"
 
-#: src/pstree.c:1264
+#: src/pstree.c:1319
 #, c-format
 msgid "pstree (PSmisc) %s\n"
 msgstr "pstree (PSmisc) %s\n"
 
-#: src/pstree.c:1267
+#: src/pstree.c:1322
 #, c-format
 msgid ""
 "Copyright (C) 1993-2021 Werner Almesberger and Craig Small\n"
@@ -727,37 +725,37 @@ msgstr ""
 "Copyright (C) 1993-2021 Werner Almesberger et Craig Small\n"
 "\n"
 
-#: src/pstree.c:1384
+#: src/pstree.c:1439
 #, c-format
 msgid "TERM is not set\n"
 msgstr "TERM n'est pas défini\n"
 
-#: src/pstree.c:1388
+#: src/pstree.c:1443
 #, c-format
 msgid "Can't get terminal capabilities\n"
 msgstr "Impossible d'obtenir les spécifications du terminal\n"
 
-#: src/pstree.c:1406
+#: src/pstree.c:1461
 #, c-format
 msgid "procfs file for %s namespace not available\n"
 msgstr "fichier procfs indisponible pour l'espace de nom %s\n"
 
-#: src/pstree.c:1452
+#: src/pstree.c:1507
 #, c-format
 msgid "No such user name: %s\n"
 msgstr "Aucun utilisateur portant ce nom: %s\n"
 
-#: src/pstree.c:1468
+#: src/pstree.c:1523
 #, c-format
 msgid "Process %d not found.\n"
 msgstr "Processus %d non trouvé.\n"
 
-#: src/pstree.c:1484
+#: src/pstree.c:1539
 #, c-format
 msgid "No processes found.\n"
 msgstr "Aucun processus trouvé.\n"
 
-#: src/pstree.c:1492
+#: src/pstree.c:1547
 #, c-format
 msgid "Press return to close\n"
 msgstr "Appuyez sur la touche Entrée pour fermer\n"

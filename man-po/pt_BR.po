@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: psmisc-man 23.4rc1\n"
 "Report-Msgid-Bugs-To: Craig Small <csmall@dropbear.xyz>\n"
-"POT-Creation-Date: 2022-03-18 09:07+1100\n"
+"POT-Creation-Date: 2022-11-02 21:42+1100\n"
 "PO-Revision-Date: 2021-02-03 21:05-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <ldpbr-translation@lists.sourceforge."
@@ -28,9 +28,10 @@ msgid "FUSER"
 msgstr "FUSER"
 
 #. type: TH
-#: ../doc/fuser.1:9 ../doc/pslog.1:9 ../doc/prtstat.1:9
-#, no-wrap
-msgid "2020-09-09"
+#: ../doc/fuser.1:9
+#, fuzzy, no-wrap
+#| msgid "2020-09-09"
+msgid "2022-09-21"
 msgstr "9 de setembro de 2020"
 
 #. type: TH
@@ -529,84 +530,73 @@ msgstr ""
 "Pesquisa apenas soquetes IPv6. Esta opção não deve ser usada com a opção "
 "B<-4> e só tem efeito com os espaços de nomes tcp e udp."
 
-#. type: IP
-#: ../doc/fuser.1:220
-#, no-wrap
-msgid "B<->"
-msgstr "B<->"
-
-#. type: Plain text
-#: ../doc/fuser.1:222
-msgid "Reset all options and set the signal back to SIGKILL."
-msgstr "Redefine todas as opções e defina o sinal de volta para SIGKILL."
-
 #. type: SH
-#: ../doc/fuser.1:222 ../doc/killall.1:143 ../doc/peekfd.1:43
+#: ../doc/fuser.1:220 ../doc/killall.1:143 ../doc/peekfd.1:43
 #: ../doc/prtstat.1:35 ../doc/pstree.1:168
 #, no-wrap
 msgid "FILES"
 msgstr "ARQUIVOS"
 
 #. type: TP
-#: ../doc/fuser.1:223 ../doc/killall.1:144 ../doc/pstree.1:169
+#: ../doc/fuser.1:221 ../doc/killall.1:144 ../doc/pstree.1:169
 #, no-wrap
 msgid "/proc"
 msgstr "/proc"
 
 #. type: Plain text
-#: ../doc/fuser.1:226 ../doc/killall.1:147 ../doc/pstree.1:172
+#: ../doc/fuser.1:224 ../doc/killall.1:147 ../doc/pstree.1:172
 msgid "location of the proc file system"
 msgstr "local do sistema de arquivos proc"
 
 #. type: SH
-#: ../doc/fuser.1:226
+#: ../doc/fuser.1:224
 #, no-wrap
 msgid "EXAMPLES"
 msgstr "EXEMPLOS"
 
 #. type: TP
-#: ../doc/fuser.1:227
+#: ../doc/fuser.1:225
 #, no-wrap
 msgid "B<fuser -km /home>"
 msgstr "B<fuser -km /home>"
 
 #. type: Plain text
-#: ../doc/fuser.1:230
+#: ../doc/fuser.1:228
 msgid "kills all processes accessing the file system /home in any way."
 msgstr ""
 "mata todos os processos que acessam o sistema de arquivos /home de qualquer "
 "forma."
 
 #. type: TP
-#: ../doc/fuser.1:230
+#: ../doc/fuser.1:228
 #, no-wrap
 msgid "B<if fuser -s /dev/ttyS1; then :; else >I<command>B<; fi>"
 msgstr "B<if fuser -s /dev/ttyS1; then :; else >I<comando>B<; fi>"
 
 #. type: Plain text
-#: ../doc/fuser.1:235
+#: ../doc/fuser.1:233
 msgid "invokes I<command> if no other process is using /dev/ttyS1."
 msgstr "invoca I<comando> se nenhum outro processo estiver usando /dev/ttyS1."
 
 #. type: TP
-#: ../doc/fuser.1:235
+#: ../doc/fuser.1:233
 #, no-wrap
 msgid "B<fuser telnet/tcp>"
 msgstr "B<fuser telnet/tcp>"
 
 #. type: Plain text
-#: ../doc/fuser.1:238
+#: ../doc/fuser.1:236
 msgid "shows all processes at the (local) TELNET port."
 msgstr "mostra todos os processos na porta TELNET (local)."
 
 #. type: SH
-#: ../doc/fuser.1:238
+#: ../doc/fuser.1:236
 #, no-wrap
 msgid "RESTRICTIONS"
 msgstr "RESTRIÇÕES"
 
 #. type: Plain text
-#: ../doc/fuser.1:241
+#: ../doc/fuser.1:239
 msgid ""
 "Processes accessing the same file or file system several times in the same "
 "way are only shown once."
@@ -615,7 +605,7 @@ msgstr ""
 "da mesma maneira são mostrados apenas uma vez."
 
 #. type: Plain text
-#: ../doc/fuser.1:244
+#: ../doc/fuser.1:242
 msgid ""
 "If the same object is specified several times on the command line, some of "
 "those entries may be ignored."
@@ -624,7 +614,7 @@ msgstr ""
 "dessas entradas podem ser ignoradas."
 
 #. type: Plain text
-#: ../doc/fuser.1:250
+#: ../doc/fuser.1:248
 msgid ""
 "B<fuser> may only be able to gather partial information unless run with "
 "privileges.  As a consequence, files opened by processes belonging to other "
@@ -636,7 +626,7 @@ msgstr ""
 "executáveis podem ser classificados apenas como mapeados."
 
 #. type: Plain text
-#: ../doc/fuser.1:259
+#: ../doc/fuser.1:257
 msgid ""
 "B<fuser> cannot report on any processes that it doesn't have permission to "
 "look at the file descriptor table for.  The most common time this problem "
@@ -650,7 +640,7 @@ msgstr ""
 "nenhum acesso."
 
 #. type: Plain text
-#: ../doc/fuser.1:264
+#: ../doc/fuser.1:262
 msgid ""
 "Installing B<fuser> SUID root will avoid problems associated with partial "
 "information, but may be undesirable for security and privacy reasons."
@@ -659,7 +649,7 @@ msgstr ""
 "parciais, mas pode ser indesejável por razões de segurança e privacidade."
 
 #. type: Plain text
-#: ../doc/fuser.1:270
+#: ../doc/fuser.1:268
 msgid ""
 "B<udp> and B<tcp> name spaces, and UNIX domain sockets can't be searched "
 "with kernels older than 1.3.78."
@@ -668,12 +658,12 @@ msgstr ""
 "pesquisados com kernels anteriores a 1.3.78."
 
 #. type: Plain text
-#: ../doc/fuser.1:274
+#: ../doc/fuser.1:272
 msgid "Accesses by the kernel are only shown with the B<-v> option."
 msgstr "Os acessos pelo kernel são mostrados apenas com a opção B<-v>."
 
 #. type: Plain text
-#: ../doc/fuser.1:280
+#: ../doc/fuser.1:278
 msgid ""
 "The B<-k> option only works on processes.  If the user is the kernel, "
 "B<fuser> will print an advice, but take no action beyond that."
@@ -682,13 +672,13 @@ msgstr ""
 "B<fuser> imprimirá um conselho, mas não fará nada além disso."
 
 #. type: SH
-#: ../doc/fuser.1:280 ../doc/peekfd.1:56 ../doc/pstree.1:172
+#: ../doc/fuser.1:278 ../doc/peekfd.1:56 ../doc/pstree.1:172
 #, no-wrap
 msgid "BUGS"
 msgstr "BUGS"
 
 #. type: Plain text
-#: ../doc/fuser.1:286
+#: ../doc/fuser.1:284
 msgid ""
 "B<fuser -m /dev/sgX> will show (or kill with the B<-k> flag) all processes, "
 "even if you don't have that device configured.  There may be other devices "
@@ -699,7 +689,7 @@ msgstr ""
 "haver outros dispositivos para os quais ele também faz isso."
 
 #. type: Plain text
-#: ../doc/fuser.1:290
+#: ../doc/fuser.1:288
 msgid ""
 "The mount B<-m> option will match any file within the same device as the "
 "specified file, use the B<-M> option as well if you mean to specify only the "
@@ -710,14 +700,14 @@ msgstr ""
 "você pretende especificar apenas o ponto de montagem."
 
 #. type: SH
-#: ../doc/fuser.1:290 ../doc/killall.1:170 ../doc/peekfd.1:63 ../doc/pslog.1:27
+#: ../doc/fuser.1:288 ../doc/killall.1:170 ../doc/peekfd.1:63 ../doc/pslog.1:27
 #: ../doc/pstree.1:174
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "VEJA TAMBÉM"
 
 #. type: Plain text
-#: ../doc/fuser.1:296
+#: ../doc/fuser.1:294
 msgid ""
 "B<kill>(1), B<killall>(1), B<lsof>(8), B<pkill>(1), B<ps>(1), B<kill>(2)."
 msgstr ""
@@ -1312,6 +1302,12 @@ msgid "PSLOG"
 msgstr "PSLOG"
 
 #. type: TH
+#: ../doc/pslog.1:9 ../doc/prtstat.1:9
+#, no-wrap
+msgid "2020-09-09"
+msgstr "9 de setembro de 2020"
+
+#. type: TH
 #: ../doc/pslog.1:9
 #, no-wrap
 msgid "Linux\""
@@ -1879,6 +1875,13 @@ msgstr ""
 #| msgid "B<ps>(1), B<top>(1)."
 msgid "B<ps>(1), B<top>(1), B<proc>(5)."
 msgstr "B<ps>(1), B<top>(1)."
+
+#, no-wrap
+#~ msgid "B<->"
+#~ msgstr "B<->"
+
+#~ msgid "Reset all options and set the signal back to SIGKILL."
+#~ msgstr "Redefine todas as opções e defina o sinal de volta para SIGKILL."
 
 #~ msgid ""
 #~ "(SELinux) Show security context for each process.  This flag will only "
