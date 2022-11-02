@@ -54,6 +54,8 @@ if test "$enable_apparmor" = "yes"; then
   AC_DEFINE([WITH_APPARMOR], [1], [Use AppArmor features])
   AC_SEARCH_LIBS([dlopen], [dl], [],
 		 [AC_MSG_ERROR([dynamic linking unavailable, circumvent with --disable-apparmor])])
+  AC_CHECK_HEADER([sys/apparmor.h], [],
+		  [AC_MSG_ERROR([Need AppArmor header files, circumvent with --disable-apparmor])])
   if test "x$ac_cv_search_dlopen" != "xnone required"; then
       DL_LIB="$ac_cv_search_dlopen"
   fi
