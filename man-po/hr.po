@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: psmisc-man 23.5rc1\n"
 "Report-Msgid-Bugs-To: Craig Small <csmall@dropbear.xyz>\n"
-"POT-Creation-Date: 2022-11-02 21:42+1100\n"
-"PO-Revision-Date: 2022-03-24 17:15-0700\n"
+"POT-Creation-Date: 2022-11-13 15:26+1100\n"
+"PO-Revision-Date: 2022-11-06 17:03-0800\n"
 "Last-Translator: Božidar Putanec <bozidarp@yahoo.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "Language: hr\n"
@@ -28,10 +28,9 @@ msgstr "FUSER"
 
 #. type: TH
 #: ../doc/fuser.1:9
-#, fuzzy, no-wrap
-#| msgid "2020-09-09"
-msgid "2022-09-21"
-msgstr "2020-09-09"
+#, no-wrap
+msgid "2022-11-02"
+msgstr ""
 
 #. type: TH
 #: ../doc/fuser.1:9 ../doc/killall.1:9 ../doc/peekfd.1:9 ../doc/prtstat.1:9
@@ -655,14 +654,23 @@ msgstr ""
 "Opcija B<-k> radi samo na procesima. Ako je korisnik jezgra, B<fuser> će "
 "ispisati preporuku i ništa drugo neće poduzeti."
 
+#. type: Plain text
+#: ../doc/fuser.1:283
+msgid ""
+"B<fuser> will not see block devices mounted by processes in a different "
+"mount namespace.  This is due to the device ID shown in the process' file "
+"descriptor table being from the process namespace, not fuser's; meaning it "
+"won't match."
+msgstr ""
+
 #. type: SH
-#: ../doc/fuser.1:278 ../doc/peekfd.1:56 ../doc/pstree.1:172
+#: ../doc/fuser.1:283 ../doc/peekfd.1:56 ../doc/pstree.1:172
 #, no-wrap
 msgid "BUGS"
 msgstr "BUGS"
 
 #. type: Plain text
-#: ../doc/fuser.1:284
+#: ../doc/fuser.1:289
 msgid ""
 "B<fuser -m /dev/sgX> will show (or kill with the B<-k> flag) all processes, "
 "even if you don't have that device configured.  There may be other devices "
@@ -673,7 +681,7 @@ msgstr ""
 "čini."
 
 #. type: Plain text
-#: ../doc/fuser.1:288
+#: ../doc/fuser.1:293
 msgid ""
 "The mount B<-m> option will match any file within the same device as the "
 "specified file, use the B<-M> option as well if you mean to specify only the "
@@ -684,16 +692,20 @@ msgstr ""
 "navesti samo točku montiranja."
 
 #. type: SH
-#: ../doc/fuser.1:288 ../doc/killall.1:170 ../doc/peekfd.1:63 ../doc/pslog.1:27
+#: ../doc/fuser.1:293 ../doc/killall.1:170 ../doc/peekfd.1:63 ../doc/pslog.1:27
 #: ../doc/pstree.1:174
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "POGLEDAJTE TAKOĐER"
 
 #. type: Plain text
-#: ../doc/fuser.1:294
+#: ../doc/fuser.1:300
+#, fuzzy
+#| msgid ""
+#| "B<kill>(1), B<killall>(1), B<lsof>(8), B<pkill>(1), B<ps>(1), B<kill>(2)."
 msgid ""
-"B<kill>(1), B<killall>(1), B<lsof>(8), B<pkill>(1), B<ps>(1), B<kill>(2)."
+"B<kill>(1), B<killall>(1), B<lsof>(8), B<mount_namespaces>(7), B<pkill>(1), "
+"B<ps>(1), B<kill>(2)."
 msgstr ""
 "B<kill>(1), B<killall>(1), B<lsof>(8), B<pkill>(1), B<ps>(1), B<kill>(2)."
 
@@ -1192,7 +1204,7 @@ msgstr ""
 #: ../doc/peekfd.1:48
 #, no-wrap
 msgid "ENVIRONMENT"
-msgstr "OKRUŽENJE"
+msgstr "OKOLINA"
 
 #. type: Plain text
 #: ../doc/peekfd.1:50
@@ -1616,7 +1628,7 @@ msgid ""
 "B<pstree> fails when using B<-H> if highlighting is not available."
 msgstr ""
 "Poput B<-h>, ali umjesto toga istakne navedeni postupak. Za razliku od B<-"
-"h>, B<pstree> ne uspijeva kada se koristi B<-H> ako je isticanje nedostupno."
+"h>, B<pstree> ne uspijeva kada se koristi B<-H> ako nije isticanje dostupno."
 
 #. type: IP
 #: ../doc/pstree.1:125
@@ -1631,7 +1643,7 @@ msgid ""
 "environment variable or the display width.  If neither of these methods "
 "work, the default of 132 columns is used."
 msgstr ""
-"Prikaže duge redove. Zadano, reci su skraćeni ili na varijablu okruženja "
+"Prikaže duge redove. Zadano, reci su skraćeni ili na varijablu okoline "
 "COLUMNS ili na širinu zaslona. Ako niti jedna od ovih metoda ne radi, "
 "koristi se zadano, 132 stupca."
 
@@ -1664,7 +1676,7 @@ msgid ""
 "I<uts>.  Regular users don't have access to other users' processes "
 "information, so the output will be limited."
 msgstr ""
-"Prikaže pojedinačna stabla za svaki imenski prostor specificirane vrste. "
+"Prikaže pojedinačna stabla za svaki imenski prostor specificiranog tipa. "
 "Dostupn su ove vrste: I<ipc>, I<mnt>, I<net>, I<pid>, I<time>, I<user>, "
 "I<uts>. Obični korisnici nemaju pristup informacijama o procesima drugih "
 "korisnika, pa će izlaz biti ograničen."

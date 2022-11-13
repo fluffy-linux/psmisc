@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: psmisc-man 23.5rc1\n"
 "Report-Msgid-Bugs-To: Craig Small <csmall@dropbear.xyz>\n"
-"POT-Creation-Date: 2022-11-02 21:42+1100\n"
+"POT-Creation-Date: 2022-11-13 15:26+1100\n"
 "PO-Revision-Date: 2022-03-25 07:19+0300\n"
 "Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
 "Language-Team: Russian <gnu@d07.ru>\n"
@@ -28,10 +28,9 @@ msgstr "FUSER"
 
 #. type: TH
 #: ../doc/fuser.1:9
-#, fuzzy, no-wrap
-#| msgid "2020-09-09"
-msgid "2022-09-21"
-msgstr "2020-09-09"
+#, no-wrap
+msgid "2022-11-02"
+msgstr ""
 
 #. type: TH
 #: ../doc/fuser.1:9 ../doc/killall.1:9 ../doc/peekfd.1:9 ../doc/prtstat.1:9
@@ -656,14 +655,23 @@ msgstr ""
 "Параметр B<-k> применим только для процессов. Если пользователем является "
 "ядро, то B<fuser> выводит только совет и ничего не делает."
 
+#. type: Plain text
+#: ../doc/fuser.1:283
+msgid ""
+"B<fuser> will not see block devices mounted by processes in a different "
+"mount namespace.  This is due to the device ID shown in the process' file "
+"descriptor table being from the process namespace, not fuser's; meaning it "
+"won't match."
+msgstr ""
+
 #. type: SH
-#: ../doc/fuser.1:278 ../doc/peekfd.1:56 ../doc/pstree.1:172
+#: ../doc/fuser.1:283 ../doc/peekfd.1:56 ../doc/pstree.1:172
 #, no-wrap
 msgid "BUGS"
 msgstr "ДЕФЕКТЫ"
 
 #. type: Plain text
-#: ../doc/fuser.1:284
+#: ../doc/fuser.1:289
 msgid ""
 "B<fuser -m /dev/sgX> will show (or kill with the B<-k> flag) all processes, "
 "even if you don't have that device configured.  There may be other devices "
@@ -674,7 +682,7 @@ msgstr ""
 "быть другие устройства."
 
 #. type: Plain text
-#: ../doc/fuser.1:288
+#: ../doc/fuser.1:293
 msgid ""
 "The mount B<-m> option will match any file within the same device as the "
 "specified file, use the B<-M> option as well if you mean to specify only the "
@@ -685,16 +693,20 @@ msgstr ""
 "подразумевали только точку монтирования."
 
 #. type: SH
-#: ../doc/fuser.1:288 ../doc/killall.1:170 ../doc/peekfd.1:63 ../doc/pslog.1:27
+#: ../doc/fuser.1:293 ../doc/killall.1:170 ../doc/peekfd.1:63 ../doc/pslog.1:27
 #: ../doc/pstree.1:174
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "СМОТРИТЕ ТАКЖЕ"
 
 #. type: Plain text
-#: ../doc/fuser.1:294
+#: ../doc/fuser.1:300
+#, fuzzy
+#| msgid ""
+#| "B<kill>(1), B<killall>(1), B<lsof>(8), B<pkill>(1), B<ps>(1), B<kill>(2)."
 msgid ""
-"B<kill>(1), B<killall>(1), B<lsof>(8), B<pkill>(1), B<ps>(1), B<kill>(2)."
+"B<kill>(1), B<killall>(1), B<lsof>(8), B<mount_namespaces>(7), B<pkill>(1), "
+"B<ps>(1), B<kill>(2)."
 msgstr ""
 "B<kill>(1), B<killall>(1), B<lsof>(8), B<pkill>(1), B<ps>(1), B<kill>(2)."
 

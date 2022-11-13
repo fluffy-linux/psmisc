@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: psmisc 23.5rc1\n"
 "Report-Msgid-Bugs-To: csmall@dropbear.xyz\n"
-"POT-Creation-Date: 2022-11-02 21:39+1100\n"
-"PO-Revision-Date: 2022-03-21 10:34-0700\n"
+"POT-Creation-Date: 2022-11-13 15:29+1100\n"
+"PO-Revision-Date: 2022-11-06 17:02-0800\n"
 "Last-Translator: Božidar Putanec <bozidarp@yahoo.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "Language: hr\n"
@@ -583,7 +583,7 @@ msgid ""
 "              [ -A | -G | -U ] [ PID | USER ]\n"
 "   or: pstree -V\n"
 msgstr ""
-"Uporaba: pstree [-acglpsStTuZ] [-h | -H PID] [-n | -N vrsta]\n"
+"Uporaba: pstree [-acglpsStTuZ] [-h | -H PID] [-n | -N tip]\n"
 "              [-A | -G | -U] [PID | KORISNIK]\n"
 "    ili: pstree -V\n"
 
@@ -615,7 +615,7 @@ msgid ""
 "  -C, --color=TYPE    color process by attribute\n"
 "                      (age)\n"
 msgstr ""
-"  -C, --color=VRSTA   procesi obojani prema atributu\n"
+"  -C, --color=TIP     procesi obojani prema atributu\n"
 "                      (vijek)\n"
 
 #: src/pstree.c:1286
@@ -641,7 +641,7 @@ msgstr ""
 "  -l, --long          ne kratiti dugačke linije\n"
 
 #: src/pstree.c:1294
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "  -n, --numeric-sort  sort output by PID\n"
 "  -N TYPE, --ns-sort=TYPE\n"
@@ -650,8 +650,8 @@ msgid ""
 "  -p, --show-pids     show PIDs; implies -c\n"
 msgstr ""
 "  -n, --numeric-sort  izlaz svrsta po PID-u\n"
-"  -N TYPE, --ns-sort=VRSTA  izlaz svrsta po toj vrsti imenskog prostora\n"
-"                              (cgroup, ipc, mnt, net, pid, time, user, uts)\n"
+"  -N TYPE, --ns-sort=TIP  izlaz svrsta po tom tipu imenskog prostora\n"
+"                            (cgroup, ipc, mnt, net, pid, time, user, uts)\n"
 "  -p, --show-pids     prikaže PID-ove; implicira -c\n"
 
 #: src/pstree.c:1300
