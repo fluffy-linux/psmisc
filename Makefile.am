@@ -110,6 +110,8 @@ dist-hook:
 get-trans:
 	rsync -Lrtvz  translationproject.org::tp/latest/psmisc/  po
 	rsync -Lrtvz  translationproject.org::tp/latest/psmisc-man/  man-po
+	rm -f man-po/man.stamp
+	make -C man-po man.stamp
 
 # Programs required for testing only
 check_PROGRAMS = \

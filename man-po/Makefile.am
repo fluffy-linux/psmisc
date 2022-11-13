@@ -1,8 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 
-#dist_man_MANS = fuser.1 killall.1  peekfd.1  prtstat.1  pslog.1  pstree.1
-#dist_man_MANS = ../doc/peekfd.1 ../doc/prtstat.1 ../doc/pslog.1 ../doc/pstree.1
-dist_man_MANS = ../doc/fuser.1 ../doc/killall.1 ../doc/peekfd.1 ../doc/prtstat.1 ../doc/pslog.1 ../doc/pstree.1
+src_MANS = $(wildcard $(top_srcdir)/doc/*.[1-9])
 
 EXTRA_DIST = \
 	po4a.cfg \
@@ -48,9 +46,7 @@ clean-local-yes:
 .PHONY: update-po
 
 psmisc.pot:
-#	parafiles = $(patsubst %,-m%,$(subst :, ,$(dist_man_MANS)))
-#	parafiles = $(dist_man_MANS:doc=Ente)
-	po4a-gettextize -M utf8 --option groff_code=verbatim --option generated --option untranslated="a.RE,\|" --option unknown_macros=untranslated -f man $(patsubst %,-m%,$(subst :, ,$(dist_man_MANS))) -p psmisc.pot
+	po4a-gettextize -M utf8 --option groff_code=verbatim --option generated --option untranslated="a.RE,\|" --option unknown_macros=untranslated -f man $(patsubst %,-m%,$(subst :, ,$(src_MANS))) -p psmisc.pot
 
 update-po:
 	$(PO4A_V) $(PO4A) $(PO4A_OPTS) --force $(srcdir)/po4a.cfg
@@ -59,7 +55,7 @@ update-po:
 install-data-local:
 	for lang in $(LINGUAS); do \
 		files=""; \
-		for trans in $(notdir $(dist_man_MANS)); do \
+		for trans in $(notdir $(src_MANS)); do \
 			if [ -f $(CURDIR)/$$lang/$$trans ]; then \
 				files="$$files $(CURDIR)/$$lang/$$trans"; \
 			elif [ -f $(srcdir)/$$lang/$$trans ]; then \
@@ -69,13 +65,13 @@ install-data-local:
 		$(MAKE) install-man \
 			mandir="$(mandir)/$$lang" \
 			man_MANS="" \
-			dist_man_MANS="$$files"; \
+			src_MANS="$$files"; \
 	done
 
 uninstall-local:
 	for lang in $(LINGUAS); do \
 		files=""; \
-		for trans in $(notdir $(dist_man_MANS)); do \
+		for trans in $(notdir $(src_MANS)); do \
 			if [ -f $(CURDIR)/$$lang/$$trans ]; then \
 				files="$$files $(CURDIR)/$$lang/$$trans"; \
 			elif [ -f $(srcdir)/$$lang/$$trans ]; then \
@@ -85,7 +81,7 @@ uninstall-local:
 		$(MAKE) uninstall-man \
 			mandir="$(mandir)/$$lang" \
 			man_MANS="" \
-			dist_man_MANS="$$files"; \
+			src_MANS="$$files"; \
 	done
 
 dist-hook: man.stamp
