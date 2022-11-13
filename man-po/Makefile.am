@@ -78,7 +78,7 @@ uninstall-local:
 				files="$$files $(srcdir)/$$lang/$$trans"; \
 			fi; \
 		done; \
-		$(MAKE) uninstall-man \
+		$(MAKE) -C .. uninstall-man \
 			mandir="$(mandir)/$$lang" \
 			man_MANS="" \
 			src_MANS="$$files"; \

@@ -22,9 +22,25 @@ bin_PROGRAMS = \
 	       src/prtstat \
 	       src/pstree
 
+dist_man_MANS = \
+		doc/killall.1 \
+		doc/pslog.1 \
+		doc/prtstat.1 \
+		doc/pstree.1 \
+		doc/peekfd.1
+
+EXTRA_DIST = \
+	     src/signames.c \
+	     README.md \
+	     misc/git-version-gen
+
 if WANT_FUSER
   bin_PROGRAMS += src/fuser
+  dist_man_MANS += doc/fuser.1
+else
+  EXTRA_DIST += doc/fuser.1
 endif
+
 if WANT_PEEKFD_I386
   bin_PROGRAMS += src/peekfd
   AM_CPPFLAGS += -DI386
@@ -82,7 +98,6 @@ nodist_src_killall_SOURCES = signames.h
 
 BUILT_SOURCES = src/signames.h .version
 
-EXTRA_DIST = src/signames.c README.md misc/git-version-gen
 
 CLEANFILES = src/signames.h .version
 
