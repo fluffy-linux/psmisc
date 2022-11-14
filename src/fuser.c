@@ -63,7 +63,7 @@
 #include "fuser.h"
 #include "signals.h"
 #include "i18n.h"
-#include "timeout.h"
+#include "statx.h"
 #include "comm.h"
 
 //#define DEBUG 1
@@ -123,12 +123,6 @@ static void debug_match_lists(
     struct device_list *dev_head);
 #endif
 
-#if defined(WITH_MOUNTINFO_LIST)
-static void clear_mntinfo(void) __attribute__ ((__destructor__));
-static void init_mntinfo(void) __attribute__ ((__constructor__));
-static int mntstat(const char *path, struct stat *buf);
-#endif
-static stat_t thestat = stat;
 static char *expandpath(const char *path);
 static struct unixsocket_list *unixsockets = NULL;
 static struct names *names_head = NULL, *names_tail = NULL;
@@ -493,7 +487,7 @@ int parse_file(
             free(this_name->filename);
         this_name->filename = strdup(new);
     }
-    if (timeout(thestat, this_name->filename, &(this_name->st), 5) != 0)
+    if (statn(this_name->filename, STATX_INO|STATX_TYPE, &(this_name->st)) != 0 )
     {
         if (errno == ENOENT)
             fprintf(stderr,
@@ -1214,9 +1208,7 @@ int main(int argc, char *argv[])
                     opts |= OPT_INTERACTIVE;
                     break;
                 case 'I':
-#if defined(WITH_MOUNTINFO_LIST)
                     opts |= OPT_ALWAYSSTAT;
-#endif
                     break;
                 case 'k':
                     opts |= OPT_KILL;
@@ -1280,9 +1272,9 @@ int main(int argc, char *argv[])
             continue;
         }
 
-#if defined(WITH_MOUNTINFO_LIST)
-        if ((opts & OPT_ALWAYSSTAT) == 0)
-            thestat = mntstat;
+#if defined(HAVE_DECL_SYS_STATX) && HAVE_DECL_SYS_STATX == 1
+		if ((opts & OPT_ALWAYSSTAT))
+			stat_flags = 0;		/* Triggers sync with e.g. remote NFS server even on autofs */
 #endif
         /* an option */
         /* Not an option, must be a file specification */
@@ -1605,7 +1597,7 @@ static struct stat *get_pidstat(
     if ((st = (struct stat *)malloc(sizeof(struct stat))) == NULL)
         return NULL;
     snprintf(pathname, PATH_MAX-1, "/proc/%d/%s", pid, filename);
-    if (timeout(thestat, pathname, st, 5) != 0)
+    if (statn(pathname, STATX_UID|STATX_INO|STATX_TYPE, st) != 0)
     {
         free(st);
         return NULL;
@@ -1651,7 +1643,7 @@ static void check_dir(
         snprintf(filepath, sizeof filepath - 1, "/proc/%d/%s/%s",
              pid, dirname, direntry->d_name);
 
-        if (timeout(thestat, filepath, &st, 5) != 0)
+	if (statn(filepath, STATX_INO, &st) != 0)
         {
             if (errno != ENOENT && errno != ENOTDIR)
             {
@@ -1709,7 +1701,7 @@ static void check_dir(
             {
                 if (thedev != ino_tmp->device)
                     continue;
-                if (!st.st_ino && timeout(thestat, filepath, &st, 5) != 0)
+                if (!st.st_ino && statn(filepath, STATX_INO, &st) != 0)
                 {
                     fprintf(stderr, _("Cannot stat file %s: %s\n"),
                             filepath, strerror(errno));
@@ -1784,7 +1776,7 @@ static uid_t getpiduid(
 
     if (asprintf(&pathname, "/proc/%d", pid) < 0)
         return 0;
-    if (timeout(thestat, pathname, &st, 5) != 0)
+    if (statn(pathname, STATX_UID, &st) != 0)
     {
         free(pathname);
         return 0;
@@ -1828,7 +1820,7 @@ void fill_unix_cache(
         path = scanned_path;
         if (*scanned_path == '@')
             scanned_path++;
-        if (timeout(thestat, scanned_path, &st, 5) < 0)
+	if (statn(scanned_path, STATX_INO, &st) < 0)
         {
             free(path);
             continue;
@@ -1974,7 +1966,7 @@ static dev_t find_net_dev(void)
         fprintf(stderr, _("Cannot open a network socket.\n"));
         return -1;
     }
-    if (fstat(skt, &st) != 0)
+    if (fstatn(skt, STATX_INO, &st) != 0)
     {
         fprintf(stderr, _("Cannot find socket's device number.\n"));
         close(skt);
@@ -2016,7 +2008,7 @@ static void scan_knfsd(
             continue;
 
         *find_space = '\0';
-        if (timeout(thestat, line, &st, 5) != 0)
+	if (statn(line, STATX_INO, &st) != 0)
             continue;
 
         /* Scan the devices */
@@ -2068,8 +2060,7 @@ static void scan_mounts(
         if ((find_space = strchr(find_mountp, ' ')) == NULL)
             continue;
         *find_space = '\0';
-
-        if (timeout(thestat, find_mountp, &st, 5) != 0)
+	if (statn(find_mountp, STATX_INO, &st) != 0)
             continue;
         /* Scan the devices */
         for (dev_tmp = dev_head; dev_tmp != NULL;
@@ -2122,7 +2113,7 @@ static void scan_swaps(
             if (*find_space == '\0')
                 continue;
         }
-        if (timeout(thestat, line, &st, 5) != 0)
+	if (statn(line, STATX_INO, &st) != 0)
             continue;
 
         /* Scan the devices */
@@ -2142,146 +2133,6 @@ static void scan_swaps(
     }
     fclose(fp);
 }
-
-#if defined(WITH_MOUNTINFO_LIST)
-/*
- * Use /proc/self/mountinfo of modern linux system to determine
- * the device numbers of the mount points. Use this to avoid the
- * stat(2) system call wherever possible.
- */
-
-static list_t mntinfo = { &mntinfo, &mntinfo };
-
-static void clear_mntinfo(void)
-{
-    list_t *ptr, *tmp;
-
-    list_for_each_safe(ptr, tmp, &mntinfo)
-    {
-        mntinfo_t *mnt = list_entry(ptr, mntinfo_t);
-        delete(ptr);
-        free(mnt);
-    }
-}
-
-static void init_mntinfo(void)
-{
-    char mpoint[PATH_MAX *4 + 1]; // octal escaping takes 4 chars per 1 char
-    int mid, parid, max = 0;
-    uint maj, min;
-    list_t sort;
-    FILE *mnt;
-
-    if (!list_empty(&mntinfo))
-        return;
-    if ((mnt = fopen("/proc/self/mountinfo", "r")) == (FILE *) 0)
-        return;
-    while (fscanf
-           (mnt, "%i %i %u:%u %*s %s %*[^\n]",
-            &mid, &parid, &maj, &min, &mpoint[0]) == 5)
-    {
-        const size_t nlen = strlen(mpoint);
-        mntinfo_t *restrict mnt;
-        if (posix_memalign ((void *)&mnt, sizeof(void *),
-                            alignof(mntinfo_t) + (nlen + 1)) != 0)
-        {
-            fprintf(stderr,
-                _("Cannot allocate memory for matched proc: %s\n"),
-                strerror(errno));
-            exit(1);
-        }
-        append(mnt, mntinfo);
-        mnt->mpoint = ((char *)mnt) + alignof(mntinfo_t);
-        strcpy(mnt->mpoint, mpoint);
-        mnt->nlen = nlen;
-        mnt->parid = parid;
-        mnt->dev = makedev(maj, min);
-        mnt->id = mid;
-        if (mid > max)
-            max = mid;
-    }
-    fclose(mnt);
-
-    /* Sort mount points accordingly to the reverse mount order */
-    initial(&sort);
-    for (mid = 1; mid <= max; mid++)
-    {
-        list_t *ptr, *tmp;
-        list_for_each_safe(ptr, tmp, &mntinfo)
-        {
-            mntinfo_t *mnt = list_entry(ptr, mntinfo_t);
-            if (mid != mnt->id)
-                continue;
-            move_head(ptr, &sort);
-            break;
-        }
-        list_for_each_safe(ptr, tmp, &mntinfo)
-        {
-            mntinfo_t *mnt = list_entry(ptr, mntinfo_t);
-            if (mid != mnt->parid)
-                continue;
-            move_head(ptr, &sort);
-        }
-    }
-    if (!list_empty(&mntinfo))
-    {
-#ifdef EBADE
-        errno = EBADE;
-#else
-        errno = ENOENT;
-#endif                /* EBADE */
-    }
-    join(&sort, &mntinfo);
-}
-
-/*
- * Determine device of links below /proc/
- */
-static int mntstat(
-    const char *path,
-    struct stat *buf)
-{
-    char name[PATH_MAX + 1];
-    const char *use;
-    ssize_t nlen;
-    list_t *ptr;
-
-    if ((use = realpath(path, name)) == NULL || *use != '/')
-    {
-        if (errno == ENOENT)
-            return -1;
-        /*
-         * Could be a special file (socket, pipe, inotify)
-         */
-        errno = 0;
-        return stat(path, buf);
-    }
-
-    nlen = strlen(use);
-    list_for_each(ptr, &mntinfo)
-    {
-        mntinfo_t *mnt = list_entry(ptr, mntinfo_t);
-        if (nlen < mnt->nlen)
-            continue;
-        if (mnt->nlen == 1) /* root fs is the last entry */
-        {
-            buf->st_dev = mnt->dev;
-            buf->st_ino = 0;
-            return 0;
-        }
-        if (use[mnt->nlen] != '\0' && use[mnt->nlen] != '/')
-            continue;
-        if (strncmp(use, mnt->mpoint, mnt->nlen) == 0)
-        {
-            buf->st_dev = mnt->dev;
-            buf->st_ino = 0;
-            return 0;
-        }
-    }
-    errno = ENOENT;
-    return -1;
-}
-#endif                /* WITH_MOUNTINFO_LIST */
 
 /*
  * Somehow the realpath(3) glibc function call, nevertheless

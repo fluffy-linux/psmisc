@@ -76,17 +76,21 @@ if test "$enable_timeout_stat" = "static"; then
 fi
 AM_CONDITIONAL([WANT_TIMEOUT_STAT], [test "$enable_timeout_stat" = "static"])
 
-# Use string search for network based file systems but only if the system
-# has /proc/self/mountinfo
-AC_SUBST([WITH_MOUNTINFO_LIST])
-AC_ARG_ENABLE([mountinfo_list],
-  [AS_HELP_STRING([--enable-mountinfo-list], [Use the list in /proc/self/mountinfo to replace stat(2) syscall on network file systems shares])],
-  [enable_mountinfo_list="yes"],
-  [enable_mountinfo_list="no"])
-if test "$enable_mountinfo_list" = "yes" -a -e /proc/self/mountinfo ; then
-  AC_DEFINE([WITH_MOUNTINFO_LIST], [1], [Use list in /proc/self/mountinfo to replace stat calls])
-fi
-
+AC_CHECK_HEADERS([sys/syscall.h])
+AC_CHECK_DECLS([SYS_statx],
+  [has_syscall_statx="yes"],
+  [has_syscall_statx="no"],
+  [[#include <sys/syscall.h>]]
+)
+AC_CHECK_FUNCS([statx])
+# Check for linux specific statx(2) system call
+AC_SUBST([HAS_SYSCALL_STATX])
+AC_ARG_ENABLE([disable_statx],
+  [AS_HELP_STRING([--disable-statx], [Do not use linux specific statx(2) system call as replacement for stat(2), lstat(2), and fstat(2)])],
+  [enable_syscall_statx="no"],
+  [enable_syscall_statx=$has_syscall_statx])
+AM_CONDITIONAL([HAVE_SYSCALL_STATX], [test "$enable_syscall_statx" = "yes"])
+ 
 # Enable hardened compile and link flags
 AC_ARG_ENABLE([harden_flags],
   [AS_HELP_STRING([--disable-harden-flags], [disable hardened compilier and linker flags])],

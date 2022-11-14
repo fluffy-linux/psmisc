@@ -81,8 +81,8 @@ src_fuser_SOURCES = \
 		    src/fuser.h \
 		    src/lists.h
 
-if WANT_TIMEOUT_STAT
-src_fuser_SOURCES += src/timeout.c src/timeout.h
+if HAVE_SYSCALL_STATX
+src_fuser_SOURCES += src/statx.c src/statx.h
 endif
 src_fuser_LDADD = @LIBINTL@
 src_killall_SOURCES = src/killall.c src/comm.h src/signals.c src/signals.h src/i18n.h
