@@ -12,6 +12,7 @@ AC_USE_SYSTEM_EXTENSIONS(_GNU_SOURCE)
 AC_PROG_CXX
 AC_PROG_LN_S
 AC_PROG_CC
+AC_PROG_CC_STDC
 
 AC_DEFUN([PSMISC_PROG_PO4A], [
   AC_REQUIRE([AM_NLS])
@@ -61,6 +62,19 @@ if test "$enable_apparmor" = "yes"; then
   fi
 fi
 AC_SUBST([DL_LIB])
+
+# Use /proc/self/mountinfo if available
+if test -e /proc/self/mountinfo ; then
+  AC_DEFINE([HAS_MOUNTINFO], [1], [System has /proc/self/mountinfo which can used instead /proc(/self)/mounts])
+fi
+# Use /proc/self/fdinfo if available
+if test -e /proc/self/fdinfo ; then
+  AC_DEFINE([HAS_FDINFO], [1], [System has /proc/self/fdinfo for informations on file descriptors])
+fi
+
+# Check for Linux specific name_to_handle_at(2) system call for getting mount IDs
+AC_CHECK_FUNC([name_to_handle_at],[
+  AC_DEFINE([HAS_NAME_TO_HANDLE_AT], [1], [System has name_to_handle_at(2) system call])])
 
 AC_CHECK_DECLS([SYS_statx],
   [has_syscall_statx="yes"],
@@ -112,9 +126,9 @@ AC_SUBST([TERMCAP_LIB])
 
 dnl Checks for header files.
 AC_HEADER_DIRENT
-
+AC_HEADER_STDC
 AC_HEADER_SYS_WAIT
-AC_CHECK_HEADERS([arpa/inet.h fcntl.h langinfo.h libintl.h limits.h locale.h mntent.h netdb.h netinet/in.h stdlib.h string.h sys/ioctl.h sys/socket.h termios.h unistd.h])
+AC_CHECK_HEADERS([arpa/inet.h fcntl.h langinfo.h libintl.h limits.h locale.h mntent.h netdb.h netinet/in.h stdlib.h string.h sys/ioctl.h sys/mount.h sys/param.h sys/stat.h sys/socket.h sys/types.h termios.h unistd.h])
 
 dnl Checks for typedefs, structures, and compiler characteristics.
 AC_C_CONST

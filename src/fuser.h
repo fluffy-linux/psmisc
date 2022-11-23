@@ -37,10 +37,16 @@ struct procs {
 #define PTYPE_KNFSD 2
 #define PTYPE_SWAP 3
 
+struct fdinfo {
+	mode_t flags;
+	int mnt_id;
+};
+
 struct names {
 	char *filename;
 	unsigned char name_space;
 	struct stat st;
+	int mnt_id;
 	struct procs *matched_procs;
 	struct names *next;
 };
@@ -65,12 +71,21 @@ struct inode_list {
 	struct names *name;
 	dev_t	device;
 	ino_t	inode;
+	int	mnt_id;
 	struct inode_list *next;
+};
+
+struct subvol {
+	dev_t	device;
+	int	mnt_id;
+	struct subvol *next;
 };
 
 struct device_list {
 	struct names *name;
+	struct subvol *vol;
 	dev_t	device;
+	int	mnt_id;
 	struct device_list *next;
 };
 
@@ -79,6 +94,7 @@ struct unixsocket_list {
 	ino_t	inode;
 	ino_t	net_inode;
 	dev_t	dev;
+	int	mnt_id;
 	struct unixsocket_list *next;
 };
 
@@ -87,18 +103,16 @@ struct mount_list {
 	struct mount_list *next;
 };
 
-#if defined (__GNUC__) && defined(WITH_MOUNTINFO_LIST)
-# include "lists.h"
+#include "lists.h"
 typedef struct mntinfo_s {
     list_t   this;
     int id, parid;
+    char isremote;
     dev_t     dev;
     size_t   nlen;
+    dev_t     vol;
     char  *mpoint;
 } mntinfo_t;
-#else
-# undef WITH_MOUNTINFO_LIST
-#endif
 
 #define NAMESPACE_FILE 0
 #define NAMESPACE_TCP 1
@@ -109,5 +123,7 @@ typedef struct mntinfo_s {
 #endif /* PATH_MAX */
 
 #define KNFSD_EXPORTS "/proc/fs/nfs/exports"
+#define PROC_MOUNTINFO "/proc/self/mountinfo"
+#define PROC_SOCKETS "/proc/self/net/unix"
 #define PROC_MOUNTS "/proc/mounts"
 #define PROC_SWAPS "/proc/swaps"
