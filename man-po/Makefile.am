@@ -2,9 +2,12 @@
 
 src_MANS = $(wildcard $(top_srcdir)/doc/*.[1-9])
 
+translated_MANS = $(wildcard translated/*/*.[1-9])
+
 EXTRA_DIST = \
 	po4a.cfg \
-	psmisc.pot
+	psmisc.pot \
+	$(translated_MANS)
 
 
 # Extract the list of languages from the po4a config file.
@@ -45,7 +48,7 @@ clean-local-yes:
 
 .PHONY: update-po
 
-psmisc.pot:
+psmisc.pot: $(src_MANS)
 	po4a-gettextize -M utf8 --option groff_code=verbatim --option generated --option untranslated="a.RE,\|" --option unknown_macros=untranslated -f man $(patsubst %,-m%,$(subst :, ,$(src_MANS))) -p psmisc.pot
 
 update-po:
@@ -62,10 +65,9 @@ install-data-local:
 				files="$$files $(srcdir)/$$lang/$$trans"; \
 			fi; \
 		done; \
-		$(MAKE) install-man \
+		$(MAKE) -C .. install-man \
 			mandir="$(mandir)/$$lang" \
-			man_MANS="" \
-			src_MANS="$$files"; \
+			dist_man_MANS="$$files"; \
 	done
 
 uninstall-local:
@@ -80,8 +82,7 @@ uninstall-local:
 		done; \
 		$(MAKE) -C .. uninstall-man \
 			mandir="$(mandir)/$$lang" \
-			man_MANS="" \
-			src_MANS="$$files"; \
+			dist_man_MANS="$$files"; \
 	done
 
 dist-hook: man.stamp
