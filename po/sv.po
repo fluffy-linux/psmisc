@@ -7,10 +7,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: psmisc 23.5rc1\n"
+"Project-Id-Version: psmisc 23.6-rc1\n"
 "Report-Msgid-Bugs-To: csmall@dropbear.xyz\n"
-"POT-Creation-Date: 2022-12-07 21:47+1100\n"
-"PO-Revision-Date: 2022-10-24 18:12+0200\n"
+"POT-Creation-Date: 2022-12-09 22:30+1100\n"
+"PO-Revision-Date: 2022-12-08 16:09+0100\n"
 "Last-Translator: Sebastian Rasmussen <sebras@gmail.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Bugs: Report translation errors to the Language-Team address.\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: src/fuser.c:146
 #, c-format
@@ -79,13 +79,11 @@ msgstr ""
 "  -6,--ipv6             sök endast bland IPv6-uttag (socket)\n"
 
 #: src/fuser.c:170
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "  udp/tcp names: [local_port][,[rmt_host][,[rmt_port]]]\n"
 "\n"
 msgstr ""
-"  -                     nollställ flaggor\n"
-"\n"
 "  udp/tcp-namn: [lokal_port][,[fjärrvärd][,[fjärrport]]]\n"
 "\n"
 
@@ -417,12 +415,12 @@ msgid "prtstat (PSmisc) %s\n"
 msgstr "prtstat (PSmisc) %s\n"
 
 #: src/prtstat.c:66
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Copyright (C) 2009-2022 Craig Small\n"
 "\n"
 msgstr ""
-"Copyright © 2009-2020 Craig Small\n"
+"Copyright © 2009-2022 Craig Small\n"
 "\n"
 
 #: src/prtstat.c:78

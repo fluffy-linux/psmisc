@@ -7,10 +7,10 @@
 # Frédéric Marchal <fmarchal@perso.be>, 2022.
 msgid ""
 msgstr ""
-"Project-Id-Version: psmisc-23.5rc1\n"
+"Project-Id-Version: psmisc-23.6-rc1\n"
 "Report-Msgid-Bugs-To: csmall@dropbear.xyz\n"
-"POT-Creation-Date: 2022-12-07 21:47+1100\n"
-"PO-Revision-Date: 2022-03-23 20:33+0100\n"
+"POT-Creation-Date: 2022-12-09 22:30+1100\n"
+"PO-Revision-Date: 2022-12-08 16:17+0100\n"
 "Last-Translator: Frédéric Marchal <fmarchal@perso.be>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "Language: fr\n"
@@ -84,13 +84,11 @@ msgstr ""
 "  -6,--ipv6             cherche des sockets IPv6 seulement\n"
 
 #: src/fuser.c:170
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "  udp/tcp names: [local_port][,[rmt_host][,[rmt_port]]]\n"
 "\n"
 msgstr ""
-"  -                     réinitialise les options\n"
-"\n"
 "  noms udp/tcp: [port_local][,[hôte_distant][,[port_distant]]]\n"
 "\n"
 
@@ -429,12 +427,12 @@ msgid "prtstat (PSmisc) %s\n"
 msgstr "prtstat (PSmisc) %s\n"
 
 #: src/prtstat.c:66
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Copyright (C) 2009-2022 Craig Small\n"
 "\n"
 msgstr ""
-"Copyright (C) 2009-2020 Craig Small\n"
+"Copyright (C) 2009-2022 Craig Small\n"
 "\n"
 
 #: src/prtstat.c:78

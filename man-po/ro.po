@@ -1,4 +1,4 @@
-# Mesajele în limba română pentru pachetul psmisc-man.
+# Mesajele în limba română pentru psmisc-man, pachetul psmisc.
 # Copyright © 2022 Free Software Foundation, Inc.
 # This file is distributed under the same license as the psmisc package.
 #
@@ -6,14 +6,15 @@
 #
 # Cronologia traducerii fișierului „psmisc-man”:
 # Traducerea inițială, făcută de R-GC, pentru versiunea psmisc-man 23.5rc1.
-# Actualizare a traducerii pentru versiunea Y, făcută de X.
+# Actualizare a traducerii pentru versiunea 23.6-rc1, făcută de R-GC, 2022.
+# Actualizare a traducerii pentru versiunea Y, făcută de X, Y(anul).
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: psmisc-man 23.5rc1\n"
+"Project-Id-Version: psmisc-man 23.6-rc1\n"
 "Report-Msgid-Bugs-To: Craig Small <csmall@dropbear.xyz>\n"
-"POT-Creation-Date: 2022-03-18 09:07+1100\n"
-"PO-Revision-Date: 2022-09-08 23:41+0200\n"
+"POT-Creation-Date: 2022-11-13 15:26+1100\n"
+"PO-Revision-Date: 2022-12-08 17:27+0100\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
 "Language: ro\n"
@@ -31,10 +32,10 @@ msgid "FUSER"
 msgstr "FUSER"
 
 #. type: TH
-#: ../doc/fuser.1:9 ../doc/pslog.1:9 ../doc/prtstat.1:9
+#: ../doc/fuser.1:9
 #, no-wrap
-msgid "2020-09-09"
-msgstr "09.09.2020"
+msgid "2022-11-02"
+msgstr "02.11.2022"
 
 #. type: TH
 #: ../doc/fuser.1:9 ../doc/killall.1:9 ../doc/peekfd.1:9 ../doc/prtstat.1:9
@@ -404,147 +405,141 @@ msgstr "B<-6>, B<--ipv6>"
 msgid "Search only for IPv6 sockets.  This option must not be used with the B<-4> option and only has an effect with the tcp and udp namespaces."
 msgstr "Caută doar socluri IPv6.  Această opțiune nu trebuie utilizată cu opțiunea B<-4> și are efect doar cu spațiile de nume tcp și udp."
 
-#. type: IP
-#: ../doc/fuser.1:220
-#, no-wrap
-msgid "B<->"
-msgstr "B<->"
-
-#. type: Plain text
-#: ../doc/fuser.1:222
-msgid "Reset all options and set the signal back to SIGKILL."
-msgstr "Restabilește toate opțiunile și stabilește semnalul din nou la SIGKILL."
-
 #. type: SH
-#: ../doc/fuser.1:222 ../doc/killall.1:143 ../doc/peekfd.1:43
+#: ../doc/fuser.1:220 ../doc/killall.1:143 ../doc/peekfd.1:43
 #: ../doc/prtstat.1:35 ../doc/pstree.1:168
 #, no-wrap
 msgid "FILES"
 msgstr "FIȘIERE"
 
 #. type: TP
-#: ../doc/fuser.1:223 ../doc/killall.1:144 ../doc/pstree.1:169
+#: ../doc/fuser.1:221 ../doc/killall.1:144 ../doc/pstree.1:169
 #, no-wrap
 msgid "/proc"
 msgstr "/proc"
 
 #. type: Plain text
-#: ../doc/fuser.1:226 ../doc/killall.1:147 ../doc/pstree.1:172
+#: ../doc/fuser.1:224 ../doc/killall.1:147 ../doc/pstree.1:172
 msgid "location of the proc file system"
 msgstr "locația sistemului de fișiere proc"
 
 #. type: SH
-#: ../doc/fuser.1:226
+#: ../doc/fuser.1:224
 #, no-wrap
 msgid "EXAMPLES"
 msgstr "EXEMPLE"
 
 #. type: TP
-#: ../doc/fuser.1:227
+#: ../doc/fuser.1:225
 #, no-wrap
 msgid "B<fuser -km /home>"
 msgstr "B<fuser -km /home>"
 
 #. type: Plain text
-#: ../doc/fuser.1:230
+#: ../doc/fuser.1:228
 msgid "kills all processes accessing the file system /home in any way."
 msgstr "omoară toate procesele care accesează sistemul de fișiere /home în orice fel (citire, scriere, creare, .. etc.)."
 
 #. type: TP
-#: ../doc/fuser.1:230
+#: ../doc/fuser.1:228
 #, no-wrap
 msgid "B<if fuser -s /dev/ttyS1; then :; else >I<command>B<; fi>"
 msgstr "B<if fuser -s /dev/ttyS1; then :; else >I<comanda>B<; fi>"
 
 #. type: Plain text
-#: ../doc/fuser.1:235
+#: ../doc/fuser.1:233
 msgid "invokes I<command> if no other process is using /dev/ttyS1."
 msgstr "invocă I<comanda> dacă niciun alt proces nu utilizează /dev/ttyS1."
 
 #. type: TP
-#: ../doc/fuser.1:235
+#: ../doc/fuser.1:233
 #, no-wrap
 msgid "B<fuser telnet/tcp>"
 msgstr "B<fuser telnet/tcp>"
 
 #. type: Plain text
-#: ../doc/fuser.1:238
+#: ../doc/fuser.1:236
 msgid "shows all processes at the (local) TELNET port."
 msgstr "afișează toate procesele de la portul (local) TELNET."
 
 #. type: SH
-#: ../doc/fuser.1:238
+#: ../doc/fuser.1:236
 #, no-wrap
 msgid "RESTRICTIONS"
 msgstr "RESTRICȚII"
 
 #. type: Plain text
-#: ../doc/fuser.1:241
+#: ../doc/fuser.1:239
 msgid "Processes accessing the same file or file system several times in the same way are only shown once."
 msgstr "Procesele care accesează același fișier sau sistem de fișiere de mai multe ori în același mod sunt afișate o singură dată."
 
 #. type: Plain text
-#: ../doc/fuser.1:244
+#: ../doc/fuser.1:242
 msgid "If the same object is specified several times on the command line, some of those entries may be ignored."
 msgstr "Dacă același obiect este specificat de mai multe ori în linia de comandă, unele dintre aceste intrări pot fi ignorate."
 
 #. type: Plain text
-#: ../doc/fuser.1:250
+#: ../doc/fuser.1:248
 msgid "B<fuser> may only be able to gather partial information unless run with privileges.  As a consequence, files opened by processes belonging to other users may not be listed and executables may be classified as mapped only."
 msgstr "B<fuser> poate obține doar informații parțiale, cu excepția cazului în care rulează cu privilegii.  În consecință, fișierele deschise de procese aparținând altor utilizatori pot să nu fie listate și executabilele pot să fie clasificate doar ca asociate cu fișierul."
 
 #. type: Plain text
-#: ../doc/fuser.1:259
+#: ../doc/fuser.1:257
 msgid "B<fuser> cannot report on any processes that it doesn't have permission to look at the file descriptor table for.  The most common time this problem occurs is when looking for TCP or UDP sockets when running B<fuser> as a non-root user.  In this case B<fuser> will report no access."
 msgstr "B<fuser> nu poate raporta niciun proces pentru care nu are permisiunea de a căuta în tabelul descriptor al fișierului.  Cel mai frecvent caz în care apare această problemă este atunci când se caută socluri TCP sau UDP în timp ce B<fuser> rulează ca utilizator non-root.  În acest caz, B<fuser> va raporta că nu există acces."
 
 #. type: Plain text
-#: ../doc/fuser.1:264
+#: ../doc/fuser.1:262
 msgid "Installing B<fuser> SUID root will avoid problems associated with partial information, but may be undesirable for security and privacy reasons."
 msgstr "Instalarea lui B<fuser> cu SUID root va evita problemele asociate cu informațiile parțiale, dar poate fi nedorită din motive de securitate și confidențialitate."
 
 #. type: Plain text
-#: ../doc/fuser.1:270
+#: ../doc/fuser.1:268
 msgid "B<udp> and B<tcp> name spaces, and UNIX domain sockets can't be searched with kernels older than 1.3.78."
 msgstr "Spațiile de nume B<udp> și B<tcp> și soclurile de domeniu UNIX nu pot fi căutate cu nuclee mai vechi de 1.3.78."
 
 #. type: Plain text
-#: ../doc/fuser.1:274
+#: ../doc/fuser.1:272
 msgid "Accesses by the kernel are only shown with the B<-v> option."
 msgstr "Accesările de către nucleu sunt afișate doar cu opțiunea B<-v>."
 
 #. type: Plain text
-#: ../doc/fuser.1:280
+#: ../doc/fuser.1:278
 msgid "The B<-k> option only works on processes.  If the user is the kernel, B<fuser> will print an advice, but take no action beyond that."
 msgstr "Opțiunea B<-k> funcționează numai asupra proceselor.  Dacă utilizatorul este nucleul, B<fuser> va afișa un sfat, dar nu va lua nicio măsură în afară de aceasta."
 
+#. type: Plain text
+#: ../doc/fuser.1:283
+msgid "B<fuser> will not see block devices mounted by processes in a different mount namespace.  This is due to the device ID shown in the process' file descriptor table being from the process namespace, not fuser's; meaning it won't match."
+msgstr "B<fuser> nu va vedea dispozitivele bloc montate de procese într-un spațiu de nume de montare diferit.  Acest lucru se datorează faptului că ID-ul dispozitivului afișat în tabelul descriptor al fișierului procesului provine din spațiul de nume al procesului, nu din cel al «fuser»; adică nu se va potrivi."
+
 #. type: SH
-#: ../doc/fuser.1:280 ../doc/peekfd.1:56 ../doc/pstree.1:172
+#: ../doc/fuser.1:283 ../doc/peekfd.1:56 ../doc/pstree.1:172
 #, no-wrap
 msgid "BUGS"
 msgstr "ERORI"
 
 #. type: Plain text
-#: ../doc/fuser.1:286
+#: ../doc/fuser.1:289
 msgid "B<fuser -m /dev/sgX> will show (or kill with the B<-k> flag) all processes, even if you don't have that device configured.  There may be other devices it does this for too."
 msgstr "B<fuser -m /dev/sgX> va afișa (sau va ucide cu opțiuneal B<-k>) toate procesele, chiar dacă nu aveți acel dispozitiv configurat.  Pot exista și alte dispozitive pentru care face acest lucru."
 
 #. type: Plain text
-#: ../doc/fuser.1:290
+#: ../doc/fuser.1:293
 msgid "The mount B<-m> option will match any file within the same device as the specified file, use the B<-M> option as well if you mean to specify only the mount point."
 msgstr "Opțiunea de montare B<-m> se va potrivi cu orice fișier din același dispozitiv cu fișierul specificat, utilizați și opțiunea B<-M> dacă doriți să specificați doar punctul de montare."
 
 #. type: SH
-#: ../doc/fuser.1:290 ../doc/killall.1:170 ../doc/peekfd.1:63
+#: ../doc/fuser.1:293 ../doc/killall.1:170 ../doc/peekfd.1:63
 #: ../doc/pslog.1:27 ../doc/pstree.1:174
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "CONSULTAȚI ȘI"
 
 #. type: Plain text
-#: ../doc/fuser.1:296
-msgid "B<kill>(1), B<killall>(1), B<lsof>(8), B<pkill>(1), B<ps>(1), B<kill>(2)."
-msgstr "B<kill>(1), B<killall>(1), B<lsof>(8), B<pkill>(1), B<ps>(1), B<kill>(2)."
+#: ../doc/fuser.1:300
+msgid "B<kill>(1), B<killall>(1), B<lsof>(8), B<mount_namespaces>(7), B<pkill>(1), B<ps>(1), B<kill>(2)."
+msgstr "B<kill>(1), B<killall>(1), B<lsof>(8), B<mount_namespaces>(7), B<pkill>(1), B<ps>(1), B<kill>(2)."
 
 #. type: TH
 #: ../doc/killall.1:9
@@ -943,6 +938,12 @@ msgstr "B<ttysnoop>(8)"
 #, no-wrap
 msgid "PSLOG"
 msgstr "PSLOG"
+
+#. type: TH
+#: ../doc/pslog.1:9 ../doc/prtstat.1:9
+#, no-wrap
+msgid "2020-09-09"
+msgstr "09.09.2020"
 
 #. type: TH
 #: ../doc/pslog.1:9
@@ -1346,3 +1347,9 @@ msgstr "Unele seturi de caractere pot fi incompatibile cu caracterele VT100."
 #: ../doc/pstree.1:177
 msgid "B<ps>(1), B<top>(1), B<proc>(5)."
 msgstr "B<ps>(1), B<top>(1), B<proc>(5)."
+
+#~ msgid "B<->"
+#~ msgstr "B<->"
+
+#~ msgid "Reset all options and set the signal back to SIGKILL."
+#~ msgstr "Restabilește toate opțiunile și stabilește semnalul din nou la SIGKILL."

@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: psmisc 23.5rc1\n"
+"Project-Id-Version: psmisc 23.6-rc1\n"
 "Report-Msgid-Bugs-To: csmall@dropbear.xyz\n"
-"POT-Creation-Date: 2022-12-07 21:47+1100\n"
-"PO-Revision-Date: 2022-03-21 21:19+01:00\n"
+"POT-Creation-Date: 2022-12-09 22:30+1100\n"
+"PO-Revision-Date: 2022-12-08 21:29+01:00\n"
 "Last-Translator: Petr Pisar <petr.pisar@atlas.cz>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "Language: cs\n"
@@ -79,13 +79,11 @@ msgstr ""
 "  -6,--ipv6             hledá pouze mezi IPv6 sockety\n"
 
 #: src/fuser.c:170
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "  udp/tcp names: [local_port][,[rmt_host][,[rmt_port]]]\n"
 "\n"
 msgstr ""
-"  -                     konec přepínačů\n"
-"\n"
 "  Názvy UDP/TCP: [místní_port][,[vzdálený_stroj][,[vzdálený_port]]]\n"
 "\n"
 
@@ -417,12 +415,12 @@ msgid "prtstat (PSmisc) %s\n"
 msgstr "prtstat (PSmisc) %s\n"
 
 #: src/prtstat.c:66
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Copyright (C) 2009-2022 Craig Small\n"
 "\n"
 msgstr ""
-"Copyright © 2009–2020 Craig Small\n"
+"Copyright © 2009–2022 Craig Small\n"
 "\n"
 
 #: src/prtstat.c:78

@@ -1,10 +1,13 @@
-# Mesajele în limba română pentru psmisc.
-# Copyright (C) 2003 Free Software Foundation, Inc.
+# Mesajele în limba română pentru pachetul psmisc.
+# Copyright (C) 2003, 2022 Free Software Foundation, Inc.
 # Acest fișier este distribuit sub aceeași licență ca și pachetul psmisc.
 # This file is distributed under the same license as the psmisc package.
 #
 # Laurentiu Buzdugan <lbuz@rolix.org>, 2005.
-# Traducere făcută de LB, pentru versiunea psmisc 21.6pre1.
+# Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>, 2022.
+#
+# Cronologia traducerii fișierului „psmisc”:
+# Traducerea inițială, făcută de LB, pentru versiunea psmisc 21.6pre1.
 # Actualizare a mesajelor, de la fișierul „psmisc-23.4rc1.pot”.
 # Actualizare a codării caracteror, la codarea de caractere UTF-8.
 # Actualizare a diacriticelor de la „cu sedilă” la „cu virgulă”.
@@ -12,14 +15,16 @@
 # NU și a mesajelor traduse (acestea au rămas neschimbate).
 # Eliminare a mesajelor ce-au dispărut în ultima versiune.
 # Actualizări realizate de Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>, 15.01.2022.
-# Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>, 2022.
+# Actualizare a traducerii pentru versiunea 23.5rc1, făcută de R-GC, 2022.
+# Actualizare a traducerii pentru versiunea 23.6-rc1, făcută de R-GC, 2022.
+# Actualizare a traducerii pentru versiunea Y, făcută de X, Y(anul).
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: psmisc-23.5rc1\n"
+"Project-Id-Version: psmisc 23.6-rc1\n"
 "Report-Msgid-Bugs-To: csmall@dropbear.xyz\n"
-"POT-Creation-Date: 2022-12-07 21:47+1100\n"
-"PO-Revision-Date: 2022-03-21 11:51+0100\n"
+"POT-Creation-Date: 2022-12-09 22:30+1100\n"
+"PO-Revision-Date: 2022-12-08 17:44+0100\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
 "Language: ro\n"
@@ -29,7 +34,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);\n"
 "X-Bugs: Report translation errors to the Language-Team address.\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 # R-GC, scrie:
 # am făcut unele modificări, față de traducerea
@@ -126,14 +131,12 @@ msgstr ""
 "  -6,--ipv6             caută numai socluri(sockets) IPv6\n"
 
 #: src/fuser.c:170
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "  udp/tcp names: [local_port][,[rmt_host][,[rmt_port]]]\n"
 "\n"
 msgstr ""
-"  -                     opțiuni de repornire\n"
-"\n"
-"  udp/tcp nume: [port_local][,[gazdă_rmt][,[port_rmt]]]\n"
+"  nume udp/tcp: [port_local][,[gazdă_rmt][,[port_rmt]]]\n"
 "\n"
 
 #: src/fuser.c:176
@@ -506,12 +509,12 @@ msgid "prtstat (PSmisc) %s\n"
 msgstr "prtstat (PSmisc) %s\n"
 
 #: src/prtstat.c:66
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Copyright (C) 2009-2022 Craig Small\n"
 "\n"
 msgstr ""
-"Drepturi de autor © 2009-2020 Craig Small\n"
+"Drepturi de autor © 2009-2022 Craig Small\n"
 "\n"
 
 #: src/prtstat.c:78

@@ -2,13 +2,13 @@
 # Copyright (C) 2012 Free Software Foundation, Inc.
 # This file is distributed under the same license as the psmisc package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2011, 2012, 2013, 2014, 2016, 2018, 2019, 2021, 2022.
+# Yuri Chornoivan <yurchor@ukr.net>, 2011-2022.
 msgid ""
 msgstr ""
-"Project-Id-Version: psmisc-23.5rc1\n"
+"Project-Id-Version: psmisc-23.6-rc1\n"
 "Report-Msgid-Bugs-To: csmall@dropbear.xyz\n"
-"POT-Creation-Date: 2022-12-07 21:47+1100\n"
-"PO-Revision-Date: 2022-03-21 15:20+0200\n"
+"POT-Creation-Date: 2022-12-09 22:30+1100\n"
+"PO-Revision-Date: 2022-12-08 21:18+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -82,13 +82,11 @@ msgstr ""
 "  -6,--ipv6             шукати лише серед сокетів IPv6\n"
 
 #: src/fuser.c:170
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "  udp/tcp names: [local_port][,[rmt_host][,[rmt_port]]]\n"
 "\n"
 msgstr ""
-"  -                     скинути параметри\n"
-"\n"
 "  назви udp/tcp: [локлаьний_порт][,[вузол_rmt][,[порт_rmt]]]\n"
 "\n"
 
@@ -425,12 +423,12 @@ msgid "prtstat (PSmisc) %s\n"
 msgstr "prtstat (PSmisc) %s\n"
 
 #: src/prtstat.c:66
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Copyright (C) 2009-2022 Craig Small\n"
 "\n"
 msgstr ""
-"© Craig Small, 2009–2020\n"
+"© Craig Small, 2009–2022\n"
 "\n"
 
 #: src/prtstat.c:78

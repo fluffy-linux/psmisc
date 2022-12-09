@@ -7,10 +7,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: psmisc 23.5rc1\n"
+"Project-Id-Version: psmisc 23.6-rc1\n"
 "Report-Msgid-Bugs-To: csmall@dropbear.xyz\n"
-"POT-Creation-Date: 2022-12-07 21:47+1100\n"
-"PO-Revision-Date: 2022-03-22 00:19+0100\n"
+"POT-Creation-Date: 2022-12-09 22:30+1100\n"
+"PO-Revision-Date: 2022-12-08 23:53+0100\n"
 "Last-Translator: Roland Illig <roland.illig@gmx.de>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "Language: de\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Bugs: Report translation errors to the Language-Team address.\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: src/fuser.c:146
 #, c-format
@@ -83,13 +83,11 @@ msgstr ""
 "  -6,--ipv6             nur IPv6-Sockets suchen\n"
 
 #: src/fuser.c:170
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "  udp/tcp names: [local_port][,[rmt_host][,[rmt_port]]]\n"
 "\n"
 msgstr ""
-"  -                     Optionen zurücksetzen\n"
-"\n"
 "  udp/tcp-Namen: [lokaler_port][,[entfernter_rechner][,[entfernter_port]]]\n"
 "\n"
 
@@ -190,7 +188,7 @@ msgstr "Die Option »all« kann nicht mit der Option »silent« kombiniert werde
 msgid "You cannot search for only IPv4 and only IPv6 sockets at the same time"
 msgstr ""
 "Es ist nicht möglich, gleichzeitig ausschließlich nach IPv4- und "
-"ausschließlich nach IPv6-Sockets zu suchen."
+"ausschließlich nach IPv6-Sockets zu suchen"
 
 #: src/fuser.c:1474
 #, c-format
@@ -427,12 +425,12 @@ msgid "prtstat (PSmisc) %s\n"
 msgstr "prtstat (PSmisc) %s\n"
 
 #: src/prtstat.c:66
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Copyright (C) 2009-2022 Craig Small\n"
 "\n"
 msgstr ""
-"Copyright (C) 2009–2020 Craig Small\n"
+"Copyright (C) 2009–2022 Craig Small\n"
 "\n"
 
 #: src/prtstat.c:78

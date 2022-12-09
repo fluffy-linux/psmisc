@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: psmisc 23.5rc1\n"
+"Project-Id-Version: psmisc 23.6-rc1\n"
 "Report-Msgid-Bugs-To: csmall@dropbear.xyz\n"
-"POT-Creation-Date: 2022-12-07 21:47+1100\n"
-"PO-Revision-Date: 2022-03-21 21:15+0100\n"
+"POT-Creation-Date: 2022-12-09 22:30+1100\n"
+"PO-Revision-Date: 2022-12-08 20:02+0100\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "Language: pl\n"
@@ -77,14 +77,12 @@ msgstr ""
 "  -6,--ipv6             szukanie tylko gniazd IPv6\n"
 
 #: src/fuser.c:170
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "  udp/tcp names: [local_port][,[rmt_host][,[rmt_port]]]\n"
 "\n"
 msgstr ""
-"  -                     wyzerowanie opcji\n"
-"\n"
-"  nazwy tcp/udp: [port_lokalny][,[zdalny_host][,[port_zdalny]]]\n"
+"  nazwy tcp/udp: [port_lokalny][,[host_zdalny][,[port_zdalny]]]\n"
 "\n"
 
 #: src/fuser.c:176
@@ -417,12 +415,12 @@ msgid "prtstat (PSmisc) %s\n"
 msgstr "prtstat (PSmisc) %s\n"
 
 #: src/prtstat.c:66
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Copyright (C) 2009-2022 Craig Small\n"
 "\n"
 msgstr ""
-"Copyright (C) 2009-2020 Craig Small\n"
+"Copyright (C) 2009-2022 Craig Small\n"
 "\n"
 
 #: src/prtstat.c:78
