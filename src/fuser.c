@@ -2156,11 +2156,7 @@ char *expandpath(
     {
         if (!getcwd(curr, PATH_MAX))
             return (char *)0;
-#ifdef HAVE_RAWMEMCHR
-        dest = rawmemchr(curr, '\0');
-#else
         dest = strchr(curr, '\0');
-#endif
     } else {
         *curr = '/';
         dest = curr + 1;
