@@ -1,3 +1,7 @@
+Changes in NEXT
+===============
+	* build-sys: Make disable-statx work
+
 Changes in 23.6
 ===============
         * buildsys: Fix DEJAGNU work-around Debian #1015089

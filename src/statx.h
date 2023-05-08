@@ -23,7 +23,7 @@
 #define _STATX_H
 
 extern int stat_flags;
-#if defined(HAVE_DECL_SYS_STATX) && HAVE_DECL_SYS_STATX == 1
+#ifdef WITH_STATX
 # ifndef HAVE_STATX
 #  define _ASM_GENERIC_FCNTL_H	/* Avoid collisions between asm/fcntl.h and bits/fcntl.h ! */
 #  include <linux/fcntl.h>	/* Definition of AT_* and AT_STATX_* constants ! */
@@ -34,7 +34,25 @@ extern int stat_flags;
 extern int statn(const char*, unsigned int, struct stat*);
 extern int fstatn(int, unsigned int, struct stat*);
 extern int lstatn(const char*, unsigned int, struct stat*);
-#else
+#else /* WITH_STATX */
+
+#if !defined(HAVE_DECL_STATX_TYPE) || HAVE_DECL_STATX_TYPE == 0
+#define STATX_TYPE		0
+#define STATX_MODE		0
+#define STATX_NLINK		0
+#define STATX_UID		0
+#define STATX_GID		0
+#define STATX_ATIME		0
+#define STATX_MTIME		0
+#define STATX_CTIME		0
+#define STATX_INO		0
+#define STATX_SIZE		0
+#define STATX_BLOCKS		0
+#define STATX_BASIC_STATS	0
+#define STATX_BTIME		0
+#define STATX_ALL		0
+#endif /* HAVE_DECL_STATX_TYPE */
+
 extern inline int
 statn(const char *path, unsigned int mask __attribute__((unused)), struct stat *st)
 {
@@ -50,19 +68,6 @@ lstatn(const char *path, unsigned int mask __attribute__((unused)), struct stat 
 {
     return lstat(path, st);
 }
-#define STATX_TYPE		0
-#define STATX_MODE		0
-#define STATX_NLINK		0
-#define STATX_UID		0
-#define STATX_GID		0
-#define STATX_ATIME		0
-#define STATX_MTIME		0
-#define STATX_CTIME		0
-#define STATX_INO		0
-#define STATX_SIZE		0
-#define STATX_BLOCKS		0
-#define STATX_BASIC_STATS	0
-#define STATX_BTIME		0
-#define STATX_ALL		0
-#endif
+#endif /* WITH_STATX */
+
 #endif

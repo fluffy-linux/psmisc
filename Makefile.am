@@ -81,9 +81,9 @@ src_fuser_SOURCES = \
 		    src/fuser.h \
 		    src/lists.h
 
-if HAVE_SYSCALL_STATX
+#if HAVE_SYSCALL_STATX
 src_fuser_SOURCES += src/statx.c src/statx.h
-endif
+#endif
 src_fuser_LDADD = @LIBINTL@
 src_killall_SOURCES = src/killall.c src/comm.h src/signals.c src/signals.h src/i18n.h
 src_killall_LDADD = @LIBINTL@ @DL_LIB@

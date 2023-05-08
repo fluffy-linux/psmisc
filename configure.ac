@@ -62,20 +62,27 @@ if test "$enable_apparmor" = "yes"; then
 fi
 AC_SUBST([DL_LIB])
 
-AC_CHECK_HEADERS([sys/syscall.h])
 AC_CHECK_DECLS([SYS_statx],
   [has_syscall_statx="yes"],
   [has_syscall_statx="no"],
   [[#include <sys/syscall.h>]]
 )
-AC_CHECK_FUNCS([statx])
+
 # Check for linux specific statx(2) system call
-AC_SUBST([HAS_SYSCALL_STATX])
-AC_ARG_ENABLE([disable_statx],
+AC_CHECK_HEADERS([sys/syscall.h])
+AC_CHECK_FUNCS([statx])
+AC_CHECK_DECLS([STATX_TYPE])
+
+AC_SUBST([WITH_STATX])
+AC_ARG_ENABLE([statx],
   [AS_HELP_STRING([--disable-statx], [Do not use linux specific statx(2) system call as replacement for stat(2), lstat(2), and fstat(2)])],
-  [enable_syscall_statx="no"],
-  [enable_syscall_statx=$has_syscall_statx])
-AM_CONDITIONAL([HAVE_SYSCALL_STATX], [test "$enable_syscall_statx" = "yes"])
+  [], [enable_statx="yes"])
+if test "$enable_statx" = "yes"; then
+  AC_DEFINE([WITH_STATX], [1], [Use statx system call])
+  if test "$has_syscall_statx" = "no" && "$have_statx" = "no"; then
+      AC_MSG_ERROR([statx() and SYS_statx not found, use --disable-statx to not use statx])
+  fi
+ fi
  
 # Enable hardened compile and link flags
 AC_ARG_ENABLE([harden_flags],

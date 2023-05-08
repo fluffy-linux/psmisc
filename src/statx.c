@@ -26,23 +26,28 @@
 #include <config.h>
 #endif
 
+#include <sys/sysmacros.h>
+#include <sys/syscall.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <fcntl.h>		/* Definition of AT_* constants */
+
+int stat_flags = AT_NO_AUTOMOUNT|AT_STATX_DONT_SYNC;
+#ifdef WITH_STATX
+
 #ifndef HAVE_STATX
 # define _ASM_GENERIC_FCNTL_H	/* Avoid collisions between asm/fcntl.h and bits/fcntl.h ! */
 # include <linux/fcntl.h>	/* Definition of AT_* and AT_STATX_* constants ! */
 #endif
-#include <fcntl.h>		/* Definition of AT_* constants */
+
 #include <sys/stat.h>
+
 #ifndef HAVE_STATX
 # ifndef STATX_TYPE
 #  include <linux/stat.h>	/* Provides 'struct statx' and STATX_* ! */
 # endif
 #endif
-#include <sys/sysmacros.h>
-#include <sys/syscall.h>
-#include <sys/types.h>
-#include <unistd.h>
 
-int stat_flags = AT_NO_AUTOMOUNT|AT_STATX_DONT_SYNC;
 
 int statn(const char *pathname, unsigned int mask, struct stat *st)
 {
@@ -147,3 +152,4 @@ int lstatn(const char *pathname, unsigned int mask, struct stat *st)
     }
     return ret;
 }
+#endif /* WITH_STATX */
