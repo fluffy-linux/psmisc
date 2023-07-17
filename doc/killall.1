@@ -1,12 +1,12 @@
 .\"
 .\" Copyright 1993-2002 Werner Almesberger
-.\"           2002-2021 Craig Small
+.\"           2002-2023 Craig Small
 .\" This program is free software; you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
 .\" the Free Software Foundation; either version 2 of the License, or
 .\" (at your option) any later version.
 .\"
-.TH KILLALL 1 "2021-01-11" "psmisc" "User Commands"
+.TH KILLALL 1 "2023-06-17" "psmisc" "User Commands"
 .SH NAME
 killall \- kill processes by name
 .SH SYNOPSIS
@@ -37,7 +37,7 @@ killall \- kill processes by name
 .IR name " ..."
 .br
 .B killall
-.RB \-l
+.BR \-l ", " \-\-list
 .br
 .B killall
 .BR \-V , \ \-\-version
@@ -47,17 +47,17 @@ killall \- kill processes by name
 sends a signal to all processes running any of the specified commands.
 If no signal name is specified, SIGTERM is sent.
 .PP
-Signals can be specified either by name (e.g.
+Signals can be specified either by name (e.g.\&
 .B \-HUP
 or
-.BR -SIGHUP )
-or by number (e.g.
+.BR \-SIGHUP )
+or by number (e.g.\&
 .BR \-1 )
 or by option
-.BR -s .
+.BR \-s .
 .PP
 If the command name is not regular expression (option
-.BR -r )
+.BR \-r )
 and contains a slash
 .RB ( / ),
 processes executing that particular file will be selected for killing,

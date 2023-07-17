@@ -1,6 +1,7 @@
 Changes in NEXT
 ===============
 	* build-sys: Make disable-statx work
+	* killall: small formatting fixes Debian #1037231
 
 Changes in 23.6
 ===============
