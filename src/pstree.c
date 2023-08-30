@@ -2,7 +2,7 @@
  * pstree.c - display process tree
  *
  * Copyright (C) 1993-2002 Werner Almesberger
- * Copyright (C) 2002-2021 Craig Small <csmall@dropbear.xyz>
+ * Copyright (C) 2002-2023 Craig Small <csmall@dropbear.xyz>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,6 +33,7 @@
 #include <getopt.h>
 #include <pwd.h>
 #include <dirent.h>
+#include <errno.h>
 #include <curses.h>
 #include <term.h>
 #include <termios.h>
@@ -66,9 +67,9 @@ extern const char *__progname;
 #define PROC_BASE    "/proc"
 
 #if defined(__FreeBSD_kernel__) || defined(__FreeBSD__)
-#define ROOT_PID 0
+#define DEFAULT_ROOT_PID 0
 #else
-#define ROOT_PID 1
+#define DEFAULT_ROOT_PID 1
 #endif /* __FreeBSD__ */
 
 /* UTF-8 defines by Johan Myreen, updated by Ben Winslow */
@@ -199,6 +200,20 @@ static int dumped = 0;                /* used by dump_by_user */
 static int charlen = 0;                /* length of character */
 static enum color_type color_highlight = COLOR_NONE;
 
+/*
+ * Find the root PID.
+ * Check to see if PID 0 exists, such as in LXC
+ * Otherwise return 0 for BSD, 1 for others
+ */
+static pid_t find_root_pid(void)
+{
+    struct stat s;
+
+    if (stat(PROC_BASE "/0", &s) == 0)
+        return 0;
+    return DEFAULT_ROOT_PID;
+}
+
 const char *get_ns_name(enum ns_type id) {
     if (id >= NUM_NS)
         return NULL;
@@ -318,7 +333,7 @@ static void sort_by_namespace(PROC *r, enum ns_type id, struct ns_entry **root)
     }
 }
 
-static void fix_orphans(void);
+static void fix_orphans(const pid_t root_pid);
 
 /*
  * Determine the correct output width, what we use is:
@@ -1092,7 +1107,7 @@ static char* get_threadname(const pid_t pid, const int tid, const char *comm)
  * read_proc now uses a similar method as procps for finding the process
  * name in the /proc filesystem. My thanks to Albert and procps authors.
  */
-static void read_proc(void)
+static void read_proc(const pid_t root_pid)
 {
   DIR *dir;
   struct dirent *de;
@@ -1232,7 +1247,7 @@ static void read_proc(void)
     }
   }
   (void) closedir(dir);
-  fix_orphans();
+  fix_orphans(root_pid);
   if (print_args)
     free(buffer);
   if (empty) {
@@ -1248,12 +1263,12 @@ static void read_proc(void)
  * As we cannot be sure if it is just the root pid or others missing
  * we gather the lot
  */
-static void fix_orphans(void)
+static void fix_orphans(const pid_t root_pid)
 {
     PROC *root, *walk;
 
-    if (!(root = find_proc(ROOT_PID))) {
-        root = new_proc("?", ROOT_PID, 0);
+    if (!(root = find_proc(root_pid))) {
+        root = new_proc("?", root_pid, 0);
     }
     for (walk = list; walk; walk = walk->next) {
         if (walk->pid == 1 || walk->pid == 0)
@@ -1333,7 +1348,7 @@ int main(int argc, char **argv)
     PROC *current;
     const struct passwd *pw;
     struct ns_entry *nsroot = NULL;
-    pid_t pid, highlight;
+    pid_t pid, highlight, root_pid;
     char termcap_area[1024];
     char *termname, *endptr;
     int c, pid_set = 0;
@@ -1364,7 +1379,8 @@ int main(int argc, char **argv)
     };
 
     output_width = get_output_width();
-    pid = ROOT_PID;
+    root_pid = find_root_pid();
+    pid = root_pid;
     highlight = 0;
     pw = NULL;
 
@@ -1511,7 +1527,7 @@ int main(int argc, char **argv)
     }
     if (optind != argc)
         usage();
-    read_proc();
+    read_proc(root_pid);
     for (current = find_proc(highlight); current;
          current = current->parent)
         current->flags |= PFLAG_HILIGHT;
@@ -1525,7 +1541,7 @@ int main(int argc, char **argv)
       }
       trim_tree_by_parent(child_proc);
 
-      pid = ROOT_PID;
+      pid = root_pid;
     }
 
     if (nsid != NUM_NS) {
@@ -1534,7 +1550,7 @@ int main(int argc, char **argv)
     } else if (!pw)
         dump_tree(find_proc(pid), 0, 1, 1, 1, 0, 0);
     else {
-        dump_by_user(find_proc(ROOT_PID), pw->pw_uid);
+        dump_by_user(find_proc(root_pid), pw->pw_uid);
         if (!dumped) {
             fprintf(stderr, _("No processes found.\n"));
             return 1;

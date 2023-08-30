@@ -10,6 +10,7 @@ Changes in 23.6
 	* fuser: Do not mention nonexistent - reset option #42
 	* fuser: Use modern statn where possible
 	* pstree: Better AppArmor support !30
+	* pstree: Do not assume root PID #49
 
 Changes in 23.5
 ===============
