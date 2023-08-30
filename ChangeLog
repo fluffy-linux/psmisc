@@ -1,7 +1,9 @@
 Changes in NEXT
 ===============
 	* build-sys: Make disable-statx work
+	* fuser: Fallback to stat() if no statx() Debian 1030747 #48
 	* killall: small formatting fixes Debian #1037231
+	* pstree: Do not assume root PID #49
 
 Changes in 23.6
 ===============
@@ -10,7 +12,6 @@ Changes in 23.6
 	* fuser: Do not mention nonexistent - reset option #42
 	* fuser: Use modern statn where possible
 	* pstree: Better AppArmor support !30
-	* pstree: Do not assume root PID #49
 
 Changes in 23.5
 ===============

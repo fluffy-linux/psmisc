@@ -35,6 +35,7 @@
 int stat_flags = AT_NO_AUTOMOUNT|AT_STATX_DONT_SYNC;
 #ifdef WITH_STATX
 
+#include <errno.h>
 #ifndef HAVE_STATX
 # define _ASM_GENERIC_FCNTL_H	/* Avoid collisions between asm/fcntl.h and bits/fcntl.h ! */
 # include <linux/fcntl.h>	/* Definition of AT_* and AT_STATX_* constants ! */
@@ -80,7 +81,8 @@ int statn(const char *pathname, unsigned int mask, struct stat *st)
 	st->st_mtim.tv_nsec = stx.stx_mtime.tv_nsec;
 	st->st_ctim.tv_sec = stx.stx_ctime.tv_sec;
 	st->st_ctim.tv_nsec = stx.stx_ctime.tv_nsec;
-    }
+    } else if (errno==ENOSYS)
+        return stat(pathname, st);
     return ret;
 }
 
@@ -114,7 +116,8 @@ int fstatn(int fd, unsigned int mask, struct stat *st)
 	st->st_mtim.tv_nsec = stx.stx_mtime.tv_nsec;
 	st->st_ctim.tv_sec = stx.stx_ctime.tv_sec;
 	st->st_ctim.tv_nsec = stx.stx_ctime.tv_nsec;
-    }
+    } else if (errno==ENOSYS)
+        return fstat(fd, st);
     return ret;
 }
 
@@ -149,7 +152,8 @@ int lstatn(const char *pathname, unsigned int mask, struct stat *st)
 	st->st_mtim.tv_nsec = stx.stx_mtime.tv_nsec;
 	st->st_ctim.tv_sec = stx.stx_ctime.tv_sec;
 	st->st_ctim.tv_nsec = stx.stx_ctime.tv_nsec;
-    }
+    } else if (errno==ENOSYS)
+        return lstat(pathname, st);
     return ret;
 }
 #endif /* WITH_STATX */
