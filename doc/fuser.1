@@ -1,6 +1,6 @@
 .\"
 .\" Copyright 1993-2005 Werner Almesberger
-.\"           2005-2022 Craig Small
+.\"           2005-2023 Craig Small
 .\" This program is free software; you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
 .\" the Free Software Foundation; either version 2 of the License, or
@@ -290,9 +290,19 @@ devices it does this for too.
 The mount \fB\-m\fR option will match any file within the same device as the
 specified file, use the \fB\-M\fR option as well if you mean to specify only
 the mount point.
+.PP
+.B fuser
+will not match mapped files, such as a process' shared libraries if they are
+on a
+.BR btrfs (5)
+filesystem due to the device IDs being different for
+.BR stat (2)
+and \fI/proc/<PID>/maps\fR.
 .SH "SEE ALSO"
 .BR kill (1),
 .BR killall (1),
+.BR stat (2),
+.BR btrfs (5),
 .BR lsof (8),
 .BR mount_namespaces (7),
 .BR pkill (1),
