@@ -81,7 +81,7 @@ int statn(const char *pathname, unsigned int mask, struct stat *st)
 	st->st_mtim.tv_nsec = stx.stx_mtime.tv_nsec;
 	st->st_ctim.tv_sec = stx.stx_ctime.tv_sec;
 	st->st_ctim.tv_nsec = stx.stx_ctime.tv_nsec;
-    } else if (errno==ENOSYS)
+    } else if (errno==ENOSYS || errno==EINVAL)
         return stat(pathname, st);
     return ret;
 }
@@ -116,7 +116,7 @@ int fstatn(int fd, unsigned int mask, struct stat *st)
 	st->st_mtim.tv_nsec = stx.stx_mtime.tv_nsec;
 	st->st_ctim.tv_sec = stx.stx_ctime.tv_sec;
 	st->st_ctim.tv_nsec = stx.stx_ctime.tv_nsec;
-    } else if (errno==ENOSYS)
+    } else if (errno==ENOSYS || errno==EINVAL)
         return fstat(fd, st);
     return ret;
 }
@@ -152,7 +152,7 @@ int lstatn(const char *pathname, unsigned int mask, struct stat *st)
 	st->st_mtim.tv_nsec = stx.stx_mtime.tv_nsec;
 	st->st_ctim.tv_sec = stx.stx_ctime.tv_sec;
 	st->st_ctim.tv_nsec = stx.stx_ctime.tv_nsec;
-    } else if (errno==ENOSYS)
+    } else if (errno==ENOSYS || errno==EINVAL)
         return lstat(pathname, st);
     return ret;
 }
