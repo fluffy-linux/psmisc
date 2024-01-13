@@ -22,6 +22,10 @@
 #define _GNU_SOURCE
 #endif
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include <dirent.h>
 #include <errno.h>
 #include <limits.h>
