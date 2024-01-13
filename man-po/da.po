@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: psmisc-man 23.5rc1\n"
 "Report-Msgid-Bugs-To: Craig Small <csmall@dropbear.xyz>\n"
-"POT-Creation-Date: 2022-12-09 22:34+1100\n"
+"POT-Creation-Date: 2024-01-13 14:23+1100\n"
 "PO-Revision-Date: 2022-05-26 08:09+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -625,21 +625,29 @@ msgid ""
 "mount point."
 msgstr ""
 
+#. type: Plain text
+#: ../doc/fuser.1:301
+msgid ""
+"B<fuser> will not match mapped files, such as a process' shared libraries if "
+"they are on a B<btrfs>(5)  filesystem due to the device IDs being different "
+"for B<stat>(2)  and I</proc/E<lt>PIDE<gt>/maps>."
+msgstr ""
+
 #. type: SH
-#: ../doc/fuser.1:293 ../doc/killall.1:170 ../doc/peekfd.1:63 ../doc/pslog.1:27
+#: ../doc/fuser.1:301 ../doc/killall.1:170 ../doc/peekfd.1:63 ../doc/pslog.1:27
 #: ../doc/pstree.1:174
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "SE OGSÅ"
 
 #. type: Plain text
-#: ../doc/fuser.1:300
+#: ../doc/fuser.1:310
 #, fuzzy
 #| msgid ""
 #| "B<kill>(1), B<killall>(1), B<lsof>(8), B<pkill>(1), B<ps>(1), B<kill>(2)."
 msgid ""
-"B<kill>(1), B<killall>(1), B<lsof>(8), B<mount_namespaces>(7), B<pkill>(1), "
-"B<ps>(1), B<kill>(2)."
+"B<kill>(1), B<killall>(1), B<stat>(2), B<btrfs>(5), B<lsof>(8), "
+"B<mount_namespaces>(7), B<pkill>(1), B<ps>(1), B<kill>(2)."
 msgstr ""
 "B<kill>(1), B<killall>(1), B<lsof>(8), B<pkill>(1), B<ps>(1), B<kill>(2)."
 
@@ -651,9 +659,10 @@ msgstr "KILLALL"
 
 #. type: TH
 #: ../doc/killall.1:9
-#, no-wrap
-msgid "2021-01-11"
-msgstr "11-01-2021"
+#, fuzzy, no-wrap
+#| msgid "2021-06-21"
+msgid "2023-06-17"
+msgstr "21. juni 2021"
 
 #. type: Plain text
 #: ../doc/killall.1:12
@@ -681,8 +690,10 @@ msgstr ""
 
 #. type: Plain text
 #: ../doc/killall.1:41
-msgid "B<killall> -l"
-msgstr "B<killall> -l"
+#, fuzzy
+#| msgid "B<killall> B<-V>,B<\\ --version>"
+msgid "B<killall> B<-l>, B<--list>"
+msgstr "B<killall> B<-V>,B<\\ --version>"
 
 #. type: Plain text
 #: ../doc/killall.1:44
@@ -699,8 +710,8 @@ msgstr ""
 #. type: Plain text
 #: ../doc/killall.1:58
 msgid ""
-"Signals can be specified either by name (e.g.  B<-HUP> or B<-SIGHUP>)  or by "
-"number (e.g.  B<-1>)  or by option B<-s>."
+"Signals can be specified either by name (e.g.\\& B<-HUP> or B<-SIGHUP>)  or "
+"by number (e.g.\\& B<-1>)  or by option B<-s>."
 msgstr ""
 
 #. type: Plain text
@@ -1625,6 +1636,13 @@ msgstr "Nogle tegnsæt kan være inkompatible med VT100-tegnene."
 #: ../doc/pstree.1:177
 msgid "B<ps>(1), B<top>(1), B<proc>(5)."
 msgstr "B<ps>(1), B<top>(1), B<proc>(5)."
+
+#, no-wrap
+#~ msgid "2021-01-11"
+#~ msgstr "11-01-2021"
+
+#~ msgid "B<killall> -l"
+#~ msgstr "B<killall> -l"
 
 #, no-wrap
 #~ msgid "B<->"

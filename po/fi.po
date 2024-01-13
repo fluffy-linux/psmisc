@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: psmisc 23.0-rc1\n"
 "Report-Msgid-Bugs-To: csmall@dropbear.xyz\n"
-"POT-Creation-Date: 2022-12-09 22:30+1100\n"
+"POT-Creation-Date: 2024-01-13 18:18+1100\n"
 "PO-Revision-Date: 2016-12-17 12:32+0200\n"
 "Last-Translator: Jorma Karvonen <karvonen.jorma@gmail.com>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -98,17 +98,17 @@ msgstr ""
 msgid "fuser (PSmisc) %s\n"
 msgstr "fuser (PSmisc) %s\n"
 
-#: src/fuser.c:178 src/killall.c:870
+#: src/fuser.c:178 src/killall.c:870 src/pstree.c:1337
 #, fuzzy, c-format
 msgid ""
-"Copyright (C) 1993-2022 Werner Almesberger and Craig Small\n"
+"Copyright (C) 1993-2024 Werner Almesberger and Craig Small\n"
 "\n"
 msgstr ""
 "Copyright © 1993-2012 Werner Almesberger ja Craig Small\n"
 "\n"
 
 #: src/fuser.c:180 src/killall.c:872 src/peekfd.c:195 src/prtstat.c:68
-#: src/pstree.c:1324
+#: src/pstree.c:1339
 #, c-format
 msgid ""
 "PSmisc comes with ABSOLUTELY NO WARRANTY.\n"
@@ -431,7 +431,7 @@ msgstr "prtstat (PSmisc) %s\n"
 #: src/prtstat.c:66
 #, fuzzy, c-format
 msgid ""
-"Copyright (C) 2009-2022 Craig Small\n"
+"Copyright (C) 2009-2024 Craig Small\n"
 "\n"
 msgstr ""
 "Copyright © 2009 Craig Small\n"
@@ -580,12 +580,12 @@ msgstr ""
 "/proc ei ole liitetty, stat-käskyn suorittaminen tiedostolle /proc/self/stat "
 "epäonnistui.\n"
 
-#: src/pstree.c:1239
+#: src/pstree.c:1254
 #, c-format
 msgid "%s is empty (not mounted ?)\n"
 msgstr "%s on tyhjä (ei liitetty?)\n"
 
-#: src/pstree.c:1272
+#: src/pstree.c:1287
 #, c-format
 msgid ""
 "Usage: pstree [-acglpsStTuZ] [ -h | -H PID ] [ -n | -N type ]\n"
@@ -593,7 +593,7 @@ msgid ""
 "   or: pstree -V\n"
 msgstr ""
 
-#: src/pstree.c:1276
+#: src/pstree.c:1291
 #, c-format
 msgid ""
 "\n"
@@ -601,7 +601,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: src/pstree.c:1279
+#: src/pstree.c:1294
 #, c-format
 msgid ""
 "  -a, --arguments     show command line arguments\n"
@@ -609,21 +609,21 @@ msgid ""
 "  -c, --compact-not   don't compact identical subtrees\n"
 msgstr ""
 
-#: src/pstree.c:1283
+#: src/pstree.c:1298
 #, c-format
 msgid ""
 "  -C, --color=TYPE    color process by attribute\n"
 "                      (age)\n"
 msgstr ""
 
-#: src/pstree.c:1286
+#: src/pstree.c:1301
 #, c-format
 msgid ""
 "  -g, --show-pgids    show process group ids; implies -c\n"
 "  -G, --vt100         use VT100 line drawing characters\n"
 msgstr ""
 
-#: src/pstree.c:1289
+#: src/pstree.c:1304
 #, c-format
 msgid ""
 "  -h, --highlight-all highlight current process and its ancestors\n"
@@ -632,7 +632,7 @@ msgid ""
 "  -l, --long          don't truncate long lines\n"
 msgstr ""
 
-#: src/pstree.c:1294
+#: src/pstree.c:1309
 #, c-format
 msgid ""
 "  -n, --numeric-sort  sort output by PID\n"
@@ -642,7 +642,7 @@ msgid ""
 "  -p, --show-pids     show PIDs; implies -c\n"
 msgstr ""
 
-#: src/pstree.c:1300
+#: src/pstree.c:1315
 #, c-format
 msgid ""
 "  -s, --show-parents  show parents of the selected process\n"
@@ -651,7 +651,7 @@ msgid ""
 "  -T, --hide-threads  hide threads, show only processes\n"
 msgstr ""
 
-#: src/pstree.c:1305
+#: src/pstree.c:1320
 #, c-format
 msgid ""
 "  -u, --uid-changes   show uid transitions\n"
@@ -659,7 +659,7 @@ msgid ""
 "  -V, --version       display version information\n"
 msgstr ""
 
-#: src/pstree.c:1309
+#: src/pstree.c:1324
 #, fuzzy, c-format
 msgid ""
 "  -Z, --security-context\n"
@@ -668,7 +668,7 @@ msgstr ""
 "  -Z, --security-context\n"
 "                      näytä SELinux-turvakonteksti\n"
 
-#: src/pstree.c:1311
+#: src/pstree.c:1326
 #, fuzzy, c-format
 msgid ""
 "\n"
@@ -680,51 +680,42 @@ msgstr ""
 "  KÄYTTÄJÄ näytä vain puita, jotka alkavat käyttäjän omistuksessa\n"
 "\n"
 
-#: src/pstree.c:1319
+#: src/pstree.c:1334
 #, c-format
 msgid "pstree (PSmisc) %s\n"
 msgstr "pstree (PSmisc) %s\n"
 
-#: src/pstree.c:1322
-#, fuzzy, c-format
-msgid ""
-"Copyright (C) 1993-2021 Werner Almesberger and Craig Small\n"
-"\n"
-msgstr ""
-"Copyright © 1993-2010 Werner Almesberger ja Craig Small\n"
-"\n"
-
-#: src/pstree.c:1439
+#: src/pstree.c:1455
 #, c-format
 msgid "TERM is not set\n"
 msgstr "TERM-signaali ei ole asetettu\n"
 
-#: src/pstree.c:1443
+#: src/pstree.c:1459
 #, c-format
 msgid "Can't get terminal capabilities\n"
 msgstr "Päätteen ominaisuudet eivät ole selvillä\n"
 
-#: src/pstree.c:1461
+#: src/pstree.c:1477
 #, c-format
 msgid "procfs file for %s namespace not available\n"
 msgstr "procfs-tiedosto %s-nimiavaruudelle ei ole käytettävissä\n"
 
-#: src/pstree.c:1507
+#: src/pstree.c:1523
 #, c-format
 msgid "No such user name: %s\n"
 msgstr "Käyttäjätunnus puuttuu: %s\n"
 
-#: src/pstree.c:1523
+#: src/pstree.c:1539
 #, fuzzy, c-format
 msgid "Process %d not found.\n"
 msgstr "Prosesseja ei löydy.\n"
 
-#: src/pstree.c:1539
+#: src/pstree.c:1555
 #, c-format
 msgid "No processes found.\n"
 msgstr "Prosesseja ei löydy.\n"
 
-#: src/pstree.c:1547
+#: src/pstree.c:1563
 #, c-format
 msgid "Press return to close\n"
 msgstr "Enter-näppäin sulkee\n"
@@ -733,6 +724,14 @@ msgstr "Enter-näppäin sulkee\n"
 #, c-format
 msgid "%s: unknown signal; %s -l lists signals.\n"
 msgstr "%s: tuntematon signaali; %s -l luettelee signaalit.\n"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "Copyright (C) 1993-2021 Werner Almesberger and Craig Small\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Copyright © 1993-2010 Werner Almesberger ja Craig Small\n"
+#~ "\n"
 
 #, c-format
 #~ msgid ""

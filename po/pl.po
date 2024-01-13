@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: psmisc 23.6-rc1\n"
 "Report-Msgid-Bugs-To: csmall@dropbear.xyz\n"
-"POT-Creation-Date: 2022-12-09 22:30+1100\n"
+"POT-Creation-Date: 2024-01-13 18:18+1100\n"
 "PO-Revision-Date: 2022-12-08 20:02+0100\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -90,17 +90,17 @@ msgstr ""
 msgid "fuser (PSmisc) %s\n"
 msgstr "fuser (PSmisc) %s\n"
 
-#: src/fuser.c:178 src/killall.c:870
-#, c-format
+#: src/fuser.c:178 src/killall.c:870 src/pstree.c:1337
+#, fuzzy, c-format
 msgid ""
-"Copyright (C) 1993-2022 Werner Almesberger and Craig Small\n"
+"Copyright (C) 1993-2024 Werner Almesberger and Craig Small\n"
 "\n"
 msgstr ""
 "Copyright (C) 1993-2022 Werner Almesberger i Craig Small\n"
 "\n"
 
 #: src/fuser.c:180 src/killall.c:872 src/peekfd.c:195 src/prtstat.c:68
-#: src/pstree.c:1324
+#: src/pstree.c:1339
 #, c-format
 msgid ""
 "PSmisc comes with ABSOLUTELY NO WARRANTY.\n"
@@ -415,9 +415,9 @@ msgid "prtstat (PSmisc) %s\n"
 msgstr "prtstat (PSmisc) %s\n"
 
 #: src/prtstat.c:66
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"Copyright (C) 2009-2022 Craig Small\n"
+"Copyright (C) 2009-2024 Craig Small\n"
 "\n"
 msgstr ""
 "Copyright (C) 2009-2022 Craig Small\n"
@@ -564,12 +564,12 @@ msgid "/proc is not mounted, cannot stat /proc/self/stat.\n"
 msgstr ""
 "/proc nie jest zamontowany, nie można wykonać stat na /proc/self/stat.\n"
 
-#: src/pstree.c:1239
+#: src/pstree.c:1254
 #, c-format
 msgid "%s is empty (not mounted ?)\n"
 msgstr "%s jest pusty (nie podmontowany?)\n"
 
-#: src/pstree.c:1272
+#: src/pstree.c:1287
 #, c-format
 msgid ""
 "Usage: pstree [-acglpsStTuZ] [ -h | -H PID ] [ -n | -N type ]\n"
@@ -580,7 +580,7 @@ msgstr ""
 "                 [ -A | -G | -U ] [ PID | UŻYTKOWNIK ]\n"
 "     lub: pstree -V\n"
 
-#: src/pstree.c:1276
+#: src/pstree.c:1291
 #, c-format
 msgid ""
 "\n"
@@ -591,7 +591,7 @@ msgstr ""
 "Wyświetlanie drzewa procesów.\n"
 "\n"
 
-#: src/pstree.c:1279
+#: src/pstree.c:1294
 #, c-format
 msgid ""
 "  -a, --arguments     show command line arguments\n"
@@ -602,7 +602,7 @@ msgstr ""
 "  -A, --ascii         użycie znaków ramek ASCII\n"
 "  -c, --compact       bez scalania identycznych poddrzew\n"
 
-#: src/pstree.c:1283
+#: src/pstree.c:1298
 #, c-format
 msgid ""
 "  -C, --color=TYPE    color process by attribute\n"
@@ -611,7 +611,7 @@ msgstr ""
 "  -C, --color=TYP     kolorowanie procesów wg atrybutu\n"
 "                      (wiek)\n"
 
-#: src/pstree.c:1286
+#: src/pstree.c:1301
 #, c-format
 msgid ""
 "  -g, --show-pgids    show process group ids; implies -c\n"
@@ -620,7 +620,7 @@ msgstr ""
 "  -g, --show-pgids    wyświetlanie identyfikatorów grup procesów; włącza -c\n"
 "  -G, --vt100         użycie znaków ramek VT100\n"
 
-#: src/pstree.c:1289
+#: src/pstree.c:1304
 #, c-format
 msgid ""
 "  -h, --highlight-all highlight current process and its ancestors\n"
@@ -632,7 +632,7 @@ msgstr ""
 "                      podświetlenie podanego procesu i jego przodków\n"
 "  -l, --long          bez ucinania długich linii\n"
 
-#: src/pstree.c:1294
+#: src/pstree.c:1309
 #, c-format
 msgid ""
 "  -n, --numeric-sort  sort output by PID\n"
@@ -647,7 +647,7 @@ msgstr ""
 "                              (cgroup, ipc, mnt, net, pid, time, user, uts)\n"
 "  -p, --show-pids     wyświetlanie PID-ów; włącza także -c\n"
 
-#: src/pstree.c:1300
+#: src/pstree.c:1315
 #, c-format
 msgid ""
 "  -s, --show-parents  show parents of the selected process\n"
@@ -660,7 +660,7 @@ msgstr ""
 "  -t, --thread-names  wyświetlanie pełnych nazw wątków\n"
 "  -T, --hide-threads  ukrycie wątków, wyświetlanie jedynie procesów\n"
 
-#: src/pstree.c:1305
+#: src/pstree.c:1320
 #, c-format
 msgid ""
 "  -u, --uid-changes   show uid transitions\n"
@@ -671,7 +671,7 @@ msgstr ""
 "  -U, --unicode       użycie znaków ramek UTF-8 (Unicode)\n"
 "  -V, --version       wyświetlenie informacji o wersji\n"
 
-#: src/pstree.c:1309
+#: src/pstree.c:1324
 #, c-format
 msgid ""
 "  -Z, --security-context\n"
@@ -680,7 +680,7 @@ msgstr ""
 "  -Z, --security-context\n"
 "                      wyświetlanie atrybutów bezpieczeństwa\n"
 
-#: src/pstree.c:1311
+#: src/pstree.c:1326
 #, c-format
 msgid ""
 "\n"
@@ -693,51 +693,42 @@ msgstr ""
 "  UŻYTKOWNIK  tylko drzewa zaczynające się od procesów tego użytkownika\n"
 "\n"
 
-#: src/pstree.c:1319
+#: src/pstree.c:1334
 #, c-format
 msgid "pstree (PSmisc) %s\n"
 msgstr "pstree (PSmisc) %s\n"
 
-#: src/pstree.c:1322
-#, c-format
-msgid ""
-"Copyright (C) 1993-2021 Werner Almesberger and Craig Small\n"
-"\n"
-msgstr ""
-"Copyright (C) 1993-2021 Werner Almesberger i Craig Small\n"
-"\n"
-
-#: src/pstree.c:1439
+#: src/pstree.c:1455
 #, c-format
 msgid "TERM is not set\n"
 msgstr "TERM nie ustawiony\n"
 
-#: src/pstree.c:1443
+#: src/pstree.c:1459
 #, c-format
 msgid "Can't get terminal capabilities\n"
 msgstr "Nie można odczytać możliwości terminala\n"
 
-#: src/pstree.c:1461
+#: src/pstree.c:1477
 #, c-format
 msgid "procfs file for %s namespace not available\n"
 msgstr "Plik procfs dla przestrzeni nazw %s nie jest dostępny\n"
 
-#: src/pstree.c:1507
+#: src/pstree.c:1523
 #, c-format
 msgid "No such user name: %s\n"
 msgstr "Nie ma użytkownika o takiej nazwie: %s\n"
 
-#: src/pstree.c:1523
+#: src/pstree.c:1539
 #, c-format
 msgid "Process %d not found.\n"
 msgstr "Nie znaleziono procesu %d.\n"
 
-#: src/pstree.c:1539
+#: src/pstree.c:1555
 #, c-format
 msgid "No processes found.\n"
 msgstr "Nie znaleziono procesów.\n"
 
-#: src/pstree.c:1547
+#: src/pstree.c:1563
 #, c-format
 msgid "Press return to close\n"
 msgstr "Naciśnięcie return zamknie program\n"
@@ -746,3 +737,11 @@ msgstr "Naciśnięcie return zamknie program\n"
 #, c-format
 msgid "%s: unknown signal; %s -l lists signals.\n"
 msgstr "%s: nieznany sygnał; %s -l wypisuje sygnały.\n"
+
+#, c-format
+#~ msgid ""
+#~ "Copyright (C) 1993-2021 Werner Almesberger and Craig Small\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Copyright (C) 1993-2021 Werner Almesberger i Craig Small\n"
+#~ "\n"

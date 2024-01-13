@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: psmisc 23.6-rc1\n"
 "Report-Msgid-Bugs-To: csmall@dropbear.xyz\n"
-"POT-Creation-Date: 2022-12-09 22:30+1100\n"
+"POT-Creation-Date: 2024-01-13 18:18+1100\n"
 "PO-Revision-Date: 2022-12-08 17:44+0100\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
@@ -144,17 +144,17 @@ msgstr ""
 msgid "fuser (PSmisc) %s\n"
 msgstr "fuser (PSmisc) %s\n"
 
-#: src/fuser.c:178 src/killall.c:870
-#, c-format
+#: src/fuser.c:178 src/killall.c:870 src/pstree.c:1337
+#, fuzzy, c-format
 msgid ""
-"Copyright (C) 1993-2022 Werner Almesberger and Craig Small\n"
+"Copyright (C) 1993-2024 Werner Almesberger and Craig Small\n"
 "\n"
 msgstr ""
 "Drepturi de autor © 1993-2022 Werner Almesberger și Craig Small\n"
 "\n"
 
 #: src/fuser.c:180 src/killall.c:872 src/peekfd.c:195 src/prtstat.c:68
-#: src/pstree.c:1324
+#: src/pstree.c:1339
 #, c-format
 msgid ""
 "PSmisc comes with ABSOLUTELY NO WARRANTY.\n"
@@ -509,9 +509,9 @@ msgid "prtstat (PSmisc) %s\n"
 msgstr "prtstat (PSmisc) %s\n"
 
 #: src/prtstat.c:66
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"Copyright (C) 2009-2022 Craig Small\n"
+"Copyright (C) 2009-2024 Craig Small\n"
 "\n"
 msgstr ""
 "Drepturi de autor © 2009-2022 Craig Small\n"
@@ -658,12 +658,12 @@ msgid "/proc is not mounted, cannot stat /proc/self/stat.\n"
 msgstr ""
 "«/proc» nu este montat, nu se poate determina starea lui «/proc/self/stat».\n"
 
-#: src/pstree.c:1239
+#: src/pstree.c:1254
 #, c-format
 msgid "%s is empty (not mounted ?)\n"
 msgstr "%s este gol (nu este montat ?)\n"
 
-#: src/pstree.c:1272
+#: src/pstree.c:1287
 #, c-format
 msgid ""
 "Usage: pstree [-acglpsStTuZ] [ -h | -H PID ] [ -n | -N type ]\n"
@@ -674,7 +674,7 @@ msgstr ""
 "              [ -A | -G | -U ] [ PID | UTILIZATOR ]\n"
 "   sau: pstree -V\n"
 
-#: src/pstree.c:1276
+#: src/pstree.c:1291
 #, c-format
 msgid ""
 "\n"
@@ -697,7 +697,7 @@ msgstr ""
 # am ajuns la concluzia prezentată; traducerea
 # ce apare în mesajul afișat la rularea comenzii:
 # «pstree --help». (se repetă pentru VT100)
-#: src/pstree.c:1279
+#: src/pstree.c:1294
 #, c-format
 msgid ""
 "  -a, --arguments     show command line arguments\n"
@@ -708,7 +708,7 @@ msgstr ""
 "  -A, --ascii         utilizează trasarea de linii ASCII pentru caractere\n"
 "  -c, --compact-not   nu compactează subarborii identici\n"
 
-#: src/pstree.c:1283
+#: src/pstree.c:1298
 #, c-format
 msgid ""
 "  -C, --color=TYPE    color process by attribute\n"
@@ -717,7 +717,7 @@ msgstr ""
 "  -C, --color=TIP     colorează procesele după atributul\n"
 "                      (vârstă)\n"
 
-#: src/pstree.c:1286
+#: src/pstree.c:1301
 #, c-format
 msgid ""
 "  -g, --show-pgids    show process group ids; implies -c\n"
@@ -734,7 +734,7 @@ msgstr ""
 # mesajul original la traducere, și la marcarea textului ce trebuia tradus, mi-a scăpat „highlight”
 # de la marcare...”
 # Mulțumesc, corecție aplicată!
-#: src/pstree.c:1289
+#: src/pstree.c:1304
 #, c-format
 msgid ""
 "  -h, --highlight-all highlight current process and its ancestors\n"
@@ -748,7 +748,7 @@ msgstr ""
 "                      evidențiază procesul acesta și antecesorii săi\n"
 "  -l, --long          nu trunchiază liniile lungi\n"
 
-#: src/pstree.c:1294
+#: src/pstree.c:1309
 #, c-format
 msgid ""
 "  -n, --numeric-sort  sort output by PID\n"
@@ -763,7 +763,7 @@ msgstr ""
 "                              (cgroup, ipc, mnt, net, pid, time, user, uts)\n"
 "  -p, --show-pids     afișează PID-urile; implică „-c”\n"
 
-#: src/pstree.c:1300
+#: src/pstree.c:1315
 #, c-format
 msgid ""
 "  -s, --show-parents  show parents of the selected process\n"
@@ -776,7 +776,7 @@ msgstr ""
 "  -t, --thread-names  afișează numele complete ale firelor\n"
 "  -T, --hide-threads  ascunde firele, afișează doar procesele\n"
 
-#: src/pstree.c:1305
+#: src/pstree.c:1320
 #, c-format
 msgid ""
 "  -u, --uid-changes   show uid transitions\n"
@@ -788,7 +788,7 @@ msgstr ""
 "caractere\n"
 "  -V, --version       afișează informații despre versiune\n"
 
-#: src/pstree.c:1309
+#: src/pstree.c:1324
 #, c-format
 msgid ""
 "  -Z, --security-context\n"
@@ -797,7 +797,7 @@ msgstr ""
 "  -Z, --security-context\n"
 "                      afișează atributele de securitate\n"
 
-#: src/pstree.c:1311
+#: src/pstree.c:1326
 #, c-format
 msgid ""
 "\n"
@@ -811,51 +811,42 @@ msgstr ""
 "utilizator\n"
 "\n"
 
-#: src/pstree.c:1319
+#: src/pstree.c:1334
 #, c-format
 msgid "pstree (PSmisc) %s\n"
 msgstr "pstree (PSmisc) %s\n"
 
-#: src/pstree.c:1322
-#, c-format
-msgid ""
-"Copyright (C) 1993-2021 Werner Almesberger and Craig Small\n"
-"\n"
-msgstr ""
-"Drepturi de autor © 1993-2002 Werner Almesberger și Craig Small\n"
-"\n"
-
-#: src/pstree.c:1439
+#: src/pstree.c:1455
 #, c-format
 msgid "TERM is not set\n"
 msgstr "TERM nu este setat\n"
 
-#: src/pstree.c:1443
+#: src/pstree.c:1459
 #, c-format
 msgid "Can't get terminal capabilities\n"
 msgstr "Nu se pot obține caracteristicile terminalului\n"
 
-#: src/pstree.c:1461
+#: src/pstree.c:1477
 #, c-format
 msgid "procfs file for %s namespace not available\n"
 msgstr "Fișierul «procfs» pentru spațiul de nume %s nu este disponibil\n"
 
-#: src/pstree.c:1507
+#: src/pstree.c:1523
 #, c-format
 msgid "No such user name: %s\n"
 msgstr "Nici un utilizator cu acest nume: %s\n"
 
-#: src/pstree.c:1523
+#: src/pstree.c:1539
 #, c-format
 msgid "Process %d not found.\n"
 msgstr "Procesul %d nu a fost găsit.\n"
 
-#: src/pstree.c:1539
+#: src/pstree.c:1555
 #, c-format
 msgid "No processes found.\n"
 msgstr "Nu a fost găsit nici un proces.\n"
 
-#: src/pstree.c:1547
+#: src/pstree.c:1563
 #, c-format
 msgid "Press return to close\n"
 msgstr "Apăsați tasta return pentru a închide\n"
@@ -864,3 +855,11 @@ msgstr "Apăsați tasta return pentru a închide\n"
 #, c-format
 msgid "%s: unknown signal; %s -l lists signals.\n"
 msgstr "%s: semnal necunoscut; %s -l listează semnalele.\n"
+
+#, c-format
+#~ msgid ""
+#~ "Copyright (C) 1993-2021 Werner Almesberger and Craig Small\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Drepturi de autor © 1993-2002 Werner Almesberger și Craig Small\n"
+#~ "\n"

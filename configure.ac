@@ -141,7 +141,7 @@ AC_SUBST([HARDEN_CFLAGS])
 AC_SUBST([HARDEN_LDFLAGS])
 
 dnl Check for language stuff
-AM_GNU_GETTEXT_VERSION([0.19.3])
+AM_GNU_GETTEXT_VERSION([0.21])
 AM_GNU_GETTEXT([external])
 
 dnl Must be after the gettext stuff as it sets build_cpu

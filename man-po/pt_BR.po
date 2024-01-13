@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: psmisc-man 23.4rc1\n"
 "Report-Msgid-Bugs-To: Craig Small <csmall@dropbear.xyz>\n"
-"POT-Creation-Date: 2022-12-09 22:34+1100\n"
+"POT-Creation-Date: 2024-01-13 14:23+1100\n"
 "PO-Revision-Date: 2021-02-03 21:05-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <ldpbr-translation@lists.sourceforge."
@@ -707,21 +707,29 @@ msgstr ""
 "mesmo dispositivo que o arquivo especificado, use a opção B<-M> também se "
 "você pretende especificar apenas o ponto de montagem."
 
+#. type: Plain text
+#: ../doc/fuser.1:301
+msgid ""
+"B<fuser> will not match mapped files, such as a process' shared libraries if "
+"they are on a B<btrfs>(5)  filesystem due to the device IDs being different "
+"for B<stat>(2)  and I</proc/E<lt>PIDE<gt>/maps>."
+msgstr ""
+
 #. type: SH
-#: ../doc/fuser.1:293 ../doc/killall.1:170 ../doc/peekfd.1:63 ../doc/pslog.1:27
+#: ../doc/fuser.1:301 ../doc/killall.1:170 ../doc/peekfd.1:63 ../doc/pslog.1:27
 #: ../doc/pstree.1:174
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "VEJA TAMBÉM"
 
 #. type: Plain text
-#: ../doc/fuser.1:300
+#: ../doc/fuser.1:310
 #, fuzzy
 #| msgid ""
 #| "B<kill>(1), B<killall>(1), B<lsof>(8), B<pkill>(1), B<ps>(1), B<kill>(2)."
 msgid ""
-"B<kill>(1), B<killall>(1), B<lsof>(8), B<mount_namespaces>(7), B<pkill>(1), "
-"B<ps>(1), B<kill>(2)."
+"B<kill>(1), B<killall>(1), B<stat>(2), B<btrfs>(5), B<lsof>(8), "
+"B<mount_namespaces>(7), B<pkill>(1), B<ps>(1), B<kill>(2)."
 msgstr ""
 "B<kill>(1), B<killall>(1), B<lsof>(8), B<pkill>(1), B<ps>(1), B<kill>(2)."
 
@@ -734,7 +742,7 @@ msgstr "KILLALL"
 #. type: TH
 #: ../doc/killall.1:9
 #, no-wrap
-msgid "2021-01-11"
+msgid "2023-06-17"
 msgstr ""
 
 #. type: Plain text
@@ -772,8 +780,10 @@ msgstr ""
 
 #. type: Plain text
 #: ../doc/killall.1:41
-msgid "B<killall> -l"
-msgstr "B<killall> -l"
+#, fuzzy
+#| msgid "B<killall> -V,B<\\ --version>"
+msgid "B<killall> B<-l>, B<--list>"
+msgstr "B<killall> -V,B<\\ --version>"
 
 #. type: Plain text
 #: ../doc/killall.1:44
@@ -794,9 +804,13 @@ msgstr ""
 
 #. type: Plain text
 #: ../doc/killall.1:58
+#, fuzzy
+#| msgid ""
+#| "Signals can be specified either by name (e.g.  B<-HUP> or B<-SIGHUP>)  or "
+#| "by number (e.g.  B<-1>)  or by option B<-s>."
 msgid ""
-"Signals can be specified either by name (e.g.  B<-HUP> or B<-SIGHUP>)  or by "
-"number (e.g.  B<-1>)  or by option B<-s>."
+"Signals can be specified either by name (e.g.\\& B<-HUP> or B<-SIGHUP>)  or "
+"by number (e.g.\\& B<-1>)  or by option B<-s>."
 msgstr ""
 "Os sinais podem ser especificados pelo nome (por exemplo, B<-HUP> ou B<-"
 "SIGHUP>) ou por número (por exemplo, B<-1>) ou pela opção B<-s>."
@@ -1887,6 +1901,9 @@ msgstr ""
 #| msgid "B<ps>(1), B<top>(1)."
 msgid "B<ps>(1), B<top>(1), B<proc>(5)."
 msgstr "B<ps>(1), B<top>(1)."
+
+#~ msgid "B<killall> -l"
+#~ msgstr "B<killall> -l"
 
 #, no-wrap
 #~ msgid "B<->"

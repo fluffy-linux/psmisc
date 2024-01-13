@@ -6,6 +6,7 @@ Changes in NEXT
 	* killall: small formatting fixes Debian #1037231
 	* pstree: Do not assume root PID #49
 	* pslog: include config.h #51 !36
+	* misc: Update gettext to 0.21
 
 Changes in 23.6
 ===============
