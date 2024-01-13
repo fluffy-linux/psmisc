@@ -4,6 +4,7 @@ Changes in NEXT
 	* fuser: Fallback to stat() if no statx() Debian 1030747 #48
 	* killall: small formatting fixes Debian #1037231
 	* pstree: Do not assume root PID #49
+	* pslog: include config.h #51 !36
 
 Changes in 23.6
 ===============
