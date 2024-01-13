@@ -175,7 +175,7 @@ void print_version()
 {
     fprintf(stderr, _("fuser (PSmisc) %s\n"), VERSION);
     fprintf(stderr,
-        _("Copyright (C) 1993-2022 Werner Almesberger and Craig Small\n\n"));
+        _("Copyright (C) 1993-2024 Werner Almesberger and Craig Small\n\n"));
     fprintf(stderr,
         _("PSmisc comes with ABSOLUTELY NO WARRANTY.\n"
           "This is free software, and you are welcome to redistribute it under\n"

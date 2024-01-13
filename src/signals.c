@@ -2,7 +2,7 @@
  * signals.c - signal name handling 
  *
  * Copyright (C) 1993-2002 Werner Almesberger
- * Copyright (C) 2002-2005 Craig Small
+ * Copyright (C) 2002-2024 Craig Small
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
