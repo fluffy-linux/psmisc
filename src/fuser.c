@@ -4,7 +4,7 @@
  * Based on fuser.c Copyright (C) 1993-2005 Werner Almesberger and Craig Small
  *
  * Completely re-written
- * Copyright (C) 2005-2022 Craig Small <csmall@dropbear.xyz>
+ * Copyright (C) 2005-2024 Craig Small <csmall@dropbear.xyz>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1645,7 +1645,7 @@ static void check_dir(
 
 	if (statn(filepath, STATX_INO, &st) != 0)
         {
-            if (errno != ENOENT && errno != ENOTDIR)
+            if (errno != ENOENT && errno != ENOTDIR && errno != EACCES)
             {
                 fprintf(stderr, _("Cannot stat file %s: %s\n"),
                         filepath, strerror(errno));

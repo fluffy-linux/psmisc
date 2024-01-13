@@ -2,6 +2,7 @@ Changes in NEXT
 ===============
 	* build-sys: Make disable-statx work
 	* fuser: Fallback to stat() if no statx() Debian 1030747 #48
+	* fuser: silently ignore EACCES when scanning proc directories
 	* killall: small formatting fixes Debian #1037231
 	* pstree: Do not assume root PID #49
 	* pslog: include config.h #51 !36
