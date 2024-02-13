@@ -50,17 +50,18 @@ rm -rf autom4te.cache
 
 set -e
 po/update-potfiles
-autopoint --force $AP_OPTS
-if ! grep -q datarootdir po/Makefile.in.in; then
-	echo autopoint does not honor dataroot variable, patching.
-	sed -i -e 's/^datadir *=\(.*\)/datarootdir = @datarootdir@\
-datadir = @datadir@/g' po/Makefile.in.in
-fi
-aclocal -I m4 ${AL_OPTS}
-autoconf ${AC_OPTS}
-autoheader ${AH_OPTS}
-
-automake --add-missing ${AM_OPTS}
+autoreconf -i -s
+#autopoint --force $AP_OPTS
+#if ! grep -q datarootdir po/Makefile.in.in; then
+#	echo autopoint does not honor dataroot variable, patching.
+#	sed -i -e 's/^datadir *=\(.*\)/datarootdir = @datarootdir@\
+#datadir = @datadir@/g' po/Makefile.in.in
+#fi
+#aclocal -I m4 ${AL_OPTS}
+#autoconf ${AC_OPTS}
+#autoheader ${AH_OPTS}
+#
+#automake --add-missing ${AM_OPTS}
 
 echo
 echo "Now type '${SRCDIR}/configure' and 'make' to compile."
