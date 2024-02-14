@@ -1367,6 +1367,8 @@ static void usage(void)
     fprintf(stderr, _(
              "  -Z, --security-context\n"
              "                      show security attributes\n"));
+    fprintf(stderr, _(
+             "  -P, --show-paths    show full path to the selected process\n"));
     fprintf(stderr, _("\n"
               "  PID    start at this PID; default is 1 (init)\n"
               "  USER   show only trees rooted at processes of this user\n\n"));
