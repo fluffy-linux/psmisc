@@ -772,7 +772,7 @@ add_proc(const char *comm, pid_t pid, pid_t ppid, pid_t pgid, uid_t uid,
     if (args)
         set_args(this, args, args_size);
     if (path)
-        set_path(this, path, path_size);
+        set_path(this, path, path_size);        
     if (pid == ppid)
         ppid = 0;
     this->pgid = pgid;
@@ -1266,20 +1266,20 @@ static void read_proc(const pid_t root_pid)
               }
               if (show_paths) {
                   sprintf(path, "%s/%d/exe", PROC_BASE, pid);
+                  /* It's okay if this fails: not all processes
+                   * have something here. */
                   if ((size2 = readlink(path, buffer2, buffer_size)) < 0) {
+                      size2 = 0;
+                  } else {
                       /* As above. */
-                      (void) fclose(file);
-                      free(path);
-                      continue;
+                      if (size2 >= (int)buffer_size)
+                          size2--;
+                      buffer2[size2++] = 0;
                   }
-                  /* As above. */
-                  if (size2 >= (int)buffer_size)
-                      size2--;
-                  buffer2[size2++] = 0;
               }
               add_proc(comm, pid, ppid, pgid, st.st_uid,
                        buffer, size, 0, process_age_sec,
-                       buffer2, size2);
+                       size2 ? buffer2 : NULL, size2);
             }
           }
         }
@@ -1367,8 +1367,6 @@ static void usage(void)
     fprintf(stderr, _(
              "  -Z, --security-context\n"
              "                      show security attributes\n"));
-    fprintf(stderr, _(
-             "  -P, --show-paths    show full path to executable\n"));
     fprintf(stderr, _("\n"
               "  PID    start at this PID; default is 1 (init)\n"
               "  USER   show only trees rooted at processes of this user\n\n"));
