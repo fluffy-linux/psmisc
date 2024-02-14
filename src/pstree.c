@@ -1267,7 +1267,7 @@ static void read_proc(const pid_t root_pid)
               if (show_paths) {
                   sprintf(path, "%s/%d/exe", PROC_BASE, pid);
                   /* It's okay if this fails: not all processes
-                   * have something here. */
+                   * have something readable here. */
                   if ((size2 = readlink(path, buffer2, buffer_size)) < 0) {
                       size2 = 0;
                   } else {
