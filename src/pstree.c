@@ -128,6 +128,7 @@ typedef struct _proc {
     ino_t ns[NUM_NS];
     char flags;
     double age;
+    char *path;
     struct _child *children;
     struct _proc *parent;
     struct _proc *next;
@@ -191,7 +192,7 @@ static int *more = NULL;
 
 static int print_args = 0, compact = 1, user_change = 0, pids = 0, pgids = 0,
     show_parents = 0, by_pid = 0, trunc = 1, wait_end = 0, ns_change = 0,
-    thread_names = 0, hide_threads = 0;
+    thread_names = 0, hide_threads = 0, show_paths = 0;
 static int show_scontext = 0;
 static int output_width = 132;
 static int cur_x = 1;
@@ -420,6 +421,9 @@ static void free_proc()
         if (walk->argv) {
             free(walk->argv[0]);
             free(walk->argv);
+        }
+        if (walk->path) {
+            free(walk->path);
         }
         free(walk);
         walk = next;
@@ -653,6 +657,7 @@ static PROC *new_proc(const char *comm, pid_t pid, uid_t uid)
     new->flags = 0;
     new->argc = 0;
     new->argv = NULL;
+    new->path = NULL;
     new->children = NULL;
     new->parent = NULL;
     new->next = list;
@@ -718,6 +723,15 @@ static void set_args(PROC * this, const char *args, int size)
         this->argv[i] = start = strchr(start, 0) + 1;
 }
 
+static void set_path(PROC *this, const char *path, int size)
+{
+    if (!(this->path = malloc(size))) {
+        perror("malloc");
+        exit(1);
+    }
+    memcpy(this->path, path, (size_t) size);
+}
+
 static void
 rename_proc(PROC *this, const char *comm, uid_t uid)
 {
@@ -745,7 +759,8 @@ rename_proc(PROC *this, const char *comm, uid_t uid)
 
 static void
 add_proc(const char *comm, pid_t pid, pid_t ppid, pid_t pgid, uid_t uid,
-         const char *args, int size, char isthread, double process_age_sec)
+         const char *args, int args_size, char isthread, double process_age_sec,
+         const char *path, int path_size)
 {
     PROC *this, *parent;
 
@@ -755,7 +770,9 @@ add_proc(const char *comm, pid_t pid, pid_t ppid, pid_t pgid, uid_t uid,
         rename_proc(this, comm, uid);
     }
     if (args)
-        set_args(this, args, size);
+        set_args(this, args, args_size);
+    if (path)
+        set_path(this, path, path_size);
     if (pid == ppid)
         ppid = 0;
     this->pgid = pgid;
@@ -881,6 +898,10 @@ dump_tree(PROC * current, int level, int rep, int leaf, int last,
     if (show_scontext) {
         out_char(info++ ? ',' : '(');
         out_scontext(current);
+    }
+    if (show_paths && current->path) {
+        out_char(info++ ? ',' : '(');
+        out_string(current->path);
     }
     if ((swapped && print_args && current->argc < 0) || (!swapped && info))
         out_char(')');
@@ -1114,12 +1135,12 @@ static void read_proc(const pid_t root_pid)
   FILE *file;
   struct stat st;
   char *path, *comm;
-  char *buffer;
+  char *buffer, *buffer2;
   size_t buffer_size;
   char readbuf[BUFSIZ + 1];
   char *tmpptr, *endptr;
   pid_t pid, ppid, pgid;
-  int fd, size;
+  int fd, size, size2;
   int empty;
   unsigned long long proc_stt_jf = 0;
   double process_age_sec = 0;
@@ -1129,9 +1150,19 @@ static void read_proc(const pid_t root_pid)
   else
     buffer_size = BUFSIZ + 1;
 
-  if (!print_args)
+  if (!print_args) {
     buffer = NULL;
+    size = 0;
+  }
   else if (!(buffer = malloc(buffer_size))) {
+    perror("malloc");
+    exit(1);
+  }
+  if (!show_paths) {
+    buffer2 = NULL;
+    size2 = 0;
+  }
+  else if (!(buffer2 = malloc(buffer_size))) {
     perror("malloc");
     exit(1);
   }
@@ -1190,11 +1221,11 @@ static void read_proc(const pid_t root_pid)
                         if (print_args)
                           add_proc(threadname, thread, pid, pgid, st.st_uid,
                               threadname, strlen (threadname) + 1, 1,
-			      process_age_sec);
+                              process_age_sec, NULL, 0);
                         else
                           add_proc(threadname, thread, pid, pgid, st.st_uid,
                               NULL, 0, 1, 
-			      process_age_sec);
+                              process_age_sec, NULL, 0);
                         free(threadname);
                       }
                     }
@@ -1205,10 +1236,7 @@ static void read_proc(const pid_t root_pid)
               }
 
               /* handle process */
-              if (!print_args)
-                add_proc(comm, pid, ppid, pgid, st.st_uid, NULL, 0, 0,
-			process_age_sec);
-              else {
+              if (print_args) {
                 sprintf(path, "%s/%d/cmdline", PROC_BASE, pid);
                 if ((fd = open(path, O_RDONLY)) < 0) {
           /* If this fails then the process is gone.  If a PID
@@ -1235,9 +1263,23 @@ static void read_proc(const pid_t root_pid)
                   size--;
                 if (size)
                   buffer[size++] = 0;
-                add_proc(comm, pid, ppid, pgid, st.st_uid,
-                     buffer, size, 0, process_age_sec);
               }
+              if (show_paths) {
+                  sprintf(path, "%s/%d/exe", PROC_BASE, pid);
+                  if ((size2 = readlink(path, buffer2, buffer_size)) < 0) {
+                      /* As above. */
+                      (void) fclose(file);
+                      free(path);
+                      continue;
+                  }
+                  /* As above. */
+                  if (size2 >= (int)buffer_size)
+                      size2--;
+                  buffer2[size2++] = 0;
+              }
+              add_proc(comm, pid, ppid, pgid, st.st_uid,
+                       buffer, size, 0, process_age_sec,
+                       buffer2, size2);
             }
           }
         }
@@ -1250,6 +1292,8 @@ static void read_proc(const pid_t root_pid)
   fix_orphans(root_pid);
   if (print_args)
     free(buffer);
+  if (show_paths)
+    free(buffer2);
   if (empty) {
     fprintf(stderr, _("%s is empty (not mounted ?)\n"), PROC_BASE);
     exit(1);
@@ -1323,6 +1367,8 @@ static void usage(void)
     fprintf(stderr, _(
              "  -Z, --security-context\n"
              "                      show security attributes\n"));
+    fprintf(stderr, _(
+             "  -P, --show-paths    show full path to executable\n"));
     fprintf(stderr, _("\n"
               "  PID    start at this PID; default is 1 (init)\n"
               "  USER   show only trees rooted at processes of this user\n\n"));
@@ -1375,6 +1421,7 @@ int main(int argc, char **argv)
         {"unicode", 0, NULL, 'U'},
         {"version", 0, NULL, 'V'},
         {"security-context", 0, NULL, 'Z'},
+        {"show-paths", 0, NULL, 'P'},
         { 0, 0, 0, 0 }
     };
 
@@ -1419,7 +1466,7 @@ int main(int argc, char **argv)
     }
 
     while ((c =
-            getopt_long(argc, argv, "aAcC:GhH:nN:pglsStTuUVZ", options,
+            getopt_long(argc, argv, "aAcC:GhH:nN:pglsStTuUVZP", options,
                         NULL)) != -1)
         switch (c) {
         case 'a':
@@ -1509,6 +1556,9 @@ int main(int argc, char **argv)
             return 0;
         case 'Z':
             show_scontext = 1;
+            break;
+        case 'P':
+            show_paths = 1;
             break;
         default:
             usage();
