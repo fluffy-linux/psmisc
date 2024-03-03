@@ -6,10 +6,10 @@
 # pan93412 <pan93412@gmail.com>, 2018, 2019, 2021.
 msgid ""
 msgstr ""
-"Project-Id-Version: psmisc 23.5rc1\n"
+"Project-Id-Version: psmisc 23.6-rc1\n"
 "Report-Msgid-Bugs-To: csmall@dropbear.xyz\n"
-"POT-Creation-Date: 2024-02-13 20:45+1100\n"
-"PO-Revision-Date: 2022-03-22 21:24+0800\n"
+"POT-Creation-Date: 2024-03-03 21:39+1100\n"
+"PO-Revision-Date: 2022-12-16 19:36+0800\n"
 "Last-Translator: Yi-Jyun Pan <pan93412@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@lists.linux.org.tw>\n"
 "Language: zh_TW\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Bugs: Report translation errors to the Language-Team address.\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: src/fuser.c:146
 #, c-format
@@ -77,13 +77,11 @@ msgstr ""
 "  -6,--ipv6             只搜尋 IPv6 通訊端\n"
 
 #: src/fuser.c:170
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "  udp/tcp names: [local_port][,[rmt_host][,[rmt_port]]]\n"
 "\n"
 msgstr ""
-"  -                     重置選項\n"
-"\n"
 "  udp/tcp 名稱：[本地埠號][,[遠端主機][,[遠端埠號]]]\n"
 "\n"
 
@@ -94,6 +92,9 @@ msgstr "fuser (PSmisc) %s\n"
 
 #: src/fuser.c:178 src/killall.c:870 src/pstree.c:1337
 #, fuzzy, c-format
+#| msgid ""
+#| "Copyright (C) 1993-2022 Werner Almesberger and Craig Small\n"
+#| "\n"
 msgid ""
 "Copyright (C) 1993-2024 Werner Almesberger and Craig Small\n"
 "\n"
@@ -419,11 +420,14 @@ msgstr "prtstat (PSmisc) %s\n"
 
 #: src/prtstat.c:66
 #, fuzzy, c-format
+#| msgid ""
+#| "Copyright (C) 2009-2022 Craig Small\n"
+#| "\n"
 msgid ""
 "Copyright (C) 2009-2024 Craig Small\n"
 "\n"
 msgstr ""
-"著作權所有 © 2009-2020 Craig Small\n"
+"著作權所有 © 2009-2022 Craig Small\n"
 "\n"
 
 #: src/prtstat.c:78

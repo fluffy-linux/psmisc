@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: psmisc 22.2pre1\n"
 "Report-Msgid-Bugs-To: csmall@dropbear.xyz\n"
-"POT-Creation-Date: 2024-02-13 20:45+1100\n"
+"POT-Creation-Date: 2024-03-03 21:39+1100\n"
 "PO-Revision-Date: 2006-03-07 12:01+0100\n"
 "Last-Translator: Trond Endrestøl <Trond.Endrestol@fagskolen.gjovik.no>\n"
 "Language-Team: Norwegian Bokmaal <i18n-nb@lister.ping.uio.no>\n"
@@ -34,6 +34,33 @@ msgstr ""
 
 #: src/fuser.c:146
 #, fuzzy, c-format
+#| msgid ""
+#| "Usage: fuser [ -a | -s | -c ] [ -n SPACE ] [ -SIGNAL ] [ -kimuv ] "
+#| "NAME...\n"
+#| "             [ - ] [ -n SPACE ] [ -SIGNAL ] [ -kimuv ] NAME...\n"
+#| "       fuser -l\n"
+#| "       fuser -V\n"
+#| "Show which processes use the named files, sockets, or filesystems.\n"
+#| "\n"
+#| "    -a        display unused files too\n"
+#| "    -c        mounted FS\n"
+#| "    -f        silently ignored (for POSIX compatibility)\n"
+#| "    -i        ask before killing (ignored without -k)\n"
+#| "    -k        kill processes accessing the named file\n"
+#| "    -l        list available signal names\n"
+#| "    -m        show all processes using the named filesystems\n"
+#| "    -n SPACE  search in this name space (file, udp, or tcp)\n"
+#| "    -s        silent operation\n"
+#| "    -SIGNAL   send this signal instead of SIGKILL\n"
+#| "    -u        display user IDs\n"
+#| "    -v        verbose output\n"
+#| "    -V        display version information\n"
+#| "    -4        search IPv4 sockets only\n"
+#| "    -6        search IPv6 sockets only\n"
+#| "    -         reset options\n"
+#| "\n"
+#| "  udp/tcp names: [local_port][,[rmt_host][,[rmt_port]]]\n"
+#| "\n"
 msgid ""
 "Usage: fuser [-fIMuvw] [-a|-s] [-4|-6] [-c|-m|-n SPACE]\n"
 "             [-k [-i] [-SIGNAL]] NAME...\n"
@@ -108,6 +135,9 @@ msgstr "fuser (PSmisc) %s\n"
 
 #: src/fuser.c:178 src/killall.c:870 src/pstree.c:1337
 #, fuzzy, c-format
+#| msgid ""
+#| "Copyright (C) 1993-2005 Werner Almesberger and Craig Small\n"
+#| "\n"
 msgid ""
 "Copyright (C) 1993-2024 Werner Almesberger and Craig Small\n"
 "\n"
@@ -184,6 +214,7 @@ msgstr "Ugyldig navn på navnerom"
 
 #: src/fuser.c:1309
 #, fuzzy
+#| msgid "You can only use files with mountpoint option"
 msgid "You can only use files with mountpoint options"
 msgstr "Du kan bare bruke filer med monteringspunktvalget"
 
@@ -203,6 +234,9 @@ msgstr "Du kan ikke søke etter bare IPv4- og bare IPv6-socketer samtidig"
 # tabelloverskrift som skal passe med selve tabellen. [TE, 2005-03-01]
 #: src/fuser.c:1474
 #, fuzzy, c-format
+#| msgid ""
+#| "\n"
+#| "%*s USER        PID ACCESS COMMAND\n"
 msgid "%*s USER        PID ACCESS COMMAND\n"
 msgstr ""
 "\n"
@@ -249,21 +283,25 @@ msgstr "Drepe %s(%s%d) ? (j/n) "
 
 #: src/killall.c:114
 #, fuzzy, c-format
+#| msgid "Kill %s(%s%d) ? (y/N) "
 msgid "Signal %s(%s%d) ? (y/N) "
 msgstr "Drepe %s(%s%d) ? (j/n) "
 
 #: src/killall.c:262
 #, fuzzy, c-format
+#| msgid "Cannot get UID from process status\n"
 msgid "killall: Cannot get UID from process status\n"
 msgstr "Kan ikke finne UID fra prosesstatus\n"
 
 #: src/killall.c:368
 #, fuzzy, c-format
+#| msgid "Bad regular expression: %s\n"
 msgid "killall: Bad regular expression: %s\n"
 msgstr "Ugyldig regulært uttrykk: %s\n"
 
 #: src/killall.c:525
 #, fuzzy, c-format
+#| msgid "skipping partial match %s(%d)\n"
 msgid "killall: skipping partial match %s(%d)\n"
 msgstr "hopper over delvis treff %s(%d)\n"
 
@@ -274,6 +312,7 @@ msgstr "Drepte %s(%s%d) med signalet %d\n"
 
 #: src/killall.c:796
 #, fuzzy, c-format
+#| msgid "%s: no process killed\n"
 msgid "%s: no process found\n"
 msgstr "%s: drepte ingen prosess\n"
 
@@ -284,6 +323,22 @@ msgstr "Bruksmåte: killall [VALG]... [--] navn...\n"
 
 #: src/killall.c:839
 #, fuzzy, c-format
+#| msgid ""
+#| "       killall -l, --list\n"
+#| "       killall -V, --version\n"
+#| "\n"
+#| "  -e,--exact          require exact match for very long names\n"
+#| "  -I,--ignore-case    case insensitive process name match\n"
+#| "  -g,--process-group  kill process group instead of process\n"
+#| "  -i,--interactive    ask for confirmation before killing\n"
+#| "  -l,--list           list all known signal names\n"
+#| "  -q,--quiet          don't print complaints\n"
+#| "  -r,--regexp         interpret NAME as an extended regular expression\n"
+#| "  -s,--signal SIGNAL  send this signal instead of SIGTERM\n"
+#| "  -u,--user USER      kill only process(es) running as USER\n"
+#| "  -v,--verbose        report if the signal was successfully sent\n"
+#| "  -V,--version        display version information\n"
+#| "  -w,--wait           wait for processes to die\n"
 msgid ""
 "       killall -l, --list\n"
 "       killall -V, --version\n"
@@ -340,6 +395,7 @@ msgstr "Kan ikke finne brukeren %s\n"
 
 #: src/killall.c:1016
 #, fuzzy
+#| msgid "Invalid namespace name"
 msgid "Invalid namespace PID"
 msgstr "Ugyldig navn på navnerom"
 
@@ -350,11 +406,13 @@ msgstr "Ugyldig regulært uttrykk: %s\n"
 
 #: src/killall.c:1057
 #, fuzzy, c-format
+#| msgid "Maximum number of names is %d\n"
 msgid "killall: Maximum number of names is %d\n"
 msgstr "Maksimalt antall navn er %d\n"
 
 #: src/killall.c:1062
 #, fuzzy, c-format
+#| msgid "%s is empty (not mounted ?)\n"
 msgid "killall: %s lacks process entries (not mounted ?)\n"
 msgstr "%s er tom (ikke montert?)\n"
 
@@ -365,6 +423,7 @@ msgstr ""
 
 #: src/peekfd.c:191
 #, fuzzy, c-format
+#| msgid "pstree (PSmisc) %s\n"
 msgid "peekfd (PSmisc) %s\n"
 msgstr "pstree (psmisc) %s\n"
 
@@ -404,11 +463,15 @@ msgstr ""
 
 #: src/prtstat.c:65
 #, fuzzy, c-format
+#| msgid "pstree (PSmisc) %s\n"
 msgid "prtstat (PSmisc) %s\n"
 msgstr "pstree (psmisc) %s\n"
 
 #: src/prtstat.c:66
 #, fuzzy, c-format
+#| msgid ""
+#| "Copyright (C) 1993-2005 Werner Almesberger and Craig Small\n"
+#| "\n"
 msgid ""
 "Copyright (C) 2009-2024 Craig Small\n"
 "\n"
@@ -442,6 +505,7 @@ msgstr ""
 
 #: src/prtstat.c:90
 #, fuzzy
+#| msgid "(unknown)"
 msgid "unknown"
 msgstr "(ukjent)"
 
@@ -513,6 +577,7 @@ msgstr ""
 
 #: src/prtstat.c:243
 #, fuzzy, c-format
+#| msgid "Cannot allocate memory for matched proc: %s\n"
 msgid "Unable to allocate memory for proc_info\n"
 msgstr "Kan ikke allokere minne for funnet prosess: %s\n"
 
@@ -622,6 +687,10 @@ msgstr ""
 
 #: src/pstree.c:1326
 #, fuzzy, c-format
+#| msgid ""
+#| "    PID    start at this PID; default is 1 (init)\n"
+#| "    USER   show only trees rooted at processes of this user\n"
+#| "\n"
 msgid ""
 "\n"
 "  PID    start at this PID; default is 1 (init)\n"
@@ -658,6 +727,7 @@ msgstr "Fant ikke brukeren «%s».\n"
 
 #: src/pstree.c:1539
 #, fuzzy, c-format
+#| msgid "No processes found.\n"
 msgid "Process %d not found.\n"
 msgstr "Fant ingen prosesser.\n"
 
@@ -675,14 +745,6 @@ msgstr "Trykk på enter for å lukke.\n"
 #, c-format
 msgid "%s: unknown signal; %s -l lists signals.\n"
 msgstr "%s: ukjent signal; %s -l angir kjente signaler.\n"
-
-#, fuzzy, c-format
-#~ msgid ""
-#~ "Copyright (C) 1993-2021 Werner Almesberger and Craig Small\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Copyright (C) 1993-2005 Werner Almesberger og Craig Small\n"
-#~ "\n"
 
 #, c-format
 #~ msgid ""

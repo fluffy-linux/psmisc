@@ -2,13 +2,13 @@
 # Copyright (C) 2019 Free Software Foundation, Inc.
 # This file is distributed under the same license as the psmisc package.
 # Copyright © of this file:
-# Yuri Kozlov <yuray@komyakino.ru>, 2021, 2022.
+# Yuri Kozlov <yuray@komyakino.ru>, 2021, 2022, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: psmisc-man 23.5rc1\n"
+"Project-Id-Version: psmisc-man 23.6-rc1\n"
 "Report-Msgid-Bugs-To: Craig Small <csmall@dropbear.xyz>\n"
 "POT-Creation-Date: 2024-01-13 14:23+1100\n"
-"PO-Revision-Date: 2022-03-25 07:19+0300\n"
+"PO-Revision-Date: 2023-01-05 09:46+0300\n"
 "Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
 "Language-Team: Russian <gnu@d07.ru>\n"
 "Language: ru\n"
@@ -30,7 +30,7 @@ msgstr "FUSER"
 #: ../doc/fuser.1:9
 #, no-wrap
 msgid "2022-11-02"
-msgstr ""
+msgstr "2022-11-02"
 
 #. type: TH
 #: ../doc/fuser.1:9 ../doc/killall.1:9 ../doc/peekfd.1:9 ../doc/prtstat.1:9
@@ -663,6 +663,10 @@ msgid ""
 "descriptor table being from the process namespace, not fuser's; meaning it "
 "won't match."
 msgstr ""
+"B<fuser> не видит блочные устройства, смонтированные процессами в других "
+"пространствах имён монтирования. Это происходит из-за того, что ID "
+"устройства в таблице файловых дескрипторов процесса берётся из пространства "
+"имён процесса, а не fuser и они не совпадают."
 
 #. type: SH
 #: ../doc/fuser.1:283 ../doc/peekfd.1:56 ../doc/pstree.1:172
@@ -711,12 +715,14 @@ msgstr "СМОТРИТЕ ТАКЖЕ"
 #: ../doc/fuser.1:310
 #, fuzzy
 #| msgid ""
-#| "B<kill>(1), B<killall>(1), B<lsof>(8), B<pkill>(1), B<ps>(1), B<kill>(2)."
+#| "B<kill>(1), B<killall>(1), B<lsof>(8), B<mount_namespaces>(7), "
+#| "B<pkill>(1), B<ps>(1), B<kill>(2)."
 msgid ""
 "B<kill>(1), B<killall>(1), B<stat>(2), B<btrfs>(5), B<lsof>(8), "
 "B<mount_namespaces>(7), B<pkill>(1), B<ps>(1), B<kill>(2)."
 msgstr ""
-"B<kill>(1), B<killall>(1), B<lsof>(8), B<pkill>(1), B<ps>(1), B<kill>(2)."
+"B<kill>(1), B<killall>(1), B<lsof>(8), B<mount_namespaces>(7), B<pkill>(1), "
+"B<ps>(1), B<kill>(2)."
 
 #. type: TH
 #: ../doc/killall.1:9
@@ -1823,7 +1829,6 @@ msgstr "B<ps>(1), B<top>(1), B<proc>(5)."
 #~ msgid "B<killall> -l"
 #~ msgstr "B<killall> -l"
 
-#, no-wrap
 #~ msgid "B<->"
 #~ msgstr "B<->"
 

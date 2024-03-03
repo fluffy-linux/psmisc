@@ -781,9 +781,9 @@ msgstr ""
 #. type: Plain text
 #: ../doc/killall.1:41
 #, fuzzy
-#| msgid "B<killall> -V,B<\\ --version>"
+#| msgid "B<-l>, B<--list>"
 msgid "B<killall> B<-l>, B<--list>"
-msgstr "B<killall> -V,B<\\ --version>"
+msgstr "B<-l>, B<--list>"
 
 #. type: Plain text
 #: ../doc/killall.1:44
@@ -1902,15 +1902,15 @@ msgstr ""
 msgid "B<ps>(1), B<top>(1), B<proc>(5)."
 msgstr "B<ps>(1), B<top>(1)."
 
-#~ msgid "B<killall> -l"
-#~ msgstr "B<killall> -l"
-
 #, no-wrap
 #~ msgid "B<->"
 #~ msgstr "B<->"
 
 #~ msgid "Reset all options and set the signal back to SIGKILL."
 #~ msgstr "Redefine todas as opções e defina o sinal de volta para SIGKILL."
+
+#~ msgid "B<killall> -l"
+#~ msgstr "B<killall> -l"
 
 #~ msgid ""
 #~ "(SELinux) Show security context for each process.  This flag will only "

@@ -1,14 +1,14 @@
 # Polish translations for psmisc.
-# Copyright (C) 2004, 2005, 2007, 2009, 2010, 2012, 2013, 2014, 2016, 2018, 2019, 2021, 2022 Free Software Foundation, Inc.
+# Copyright (C) 2004, 2005, 2007, 2009, 2010, 2012, 2013, 2014, 2016, 2018, 2019, 2021, 2022, 2024 Free Software Foundation, Inc.
 # This file is distributed under the same license as the psmisc package.
-# Jakub Bogusz <qboosh@pld-linux.org>, 2003-2022.
+# Jakub Bogusz <qboosh@pld-linux.org>, 2003-2024.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: psmisc 23.6-rc1\n"
+"Project-Id-Version: psmisc 23.7-rc1\n"
 "Report-Msgid-Bugs-To: csmall@dropbear.xyz\n"
-"POT-Creation-Date: 2024-02-13 20:45+1100\n"
-"PO-Revision-Date: 2022-12-08 20:02+0100\n"
+"POT-Creation-Date: 2024-03-03 21:39+1100\n"
+"PO-Revision-Date: 2024-02-13 19:32+0100\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "Language: pl\n"
@@ -91,12 +91,12 @@ msgid "fuser (PSmisc) %s\n"
 msgstr "fuser (PSmisc) %s\n"
 
 #: src/fuser.c:178 src/killall.c:870 src/pstree.c:1337
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Copyright (C) 1993-2024 Werner Almesberger and Craig Small\n"
 "\n"
 msgstr ""
-"Copyright (C) 1993-2022 Werner Almesberger i Craig Small\n"
+"Copyright (C) 1993-2024 Werner Almesberger i Craig Small\n"
 "\n"
 
 #: src/fuser.c:180 src/killall.c:872 src/peekfd.c:195 src/prtstat.c:68
@@ -415,12 +415,12 @@ msgid "prtstat (PSmisc) %s\n"
 msgstr "prtstat (PSmisc) %s\n"
 
 #: src/prtstat.c:66
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Copyright (C) 2009-2024 Craig Small\n"
 "\n"
 msgstr ""
-"Copyright (C) 2009-2022 Craig Small\n"
+"Copyright (C) 2009-2024 Craig Small\n"
 "\n"
 
 #: src/prtstat.c:78
@@ -737,11 +737,3 @@ msgstr "Naciśnięcie return zamknie program\n"
 #, c-format
 msgid "%s: unknown signal; %s -l lists signals.\n"
 msgstr "%s: nieznany sygnał; %s -l wypisuje sygnały.\n"
-
-#, c-format
-#~ msgid ""
-#~ "Copyright (C) 1993-2021 Werner Almesberger and Craig Small\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Copyright (C) 1993-2021 Werner Almesberger i Craig Small\n"
-#~ "\n"

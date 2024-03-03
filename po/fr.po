@@ -1,16 +1,16 @@
 # French translation of PSmisc messages.
-# Copyright (C) 2022 Free Software Foundation, Inc.
+# Copyright (C) 2024 Free Software Foundation, Inc.
 # This file is distributed under the same license as the psmisc package.
 #
 # Marc Léger <sorata@users.sourceforge.net>, 2001.
 # Benno Schulenberg <benno@vertaalt.nl>, 2007.
-# Frédéric Marchal <fmarchal@perso.be>, 2022.
+# Frédéric Marchal <fmarchal@perso.be>, 2024.
 msgid ""
 msgstr ""
-"Project-Id-Version: psmisc-23.6-rc1\n"
+"Project-Id-Version: psmisc-23.7-rc1\n"
 "Report-Msgid-Bugs-To: csmall@dropbear.xyz\n"
-"POT-Creation-Date: 2024-02-13 20:45+1100\n"
-"PO-Revision-Date: 2022-12-08 16:17+0100\n"
+"POT-Creation-Date: 2024-03-03 21:39+1100\n"
+"PO-Revision-Date: 2024-02-13 18:42+0100\n"
 "Last-Translator: Frédéric Marchal <fmarchal@perso.be>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "Language: fr\n"
@@ -98,12 +98,12 @@ msgid "fuser (PSmisc) %s\n"
 msgstr "fuser (PSmisc) %s\n"
 
 #: src/fuser.c:178 src/killall.c:870 src/pstree.c:1337
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Copyright (C) 1993-2024 Werner Almesberger and Craig Small\n"
 "\n"
 msgstr ""
-"Copyright © 1993-2022 Werner Almesberger et Craig Small\n"
+"Copyright © 1993-2024 Werner Almesberger et Craig Small\n"
 "\n"
 
 #: src/fuser.c:180 src/killall.c:872 src/peekfd.c:195 src/prtstat.c:68
@@ -427,12 +427,12 @@ msgid "prtstat (PSmisc) %s\n"
 msgstr "prtstat (PSmisc) %s\n"
 
 #: src/prtstat.c:66
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Copyright (C) 2009-2024 Craig Small\n"
 "\n"
 msgstr ""
-"Copyright (C) 2009-2022 Craig Small\n"
+"Copyright (C) 2009-2024 Craig Small\n"
 "\n"
 
 #: src/prtstat.c:78

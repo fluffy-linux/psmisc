@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the psmisc package.
 #
 # Tomislav Krznar <tomislav.krznar@gmail.com>, 2012.
-# Božidar Putanec <bozidarp@yahoo.com>, 2016, 2018, 2019, 2021, 2022.
+# Božidar Putanec <bozidarp@yahoo.com>, 2016, 2018, 2019, 2021, 2022,2024.
 msgid ""
 msgstr ""
-"Project-Id-Version: psmisc 23.6-rc1\n"
+"Project-Id-Version: psmisc 23.7-rc1\n"
 "Report-Msgid-Bugs-To: csmall@dropbear.xyz\n"
-"POT-Creation-Date: 2024-02-13 20:45+1100\n"
-"PO-Revision-Date: 2022-12-08 10:51-0800\n"
+"POT-Creation-Date: 2024-03-03 21:39+1100\n"
+"PO-Revision-Date: 2024-02-15 11:08-0800\n"
 "Last-Translator: Božidar Putanec <bozidarp@yahoo.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "Language: hr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Bugs: Report translation errors to the Language-Team address\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 # 1. https://en.wikipedia.org/wiki/Namespace
@@ -97,12 +97,12 @@ msgid "fuser (PSmisc) %s\n"
 msgstr "fuser (PSmisc) %s\n"
 
 #: src/fuser.c:178 src/killall.c:870 src/pstree.c:1337
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Copyright (C) 1993-2024 Werner Almesberger and Craig Small\n"
 "\n"
 msgstr ""
-"Copyright (C) 1993-2022 Werner Almesberger and Craig Small\n"
+"Copyright (C) 1993-2024 Werner Almesberger and Craig Small\n"
 "\n"
 
 #: src/fuser.c:180 src/killall.c:872 src/peekfd.c:195 src/prtstat.c:68
@@ -298,7 +298,7 @@ msgstr ""
 "       killall -l, --list\n"
 "       killall -V, --version\n"
 "\n"
-"  -e, --exact          zahtjeva točno podudaranje za vrlo dugačka imena\n"
+"  -e, --exact          zahtjeva točno podudaranje za vrlo duga imena\n"
 "  -I, --ignore-case    zanemari veličinu slova prilikom pretrage procesa\n"
 "  -g, --process-group  ubije procesnu grupu umjesto procesa\n"
 "  -y, --younger-than   ubije procese mlađe od VREMENA\n"
@@ -421,12 +421,12 @@ msgid "prtstat (PSmisc) %s\n"
 msgstr "prtstat (PSmisc) %s\n"
 
 #: src/prtstat.c:66
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Copyright (C) 2009-2024 Craig Small\n"
 "\n"
 msgstr ""
-"Copyright (C) 2009-2022 Craig Small\n"
+"Copyright (C) 2009-2024 Craig Small\n"
 "\n"
 
 #: src/prtstat.c:78
@@ -476,9 +476,9 @@ msgid ""
 "\n"
 msgstr ""
 "ID-ovi procesa, grupe i sesije\n"
-"  Proces ID: %d\t\t  ID roditelja: %d\n"
-"    Grup ID: %d\t\t ID sesije: %d\n"
-"  T Grup ID: %d\n"
+"  Process ID: %d\t\t  ID roditelja: %d\n"
+"    Group ID: %d\t\t ID sesije: %d\n"
+"  T Group ID: %d\n"
 "\n"
 
 # http://blog.scoutapp.com/articles/2015/04/10/understanding-page-faults-and-memory-swap-in-outs-when-should-you-worry
@@ -636,7 +636,7 @@ msgstr ""
 "  -h, --highlight-all istakne trenutni proces i njegove pretke\n"
 "  -H PID, --highlight-pid=PID\n"
 "                      istakne taj proces i njegove pretke\n"
-"  -l, --long          ne kratiti dugačke linije\n"
+"  -l, --long          ne kratiti duge retke\n"
 
 #: src/pstree.c:1309
 #, c-format

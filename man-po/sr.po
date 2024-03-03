@@ -1,14 +1,14 @@
 # Serbian translation for psmisc-man
 # Copyright © 2021 Free Software Foundation, Inc.
 # This file is distributed under the same license as the psmisc package.
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2021–2022.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2021–2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: psmisc-man 23.5rc1\n"
+"Project-Id-Version: psmisc-man 23.6-rc1\n"
 "Report-Msgid-Bugs-To: Craig Small <csmall@dropbear.xyz>\n"
 "POT-Creation-Date: 2024-01-13 14:23+1100\n"
-"PO-Revision-Date: 2022-09-08 20:19+0200\n"
+"PO-Revision-Date: 2023-02-26 09:15+0100\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <(nothing)>\n"
 "Language: sr\n"
@@ -18,6 +18,7 @@ msgstr ""
 "X-Bugs: Report translation errors to the Language-Team address.\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Gtranslator 41.0\n"
 
 #. type: TH
 #: ../doc/fuser.1:9
@@ -29,7 +30,7 @@ msgstr "FUSER"
 #: ../doc/fuser.1:9
 #, no-wrap
 msgid "2022-11-02"
-msgstr ""
+msgstr "02.11.2022."
 
 #. type: TH
 #: ../doc/fuser.1:9 ../doc/killall.1:9 ../doc/peekfd.1:9 ../doc/prtstat.1:9
@@ -663,6 +664,10 @@ msgid ""
 "descriptor table being from the process namespace, not fuser's; meaning it "
 "won't match."
 msgstr ""
+"B<fuser> неће видети блок уређаје прикачене процесима на различитим називним "
+"просторима качења.  Ово је зато што је ИД уређаја приказан у табели описника "
+"датотеке процеса из називног простора процеса, не из „fuser“-а; значење се "
+"неће поклопити."
 
 #. type: SH
 #: ../doc/fuser.1:283 ../doc/peekfd.1:56 ../doc/pstree.1:172
@@ -711,12 +716,14 @@ msgstr "ВИДИТЕ ТАКОЂЕ"
 #: ../doc/fuser.1:310
 #, fuzzy
 #| msgid ""
-#| "B<kill>(1), B<killall>(1), B<lsof>(8), B<pkill>(1), B<ps>(1), B<kill>(2)."
+#| "B<kill>(1), B<killall>(1), B<lsof>(8), B<mount_namespaces>(7), "
+#| "B<pkill>(1), B<ps>(1), B<kill>(2)."
 msgid ""
 "B<kill>(1), B<killall>(1), B<stat>(2), B<btrfs>(5), B<lsof>(8), "
 "B<mount_namespaces>(7), B<pkill>(1), B<ps>(1), B<kill>(2)."
 msgstr ""
-"B<kill>(1), B<killall>(1), B<lsof>(8), B<pkill>(1), B<ps>(1), B<kill>(2)."
+"B<kill>(1), B<killall>(1), B<lsof>(8), B<mount_namespaces>(7), B<pkill>(1), "
+"B<ps>(1), B<kill>(2)."
 
 #. type: TH
 #: ../doc/killall.1:9
@@ -1819,7 +1826,6 @@ msgstr "B<ps>(1), B<top>(1), B<proc>(5)."
 #~ msgid "B<killall> -l"
 #~ msgstr "B<killall> -l"
 
-#, no-wrap
 #~ msgid "B<->"
 #~ msgstr "B<->"
 

@@ -1638,15 +1638,15 @@ msgid "B<ps>(1), B<top>(1), B<proc>(5)."
 msgstr "B<ps>(1), B<top>(1), B<proc>(5)."
 
 #, no-wrap
-#~ msgid "2021-01-11"
-#~ msgstr "11-01-2021"
-
-#~ msgid "B<killall> -l"
-#~ msgstr "B<killall> -l"
-
-#, no-wrap
 #~ msgid "B<->"
 #~ msgstr "B<->"
 
 #~ msgid "Reset all options and set the signal back to SIGKILL."
 #~ msgstr "nulstil alle tilvalg og sæt signalet tilbage til SIGKILL."
+
+#, no-wrap
+#~ msgid "2021-01-11"
+#~ msgstr "11-01-2021"
+
+#~ msgid "B<killall> -l"
+#~ msgstr "B<killall> -l"
