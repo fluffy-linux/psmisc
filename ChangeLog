@@ -1,4 +1,4 @@
-Changes in NEXT
+Changes in 23.7
 ===============
 	* build-sys: Make disable-statx work
 	* fuser: Fallback to stat() if no statx() Debian 1030747 #48
