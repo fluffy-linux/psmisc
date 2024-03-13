@@ -45,6 +45,7 @@
 #include <regex.h>
 #include <ctype.h>
 #include <assert.h>
+#include <time.h>
 
 #ifdef WITH_SELINUX
 #include <dlfcn.h>
@@ -132,30 +133,28 @@ ask (char *name, pid_t pid, const int signal)
     /* Never should get here */
 }
 
-static double
-uptime()
-{
-    char * savelocale;
-    char buf[2048];
-    FILE* file;
-    if (!(file=fopen( PROC_BASE "/uptime", "r"))) {
-        fprintf(stderr, "killall: error opening uptime file\n");    
-        exit(1);
-    }
-    savelocale = setlocale(LC_NUMERIC,"C");
-    if (fscanf(file, "%2047s", buf) == EOF) perror("uptime");
-    fclose(file);
-    setlocale(LC_NUMERIC,savelocale);
-    return atof(buf);
-}
 
-/* process age from jiffies to seconds via uptime */
+/* process age from jiffies to seconds via uptime
+ * Cannot use /proc/uptime as this can change in containers
+ * but process start time does not
+ */
 static double process_age(const unsigned long long jf)
 {
+    struct timespec ts;
+    double sc_clk_tck;
     double age;
-    double sc_clk_tck = sysconf(_SC_CLK_TCK);
-    assert(sc_clk_tck > 0);
-    age = uptime() - jf / sc_clk_tck;
+
+    if (clock_gettime(CLOCK_BOOTTIME, &ts) != 0) {
+        perror("clock_gettime():");
+        exit(EXIT_FAILURE);
+    }
+
+    if ( (sc_clk_tck = sysconf(_SC_CLK_TCK)) < 0) {
+        perror("sysconf(CLK_TCK):");
+        exit(EXIT_FAILURE);
+    }
+
+    age = (ts.tv_sec + ts.tv_nsec * 1.0e-9)  - jf / sc_clk_tck;
     if (age < 0L)
         return 0L;
     return age;

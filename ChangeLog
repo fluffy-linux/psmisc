@@ -1,3 +1,7 @@
+Changes in NEXT
+===============
+	* killall,pstree: Use gettime instead of uptime Debian 1066090
+
 Changes in 23.7
 ===============
 	* build-sys: Make disable-statx work
