@@ -26,6 +26,8 @@
 #include <config.h>
 #endif
 
+#ifdef WITH_STATX
+
 #include <sys/sysmacros.h>
 #include <sys/syscall.h>
 #include <sys/types.h>
@@ -33,7 +35,6 @@
 #include <fcntl.h>		/* Definition of AT_* constants */
 
 int stat_flags = AT_NO_AUTOMOUNT|AT_STATX_DONT_SYNC;
-#ifdef WITH_STATX
 
 #include <errno.h>
 #ifndef HAVE_STATX
