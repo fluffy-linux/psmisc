@@ -46,6 +46,7 @@
 #include <ctype.h>
 #include <assert.h>
 #include <time.h>
+#include <limits.h>
 
 #ifdef WITH_SELINUX
 #include <dlfcn.h>
@@ -255,7 +256,7 @@ match_process_uid(const int pidfd, uid_t uid)
             break;
         }
     }
-    close(fd);
+    fclose(f);
     if (re==-1)
     {
         fprintf(stderr, _("killall: Cannot get UID from process status\n"));
@@ -418,10 +419,10 @@ load_process_name_and_age(char *comm, double *process_age_sec,
     }
     if (fgets(buf, 1024, file) == NULL)
     {
-        close(fd);
+        fclose(file);
         return -1;
     }
-    close(fd);
+    fclose(file);
     if ( NULL == ( startcomm = strchr(buf, '(')))
        return -1;
     startcomm++;
@@ -453,7 +454,7 @@ load_proc_cmdline(const int pidfd, const pid_t pid, const char *comm, const int 
     FILE *file;
     int fp;
     char *p, *command_buf;
-    int cmd_size = 128;
+    unsigned int cmd_size = 128;
     int okay;
 
     if ( (fp = openat(pidfd, "cmdline", O_RDONLY, 0)) < 0)
@@ -479,7 +480,11 @@ load_proc_cmdline(const int pidfd, const pid_t pid, const char *comm, const int 
             if (p == (command_buf + cmd_size))
             {
                 char *new_command_buf;
-                int cur_size = cmd_size;
+                unsigned int cur_size = cmd_size;
+                if (cmd_size >= INT_MAX) { // half of unit_max
+                    fprintf (stderr, _("killall: command line too big\n"));
+                    exit(1);
+                }
                 cmd_size *= 2;
                 new_command_buf = (char *)realloc(command_buf, cmd_size);
                 if (!new_command_buf) {
@@ -514,7 +519,7 @@ load_proc_cmdline(const int pidfd, const pid_t pid, const char *comm, const int 
             break;
         }
     }
-    (void) close(fp);
+    fclose(file);
     free(command_buf);
     command_buf = NULL;
 
@@ -626,7 +631,7 @@ kill_all(int signal, int name_count, char **namelist, struct passwd *pwent,
     pid_t *pgids = NULL;
     int i, j, length, got_long, error;
     int pids, max_pids, pids_killed;
-    int pidfd = 0;
+    int pidfd = -1;
     unsigned long found;
     regex_t *reglist = NULL;
     long ns_ino = 0;
@@ -667,7 +672,7 @@ kill_all(int signal, int name_count, char **namelist, struct passwd *pwent,
         char pidpath[256];
 
         /* Open PID directory */
-        if (pidfd > 0)
+        if (pidfd >= 0)
             close(pidfd);
         snprintf (pidpath, sizeof pidpath, PROC_BASE "/%d", pid_table[i]);
         if ( (pidfd = open(pidpath, O_RDONLY|O_DIRECTORY)) < 0)
@@ -787,7 +792,7 @@ kill_all(int signal, int name_count, char **namelist, struct passwd *pwent,
     if (reglist)
         free_regexp_list(reglist, name_count);
     free(pgids);
-    if (pidfd > 0)
+    if (pidfd >= 0)
         close(pidfd);
     if (!quiet)
         for (i = 0; i < name_count; i++)
