@@ -38,7 +38,9 @@
 #include <errno.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#ifdef HAVE_SYS_SYSCALL_H
 #include <sys/syscall.h>
+#endif
 #include <fcntl.h>
 #include <getopt.h>
 #include <pwd.h>
