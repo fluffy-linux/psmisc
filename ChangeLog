@@ -1,6 +1,8 @@
 Changes in NEXT
 ===============
+	* fuser: Use mountinfo to distinguish NFS mounts !40
 	* killall,pstree: Use gettime instead of uptime Debian 1066090
+	* pstree: Add -P to show path of exe !38
 
 Changes in 23.7
 ===============
