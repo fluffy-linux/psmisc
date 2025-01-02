@@ -27,6 +27,7 @@ pstree \- display a tree of processes
 .RB [ \-T  , \ \-\-hide-threads ]
 .RB [ \-u  , \ \-\-uid\-changes ]
 .RB [ \-Z  , \ \-\-security\-context ]
+.RB [ \-P  , \ \-\-show\-paths ]
 .RB [ \-A  , \ \-\-ascii  , \ \-G  , \ \-\-vt100  , \ \-U  , \ \-\-unicode ]
 .RB [ \fIpid\fB  , \ \fIuser\fR]
 .br
@@ -165,6 +166,8 @@ Display version information.
 .IP \fB\-Z\fP
 Show the current security attributes of the process. For SELinux systems this
 will be the security context.
+.IP \fB\-P\fP
+Show the full path to the running process on disk.
 .SH FILES
 .TP
 /proc
