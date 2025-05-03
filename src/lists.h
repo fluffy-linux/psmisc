@@ -19,8 +19,8 @@
 
 #include <stddef.h>
 #include <sys/types.h>
+#include <stdbool.h>
 
-typedef enum _boolean {false, true} boolean;
 typedef unsigned char uchar;
 #ifndef __USE_MISC
 typedef unsigned short ushort;
@@ -187,8 +187,8 @@ static inline void join(list_t *restrict list, list_t *restrict head)
     }
 }
 
-static inline boolean list_empty(const list_t *restrict const head) attribute((always_inline,nonnull(1)));
-static inline boolean list_empty(const list_t *restrict const head)
+static inline bool list_empty(const list_t *restrict const head) attribute((always_inline,nonnull(1)));
+static inline bool list_empty(const list_t *restrict const head)
 {
      return head->next == head;
 }
