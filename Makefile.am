@@ -130,8 +130,11 @@ get-trans:
 
 # Programs required for testing only
 check_PROGRAMS = \
-	src/socket_test
+	src/socket_test \
+	src/test-listen
+
 
 src_socket_test_SOURCES = src/socket_test.c
+src_test_listen_SOURCES = src/test-listen.c
 
 check: $(check_PROGRAMS) $(PROGRAMS)

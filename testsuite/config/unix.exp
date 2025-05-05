@@ -50,3 +50,21 @@ proc kill_socketproc { } {
     kill_process $socketproc_pid
 }
 
+proc make_listenproc { } {
+    global topdir listenproc_pid listenproc_port
+
+    set listenproc_realpath "${topdir}/src/test-listen"
+    set listenproc_pid [ spawn $listenproc_realpath ]
+    set listenproc_port ""
+    expect {
+        -i $spawn_id
+        -re "^Success: port is (\\d+)" {
+            set listenproc_port $expect_out(1,string)
+        }
+    }
+}
+
+proc kill_listenproc { } {
+    global listenproc_pid
+    kill_process $listenproc_pid
+}

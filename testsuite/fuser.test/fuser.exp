@@ -59,3 +59,16 @@ if {[file exists ${testsocket_path} ]} {
 }
 kill_socketproc
 
+make_listenproc
+if { "$listenproc_port" eq "" } {
+    unsupported "fuser find TCP socket with n option"
+    unsupported "fuser find TCP socket directly"
+} else {
+    set test "fuser find TCP socket with n option"
+    spawn $fuser -n tcp $listenproc_port
+    expect_pass "$test" "$listenproc_port/tcp:\\s+$listenproc_pid"
+    set test "fuser find TCP socket directly"
+    spawn $fuser $listenproc_port/tcp
+    expect_pass "$test" "$listenproc_port/tcp:\\s+$listenproc_pid"
+}
+kill_listenproc
