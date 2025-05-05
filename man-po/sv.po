@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: psmisc-man 23.6-rc1\n"
 "Report-Msgid-Bugs-To: Craig Small <csmall@dropbear.xyz>\n"
-"POT-Creation-Date: 2024-01-13 14:23+1100\n"
+"POT-Creation-Date: 2025-03-13 21:47+1100\n"
 "PO-Revision-Date: 2022-12-09 01:25+0100\n"
 "Last-Translator: Sebastian Rasmussen <sebras@gmail.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -85,7 +85,7 @@ msgstr "B<fuser -V>"
 
 #. type: SH
 #: ../doc/fuser.1:33 ../doc/killall.1:45 ../doc/peekfd.1:23 ../doc/pslog.1:19
-#: ../doc/prtstat.1:21 ../doc/pstree.1:36
+#: ../doc/prtstat.1:21 ../doc/pstree.1:37
 #, no-wrap
 msgid "DESCRIPTION"
 msgstr "BESKRIVNING"
@@ -230,7 +230,7 @@ msgstr ""
 
 #. type: SH
 #: ../doc/fuser.1:97 ../doc/killall.1:78 ../doc/peekfd.1:28 ../doc/pslog.1:23
-#: ../doc/prtstat.1:27 ../doc/pstree.1:89
+#: ../doc/prtstat.1:27 ../doc/pstree.1:90
 #, no-wrap
 msgid "OPTIONS"
 msgstr "FLAGGOR"
@@ -251,7 +251,7 @@ msgstr ""
 "som används av åtminstone en process."
 
 #. type: IP
-#: ../doc/fuser.1:102 ../doc/pstree.1:97
+#: ../doc/fuser.1:102 ../doc/pstree.1:98
 #, no-wrap
 msgid "B<-c>"
 msgstr "B<-c>"
@@ -478,7 +478,7 @@ msgstr "B<-V>, B<--version>"
 
 #. type: Plain text
 #: ../doc/fuser.1:210 ../doc/killall.1:125 ../doc/pslog.1:27
-#: ../doc/pstree.1:165
+#: ../doc/pstree.1:166
 msgid "Display version information."
 msgstr "Visa versionsinformation."
 
@@ -514,19 +514,19 @@ msgstr ""
 
 #. type: SH
 #: ../doc/fuser.1:220 ../doc/killall.1:143 ../doc/peekfd.1:43
-#: ../doc/prtstat.1:35 ../doc/pstree.1:168
+#: ../doc/prtstat.1:35 ../doc/pstree.1:171
 #, no-wrap
 msgid "FILES"
 msgstr "FILER"
 
 #. type: TP
-#: ../doc/fuser.1:221 ../doc/killall.1:144 ../doc/pstree.1:169
+#: ../doc/fuser.1:221 ../doc/killall.1:144 ../doc/pstree.1:172
 #, no-wrap
 msgid "/proc"
 msgstr "/proc"
 
 #. type: Plain text
-#: ../doc/fuser.1:224 ../doc/killall.1:147 ../doc/pstree.1:172
+#: ../doc/fuser.1:224 ../doc/killall.1:147 ../doc/pstree.1:175
 msgid "location of the proc file system"
 msgstr "plats för proc-filsystemet"
 
@@ -667,7 +667,7 @@ msgstr ""
 "vilket innebär att de inte matchar."
 
 #. type: SH
-#: ../doc/fuser.1:283 ../doc/peekfd.1:56 ../doc/pstree.1:172
+#: ../doc/fuser.1:283 ../doc/peekfd.1:56 ../doc/pstree.1:175
 #, no-wrap
 msgid "BUGS"
 msgstr "FEL"
@@ -704,7 +704,7 @@ msgstr ""
 
 #. type: SH
 #: ../doc/fuser.1:301 ../doc/killall.1:170 ../doc/peekfd.1:63 ../doc/pslog.1:27
-#: ../doc/pstree.1:174
+#: ../doc/pstree.1:177
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "SE VIDARE"
@@ -743,18 +743,18 @@ msgstr "killall - döda processer efter namn"
 #. type: Plain text
 #: ../doc/killall.1:38
 msgid ""
-"B<killall> [B<-Z>,B<\\ --context> I<pattern>] [B<-e>,B<\\ --exact>] [B<-g>,"
-"B<\\ --process-group>] [B<-i>,B<\\ --interactive>] [B<-n>,B<\\ --ns> I<PID>] "
-"[B<-o>,B<\\ --older-than> I<TIME>] [B<-q>,B<\\ --quiet>] [B<-r>,B<\\ --"
-"regexp>] [B<-s>,B<\\ --signal> I<SIGNAL>,\\ B<->I<SIGNAL>] [B<-u>,B<\\ --"
+"B<killall> [B<-Z>,B<\\ --context> I<pattern>] [B<-e>,B<\\ --exact>] [B<-"
+"g>,B<\\ --process-group>] [B<-i>,B<\\ --interactive>] [B<-n>,B<\\ --ns> "
+"I<PID>] [B<-o>,B<\\ --older-than> I<TIME>] [B<-q>,B<\\ --quiet>] [B<-r>,B<\\ "
+"--regexp>] [B<-s>,B<\\ --signal> I<SIGNAL>,\\ B<->I<SIGNAL>] [B<-u>,B<\\ --"
 "user> I<user>] [B<-v>,B<\\ --verbose>] [B<-w>,B<\\ --wait>] [B<-y>,B<\\ --"
 "younger-than> I<TIME>] [B<-I>,B<\\ --ignore-case>] [B<-V>,B<\\ --version>] "
 "[B<-->] I<name> ..."
 msgstr ""
-"B<killall> [B<-Z>,B<\\ --context> I<mönster>] [B<-e>,B<\\ --exact>] [B<-g>,"
-"B<\\ --process-group>] [B<-i>,B<\\ --interactive>] [B<-n>,B<\\ --ns> I<PID>] "
-"[B<-o>,B<\\ --older-than> I<TID>] [B<-q>,B<\\ --quiet>] [B<-r>,B<\\ --"
-"regexp>] [B<-s>,B<\\ --signal> I<SIGNAL>,\\ B<->I<SIGNAL>] [B<-u>,B<\\ --"
+"B<killall> [B<-Z>,B<\\ --context> I<mönster>] [B<-e>,B<\\ --exact>] [B<-"
+"g>,B<\\ --process-group>] [B<-i>,B<\\ --interactive>] [B<-n>,B<\\ --ns> "
+"I<PID>] [B<-o>,B<\\ --older-than> I<TID>] [B<-q>,B<\\ --quiet>] [B<-r>,B<\\ "
+"--regexp>] [B<-s>,B<\\ --signal> I<SIGNAL>,\\ B<->I<SIGNAL>] [B<-u>,B<\\ --"
 "user> I<användare>] [B<-v>,B<\\ --verbose>] [B<-w>,B<\\ --wait>] [B<-y>,B<\\ "
 "--younger-than> I<TID>] [B<-I>,B<\\ --ignore-case>] [B<-V>,B<\\ --version>] "
 "[B<-->] I<namn> ..."
@@ -1319,7 +1319,7 @@ msgid "The B<pslog> command reports the current working logs of a process."
 msgstr "Kommandot B<pslog> rapporterar aktuella arbetsloggar för en process."
 
 #. type: IP
-#: ../doc/pslog.1:24 ../doc/pstree.1:163
+#: ../doc/pslog.1:24 ../doc/pstree.1:164
 #, no-wrap
 msgid "B<-V>"
 msgstr "B<-V>"
@@ -1419,33 +1419,45 @@ msgid "pstree - display a tree of processes"
 msgstr "pstree - visa ett träd av processer"
 
 #. type: Plain text
-#: ../doc/pstree.1:32
+#: ../doc/pstree.1:33
+#, fuzzy
+#| msgid ""
+#| "B<pstree> [B<-a>,B<\\ --arguments>] [B<-c>,B<\\ --compact-not>] [B<-"
+#| "C>,B<\\ --color\\ >I<attr>] [B<-g>,B<\\ --show-pgids>] [B<-h>,B<\\ --"
+#| "highlight-all>,B<\\ -H>I<\\ pid>,B<\\ --highlight-pid\\ >I<pid>] [B<-"
+#| "l>,B<\\ --long>] [B<-n>,B<\\ --numeric-sort>] [B<-N>,B<\\ --ns-sort\\ "
+#| ">I<ns>] [B<-p>,B<\\ --show-pids>] [B<-s>,B<\\ --show-parents>] [B<-"
+#| "S>,B<\\ --ns-changes>] [B<-t>,B<\\ --thread-names>] [B<-T>,B<\\ --hide-"
+#| "threads>] [B<-u>,B<\\ --uid-changes>] [B<-Z>,B<\\ --security-context>] "
+#| "[B<-A>,B<\\ --ascii>,B<\\ -G>,B<\\ --vt100>,B<\\ -U>,B<\\ --unicode>] "
+#| "[I<pid>,B<\\ >I<user>]"
 msgid ""
 "B<pstree> [B<-a>,B<\\ --arguments>] [B<-c>,B<\\ --compact-not>] [B<-C>,B<\\ "
-"--color\\ >I<attr>] [B<-g>,B<\\ --show-pgids>] [B<-h>,B<\\ --highlight-all>,"
-"B<\\ -H>I<\\ pid>,B<\\ --highlight-pid\\ >I<pid>] [B<-l>,B<\\ --long>] [B<-"
-"n>,B<\\ --numeric-sort>] [B<-N>,B<\\ --ns-sort\\ >I<ns>] [B<-p>,B<\\ --show-"
-"pids>] [B<-s>,B<\\ --show-parents>] [B<-S>,B<\\ --ns-changes>] [B<-t>,B<\\ --"
-"thread-names>] [B<-T>,B<\\ --hide-threads>] [B<-u>,B<\\ --uid-changes>] [B<-"
-"Z>,B<\\ --security-context>] [B<-A>,B<\\ --ascii>,B<\\ -G>,B<\\ --vt100>,"
-"B<\\ -U>,B<\\ --unicode>] [I<pid>,B<\\ >I<user>]"
+"--color\\ >I<attr>] [B<-g>,B<\\ --show-pgids>] [B<-h>,B<\\ --highlight-"
+"all>,B<\\ -H>I<\\ pid>,B<\\ --highlight-pid\\ >I<pid>] [B<-l>,B<\\ --long>] "
+"[B<-n>,B<\\ --numeric-sort>] [B<-N>,B<\\ --ns-sort\\ >I<ns>] [B<-p>,B<\\ --"
+"show-pids>] [B<-s>,B<\\ --show-parents>] [B<-S>,B<\\ --ns-changes>] [B<-"
+"t>,B<\\ --thread-names>] [B<-T>,B<\\ --hide-threads>] [B<-u>,B<\\ --uid-"
+"changes>] [B<-Z>,B<\\ --security-context>] [B<-P>,B<\\ --show-paths>] [B<-"
+"A>,B<\\ --ascii>,B<\\ -G>,B<\\ --vt100>,B<\\ -U>,B<\\ --unicode>] "
+"[I<pid>,B<\\ >I<user>]"
 msgstr ""
 "B<pstree> [B<-a>,B<\\ --arguments>] [B<-c>,B<\\ --compact-not>] [B<-C>,B<\\ "
-"--color\\ >I<attr>] [B<-g>,B<\\ --show-pgids>] [B<-h>,B<\\ --highlight-all>,"
-"B<\\ -H>I<\\ pid>,B<\\ --highlight-pid\\ >I<pid>] [B<-l>,B<\\ --long>] [B<-"
-"n>,B<\\ --numeric-sort>] [B<-N>,B<\\ --ns-sort\\ >I<ns>] [B<-p>,B<\\ --show-"
-"pids>] [B<-s>,B<\\ --show-parents>] [B<-S>,B<\\ --ns-changes>] [B<-t>,B<\\ --"
-"thread-names>] [B<-T>,B<\\ --hide-threads>] [B<-u>,B<\\ --uid-changes>] [B<-"
-"Z>,B<\\ --security-context>] [B<-A>,B<\\ --ascii>,B<\\ -G>,B<\\ --vt100>,"
-"B<\\ -U>,B<\\ --unicode>] [I<pid>,B<\\ >I<användare>]"
+"--color\\ >I<attr>] [B<-g>,B<\\ --show-pgids>] [B<-h>,B<\\ --highlight-"
+"all>,B<\\ -H>I<\\ pid>,B<\\ --highlight-pid\\ >I<pid>] [B<-l>,B<\\ --long>] "
+"[B<-n>,B<\\ --numeric-sort>] [B<-N>,B<\\ --ns-sort\\ >I<ns>] [B<-p>,B<\\ --"
+"show-pids>] [B<-s>,B<\\ --show-parents>] [B<-S>,B<\\ --ns-changes>] [B<-"
+"t>,B<\\ --thread-names>] [B<-T>,B<\\ --hide-threads>] [B<-u>,B<\\ --uid-"
+"changes>] [B<-Z>,B<\\ --security-context>] [B<-A>,B<\\ --ascii>,B<\\ "
+"-G>,B<\\ --vt100>,B<\\ -U>,B<\\ --unicode>] [I<pid>,B<\\ >I<användare>]"
 
 #. type: Plain text
-#: ../doc/pstree.1:35
+#: ../doc/pstree.1:36
 msgid "B<pstree> B<-V>,B<\\ --version>"
 msgstr "B<pstree> B<-V>,B<\\ --version>"
 
 #. type: Plain text
-#: ../doc/pstree.1:46
+#: ../doc/pstree.1:47
 msgid ""
 "B<pstree> shows running processes as a tree.  The tree is rooted at either "
 "I<pid> or B<init> if I<pid> is omitted.  If a user name is specified, all "
@@ -1456,17 +1468,17 @@ msgstr ""
 "visas alla processträd rotade i processer som ägs av den användaren."
 
 #. type: Plain text
-#: ../doc/pstree.1:50
+#: ../doc/pstree.1:51
 msgid ""
 "B<pstree> visually merges identical branches by putting them in square "
 "brackets and prefixing them with the repetition count, e.g."
 msgstr ""
 "B<pstree> sammanfogar visuellt identiska grenar genom att placera dem inom "
-"hakparenteser och genom att lägga till ett förled med antal repetitioner, t."
-"ex. kommer"
+"hakparenteser och genom att lägga till ett förled med antal repetitioner, "
+"t.ex. kommer"
 
 #. type: Plain text
-#: ../doc/pstree.1:56
+#: ../doc/pstree.1:57
 #, no-wrap
 msgid ""
 "    init-+-getty\n"
@@ -1480,18 +1492,18 @@ msgstr ""
 "         `-getty\n"
 
 #. type: Plain text
-#: ../doc/pstree.1:59
+#: ../doc/pstree.1:60
 msgid "becomes"
 msgstr "att bli"
 
 #. type: Plain text
-#: ../doc/pstree.1:62
+#: ../doc/pstree.1:63
 #, no-wrap
 msgid "    init---4*[getty]\n"
 msgstr "    init---4*[getty]\n"
 
 #. type: Plain text
-#: ../doc/pstree.1:68
+#: ../doc/pstree.1:69
 msgid ""
 "Child threads of a process are found under the parent process and are shown "
 "with the process name in curly braces, e.g."
@@ -1500,13 +1512,13 @@ msgstr ""
 "processnamnet i klammerparenteser, t.ex."
 
 #. type: Plain text
-#: ../doc/pstree.1:71
+#: ../doc/pstree.1:72
 #, no-wrap
 msgid "    icecast2---13*[{icecast2}]\n"
 msgstr "    icecast2---13*[{icecast2}]\n"
 
 #. type: Plain text
-#: ../doc/pstree.1:82
+#: ../doc/pstree.1:83
 msgid ""
 "If B<pstree> is called as B<pstree.x11> then it will prompt the user at the "
 "end of the line to press return and will not return until that has "
@@ -1517,7 +1529,7 @@ msgstr ""
 "har hänt.  Detta är användbart när B<pstree> körs i en xterminal."
 
 #. type: Plain text
-#: ../doc/pstree.1:88
+#: ../doc/pstree.1:89
 msgid ""
 "Certain kernel or mount parameters, such as the I<hidepid> option for "
 "procfs, will hide information for some processes. In these situations "
@@ -1530,13 +1542,13 @@ msgstr ""
 "processnamnen som frågetecken."
 
 #. type: IP
-#: ../doc/pstree.1:90
+#: ../doc/pstree.1:91
 #, no-wrap
 msgid "B<-a>"
 msgstr "B<-a>"
 
 #. type: Plain text
-#: ../doc/pstree.1:95
+#: ../doc/pstree.1:96
 msgid ""
 "Show command line arguments.  If the command line of a process is swapped "
 "out, that process is shown in parentheses.  B<-a> implicitly disables "
@@ -1547,18 +1559,18 @@ msgstr ""
 "för processer men inte för trådar."
 
 #. type: IP
-#: ../doc/pstree.1:95
+#: ../doc/pstree.1:96
 #, no-wrap
 msgid "B<-A>"
 msgstr "B<-A>"
 
 #. type: Plain text
-#: ../doc/pstree.1:97
+#: ../doc/pstree.1:98
 msgid "Use ASCII characters to draw the tree."
 msgstr "Använd ASCII-tecken för att rita trädet."
 
 #. type: Plain text
-#: ../doc/pstree.1:100
+#: ../doc/pstree.1:101
 msgid ""
 "Disable compaction of identical subtrees.  By default, subtrees are "
 "compacted whenever possible."
@@ -1567,13 +1579,13 @@ msgstr ""
 "underträd närhelst det är möjligt."
 
 #. type: IP
-#: ../doc/pstree.1:100
+#: ../doc/pstree.1:101
 #, no-wrap
 msgid "B<-C>"
 msgstr "B<-C>"
 
 #. type: Plain text
-#: ../doc/pstree.1:105
+#: ../doc/pstree.1:106
 msgid ""
 "Color the process name by given attribute. Currently B<pstree> only accepts "
 "the value B<age> which colors by process age.  Processes newer than 60 "
@@ -1585,13 +1597,13 @@ msgstr ""
 "resterande röda."
 
 #. type: IP
-#: ../doc/pstree.1:105
+#: ../doc/pstree.1:106
 #, no-wrap
 msgid "B<-g>"
 msgstr "B<-g>"
 
 #. type: Plain text
-#: ../doc/pstree.1:109
+#: ../doc/pstree.1:110
 msgid ""
 "Show PGIDs.  Process Group IDs are shown as decimal numbers in parentheses "
 "after each process name.  If both PIDs and PGIDs are displayed then PIDs are "
@@ -1602,24 +1614,24 @@ msgstr ""
 "först."
 
 #. type: IP
-#: ../doc/pstree.1:109
+#: ../doc/pstree.1:110
 #, no-wrap
 msgid "B<-G>"
 msgstr "B<-G>"
 
 #. type: Plain text
-#: ../doc/pstree.1:111
+#: ../doc/pstree.1:112
 msgid "Use VT100 line drawing characters."
 msgstr "Använd VT100-linjeritningstecken."
 
 #. type: IP
-#: ../doc/pstree.1:111
+#: ../doc/pstree.1:112
 #, no-wrap
 msgid "B<-h>"
 msgstr "B<-h>"
 
 #. type: Plain text
-#: ../doc/pstree.1:115
+#: ../doc/pstree.1:116
 msgid ""
 "Highlight the current process and its ancestors.  This is a no-op if the "
 "terminal doesn't support highlighting or if neither the current process nor "
@@ -1630,13 +1642,13 @@ msgstr ""
 "eller någon av dess förfäder finns i underträdet som visas."
 
 #. type: IP
-#: ../doc/pstree.1:115
+#: ../doc/pstree.1:116
 #, no-wrap
 msgid "B<-H>"
 msgstr "B<-H>"
 
 #. type: Plain text
-#: ../doc/pstree.1:125
+#: ../doc/pstree.1:126
 msgid ""
 "Like B<-h>, but highlight the specified process instead.  Unlike with B<-h>, "
 "B<pstree> fails when using B<-H> if highlighting is not available."
@@ -1646,13 +1658,13 @@ msgstr ""
 "är möjligt."
 
 #. type: IP
-#: ../doc/pstree.1:125
+#: ../doc/pstree.1:126
 #, no-wrap
 msgid "B<-l>"
 msgstr "B<-l>"
 
 #. type: Plain text
-#: ../doc/pstree.1:129
+#: ../doc/pstree.1:130
 msgid ""
 "Display long lines.  By default, lines are truncated to either the COLUMNS "
 "environment variable or the display width.  If neither of these methods "
@@ -1663,13 +1675,13 @@ msgstr ""
 "fungerar, används som standard 132 kolumner."
 
 #. type: IP
-#: ../doc/pstree.1:129
+#: ../doc/pstree.1:130
 #, no-wrap
 msgid "B<-n>"
 msgstr "B<-n>"
 
 #. type: Plain text
-#: ../doc/pstree.1:132
+#: ../doc/pstree.1:133
 msgid ""
 "Sort processes with the same parent by PID instead of by name.  (Numeric "
 "sort.)"
@@ -1678,13 +1690,13 @@ msgstr ""
 "(Numerisk sortering.)"
 
 #. type: IP
-#: ../doc/pstree.1:132
+#: ../doc/pstree.1:133
 #, no-wrap
 msgid "B<-N>"
 msgstr "B<-N>"
 
 #. type: Plain text
-#: ../doc/pstree.1:139
+#: ../doc/pstree.1:140
 msgid ""
 "Show individual trees for each namespace of the type specified.  The "
 "available types are: I<ipc>, I<mnt>, I<net>, I<pid>, I<time>, I<user>, "
@@ -1697,13 +1709,13 @@ msgstr ""
 "processinformation, så utskrifterna kommer att vara begränsade."
 
 #. type: IP
-#: ../doc/pstree.1:139
+#: ../doc/pstree.1:140
 #, no-wrap
 msgid "B<-p>"
 msgstr "B<-p>"
 
 #. type: Plain text
-#: ../doc/pstree.1:144
+#: ../doc/pstree.1:145
 msgid ""
 "Show PIDs.  PIDs are shown as decimal numbers in parentheses after each "
 "process name.  B<-p> implicitly disables compaction."
@@ -1712,24 +1724,24 @@ msgstr ""
 "processnamn.  B<-p> inaktiverar implicit kompaktering."
 
 #. type: IP
-#: ../doc/pstree.1:144
+#: ../doc/pstree.1:145
 #, no-wrap
 msgid "B<-s>"
 msgstr "B<-s>"
 
 #. type: Plain text
-#: ../doc/pstree.1:146
+#: ../doc/pstree.1:147
 msgid "Show parent processes of the specified process."
 msgstr "Visa föräldraprocesser för den angivna processen."
 
 #. type: IP
-#: ../doc/pstree.1:146
+#: ../doc/pstree.1:147
 #, no-wrap
 msgid "B<-S>"
 msgstr "B<-S>"
 
 #. type: Plain text
-#: ../doc/pstree.1:149
+#: ../doc/pstree.1:150
 msgid ""
 "Show namespaces transitions.  Like B<-N>, the output is limited when running "
 "as a regular user."
@@ -1738,35 +1750,35 @@ msgstr ""
 "som en vanlig användare."
 
 #. type: IP
-#: ../doc/pstree.1:149
+#: ../doc/pstree.1:150
 #, no-wrap
 msgid "B<-t>"
 msgstr "B<-t>"
 
 #. type: Plain text
-#: ../doc/pstree.1:151
+#: ../doc/pstree.1:152
 msgid "Show full names for threads when available."
 msgstr "Visa fullständiga namn för trådar när det finns."
 
 #. type: IP
-#: ../doc/pstree.1:151
+#: ../doc/pstree.1:152
 #, no-wrap
 msgid "B<-T>"
 msgstr "B<-T>"
 
 #. type: Plain text
-#: ../doc/pstree.1:153
+#: ../doc/pstree.1:154
 msgid "Hide threads and only show processes."
 msgstr "Göm trådar och visa endast processer."
 
 #. type: IP
-#: ../doc/pstree.1:153
+#: ../doc/pstree.1:154
 #, no-wrap
 msgid "B<-u>"
 msgstr "B<-u>"
 
 #. type: Plain text
-#: ../doc/pstree.1:157
+#: ../doc/pstree.1:158
 msgid ""
 "Show uid transitions.  Whenever the uid of a process differs from the uid of "
 "its parent, the new uid is shown in parentheses after the process name."
@@ -1775,13 +1787,13 @@ msgstr ""
 "för dess förälder visas den nya uid:en i parenteser efter processnamnet."
 
 #. type: IP
-#: ../doc/pstree.1:157
+#: ../doc/pstree.1:158
 #, no-wrap
 msgid "B<-U>"
 msgstr "B<-U>"
 
 #. type: Plain text
-#: ../doc/pstree.1:163
+#: ../doc/pstree.1:164
 msgid ""
 "Use UTF-8 (Unicode) line drawing characters.  Under Linux 1.1-54 and above, "
 "UTF-8 mode is entered on the console with B<echo -e '\\033%8'> and left with "
@@ -1792,13 +1804,13 @@ msgstr ""
 "med B<echo -e '\\033%@'>."
 
 #. type: IP
-#: ../doc/pstree.1:165
+#: ../doc/pstree.1:166
 #, no-wrap
 msgid "B<-Z>"
 msgstr "B<-Z>"
 
 #. type: Plain text
-#: ../doc/pstree.1:168
+#: ../doc/pstree.1:169
 msgid ""
 "Show the current security attributes of the process. For SELinux systems "
 "this will be the security context."
@@ -1806,13 +1818,24 @@ msgstr ""
 "Visa aktuella säkerhetsattribut för processen. För SELInux-system kommer "
 "detta att vara säkerhetskontexten."
 
+#. type: IP
+#: ../doc/pstree.1:169
+#, no-wrap
+msgid "B<-P>"
+msgstr ""
+
 #. type: Plain text
-#: ../doc/pstree.1:174
+#: ../doc/pstree.1:171
+msgid "Show the full path to the running process on disk."
+msgstr ""
+
+#. type: Plain text
+#: ../doc/pstree.1:177
 msgid "Some character sets may be incompatible with the VT100 characters."
 msgstr "Vissa teckenuppsättningar kan vara inkompatibla med VT100-tecken."
 
 #. type: Plain text
-#: ../doc/pstree.1:177
+#: ../doc/pstree.1:180
 msgid "B<ps>(1), B<top>(1), B<proc>(5)."
 msgstr "B<ps>(1), B<top>(1), B<proc>(5)."
 
