@@ -2,7 +2,7 @@
  * pstree.c - display process tree
  *
  * Copyright (C) 1993-2002 Werner Almesberger
- * Copyright (C) 2002-2024 Craig Small <csmall@dropbear.xyz>
+ * Copyright (C) 2002-2025 Craig Small <csmall@dropbear.xyz>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,6 +45,7 @@
 #include <limits.h>
 #include <locale.h>
 #include <time.h>
+#include <err.h>
 
 #include "i18n.h"
 #include "comm.h"
@@ -66,6 +67,7 @@ typedef void* security_context_t; /* DUMMY to remove most ifdefs */
 extern const char *__progname;
 
 #define PROC_BASE    "/proc"
+#define PROCPATHLEN  64   // must hold /proc/2000222000/task/2000222000/cmdline
 
 #if defined(__FreeBSD_kernel__) || defined(__FreeBSD__)
 #define DEFAULT_ROOT_PID 0
@@ -1131,15 +1133,15 @@ static void read_proc(const pid_t root_pid)
 {
   DIR *dir;
   struct dirent *de;
-  FILE *file;
   struct stat st;
-  char *path, *comm;
+  char *comm;
+  char path[PROCPATHLEN];
   char *buffer, *buffer2;
   size_t buffer_size;
   char readbuf[BUFSIZ + 1];
   char *tmpptr, *endptr;
   pid_t pid, ppid, pgid;
-  int fd, size, size2;
+  int fd, size, lnksize;
   int empty;
   unsigned long long proc_stt_jf = 0;
   double process_age_sec = 0;
@@ -1159,7 +1161,7 @@ static void read_proc(const pid_t root_pid)
   }
   if (!show_paths) {
     buffer2 = NULL;
-    size2 = 0;
+    lnksize = 0;
   }
   else if (!(buffer2 = malloc(buffer_size))) {
     perror("malloc");
@@ -1170,27 +1172,34 @@ static void read_proc(const pid_t root_pid)
     exit(1);
   }
   empty = 1;
-  while ((de = readdir(dir)) != NULL) {
-    pid = (pid_t) strtol(de->d_name, &endptr, 10);
-    if (endptr != de->d_name && endptr[0] == '\0') {
-      if (! (path = malloc(strlen(PROC_BASE) + strlen(de->d_name) + 10)))
-        exit(2);
-      sprintf(path, "%s/%d/stat", PROC_BASE, pid);
-      if ((file = fopen(path, "r")) != NULL) {
-        empty = 0;
-        sprintf(path, "%s/%d", PROC_BASE, pid);
-        if (stat(path, &st) < 0) {
-          (void) fclose(file);
-          free(path);
-          continue;
+    while ((de = readdir(dir)) != NULL) {
+        int pidfd;
+        pid = (pid_t) strtol(de->d_name, &endptr, 10);
+        if (endptr == de->d_name || endptr[0] != '\0')
+            continue; // Not a number/pid
+        if (snprintf(path, PROCPATHLEN-1, "%s/%s", PROC_BASE, de->d_name) < 0)
+            err(EXIT_FAILURE, "readproc: snprintf");
+        if ((pidfd = open(path, O_RDONLY|O_DIRECTORY)) < 0)
+            continue;
+        if (fstat(pidfd, &st) < 0) {
+            close(pidfd);
+            continue;
         }
-        size = fread(readbuf, 1, BUFSIZ, file);
-        if (ferror(file) == 0) {
-          readbuf[size] = 0;
-          /* commands may have spaces or ) in them.
-           * so don't trust anything from the ( to the last ) */
-          if ((comm = strchr(readbuf, '('))
-            && (tmpptr = strrchr(comm, ')'))) {
+        if ((fd = openat(pidfd, "stat", O_RDONLY)) < 0) {
+            close(pidfd);
+            continue;
+        }
+        empty = 0;
+        if ((size = read(fd, readbuf, BUFSIZ)) < 0) {
+            close(pidfd);
+            close(fd);
+            continue;
+        }
+        readbuf[size] = '\0';
+        /* commands may have spaces or ) in them.
+         * so don't trust anything from the ( to the last ) */
+        if ((comm = strchr(readbuf, '('))
+                && (tmpptr = strrchr(comm, ')'))) {
             ++comm;
             *tmpptr = 0;
             /* We now have readbuf with pid and cmd, and tmpptr+2
@@ -1198,95 +1207,86 @@ static void read_proc(const pid_t root_pid)
             /*printf("tmpptr: %s\n", tmpptr+2); */
             if (sscanf(tmpptr + 2, "%*c %d %d %*s %*s %*s %*s %*s %*s %*s %*s %*s %*s %*s %*s %*s %*s %*s %*s %Lu",
                 &ppid, &pgid, &proc_stt_jf) == 3) {
-              DIR *taskdir;
-              struct dirent *dt;
-              char *taskpath;
-              int thread;
 
-	      process_age_sec = process_age(proc_stt_jf);
-              /* handle process threads */
-              if (! hide_threads) {
-                if (! (taskpath = malloc(strlen(path) + 10)))
-                  exit(2);
-                sprintf(taskpath, "%s/task", path);
+	        process_age_sec = process_age(proc_stt_jf);
+                /* handle process threads */
+                if (! hide_threads) {
+                    int taskfd;
+                    DIR *taskdir;
+                    struct dirent *dt;
 
-                if ((taskdir = opendir(taskpath)) != 0) {
-                  /* if we have this dir, we're on 2.6 */
-                  while ((dt = readdir(taskdir)) != NULL) {
-                    if ((thread = atoi(dt->d_name)) != 0) {
-                      if (thread != pid) {
-                        char *threadname;
-                        threadname = get_threadname(pid, thread, comm);
-                        if (print_args)
-                          add_proc(threadname, thread, pid, pgid, st.st_uid,
-                              threadname, strlen (threadname) + 1, 1,
-                              process_age_sec, NULL, 0);
-                        else
-                          add_proc(threadname, thread, pid, pgid, st.st_uid,
-                              NULL, 0, 1, 
-                              process_age_sec, NULL, 0);
-                        free(threadname);
-                      }
+                    /* fdopendir() uses taskfd for its own purposes
+                     * Do not use taskfd after calling it!
+                     */
+                    if ( (taskfd = openat(pidfd, "task", O_RDONLY | O_DIRECTORY)) >= 0
+                            && (taskdir = fdopendir(taskfd)) != NULL) {
+                        while ((dt = readdir(taskdir)) != NULL) {
+                            int tid;
+                            tid = (pid_t) strtol(dt->d_name, &endptr, 10);
+                            if (endptr != dt->d_name && endptr[0] == '\0') {
+                                if (tid != pid) {
+                                    char *threadname;
+                                    threadname = get_threadname(pid, tid, comm);
+                                    if (print_args)
+                                        add_proc(threadname, tid, pid, pgid, st.st_uid,
+                                                threadname, strlen (threadname) + 1, 1,
+                                                process_age_sec, NULL, 0);
+                                    else
+                                        add_proc(threadname, tid, pid, pgid, st.st_uid,
+                                                NULL, 0, 1,
+                                                process_age_sec, NULL, 0);
+                                    free(threadname);
+                                }
+                            }
+                        }
+                        (void) closedir(taskdir);
                     }
-                  }
-                  (void) closedir(taskdir);
                 }
-                free(taskpath);
-              }
-
-              /* handle process */
-              if (print_args) {
-                sprintf(path, "%s/%d/cmdline", PROC_BASE, pid);
-                if ((fd = open(path, O_RDONLY)) < 0) {
-          /* If this fails then the process is gone.  If a PID
-		   * was specified on the command-line then we might
-		   * not even be interested in the current process.
-		   * There's no sensible way of dealing with this race
-		   * so we might as well behave as if the current
-		   * process did not exist.  */
-                    (void) fclose(file);
-                    free(path);
-                    continue;
-                }
-                if ((size = read(fd, buffer, buffer_size)) < 0) {
-                    /* As above. */
+                /* handle process */
+                if (print_args) {
+                    if ((fd = openat(pidfd, "cmdline", O_RDONLY)) < 0) {
+                        /* If this fails then the process is gone.  If a PID
+                         * was specified on the command-line then we might
+                         * not even be interested in the current process.
+		         * There's no sensible way of dealing with this race
+		         * so we might as well behave as if the current
+		         * process did not exist.  */
+                        close(pidfd);
+                        continue;
+                    }
+                    if ((size = read(fd, buffer, buffer_size)) < 0) {
+                        /* As above. */
+                        close(fd);
+                        close(pidfd);
+                        continue;
+                    }
                     close(fd);
-                    (void) fclose(file);
-                    free(path);
-                    continue;
+                    /* If we have read the maximum screen length of args,
+                     * bring it back by one to stop overflow */
+                    if (size >= (int)buffer_size)
+                        size--;
+                    if (size)
+                        buffer[size++] = 0;
                 }
-                (void) close(fd);
-                /* If we have read the maximum screen length of args,
-                 * bring it back by one to stop overflow */
-                if (size >= (int)buffer_size)
-                  size--;
-                if (size)
-                  buffer[size++] = 0;
-              }
-              if (show_paths) {
-                  sprintf(path, "%s/%d/exe", PROC_BASE, pid);
-                  /* It's okay if this fails: not all processes
-                   * have something readable here. */
-                  if ((size2 = readlink(path, buffer2, buffer_size)) < 0) {
-                      size2 = 0;
-                  } else {
-                      /* As above. */
-                      if (size2 >= (int)buffer_size)
-                          size2--;
-                      buffer2[size2++] = 0;
-                  }
-              }
-              add_proc(comm, pid, ppid, pgid, st.st_uid,
-                       buffer, size, 0, process_age_sec,
-                       size2 ? buffer2 : NULL, size2);
+                if (show_paths) {
+                    if ( (lnksize = readlinkat(pidfd, "exe", buffer2, buffer_size)) < 0) {
+                        /* It's okay if this fails: not all processes
+                         * have something readable here. */
+                        lnksize = 0;
+                    } else {
+                        /* As above. */
+                        if (lnksize >= (int)buffer_size)
+                            lnksize--;
+                        buffer2[lnksize++] = 0;
+                    }
+                }
+                add_proc(comm, pid, ppid, pgid, st.st_uid,
+                        buffer, size, 0, process_age_sec,
+                        lnksize ? buffer2 : NULL, lnksize);
             }
-          }
         }
-        (void) fclose(file);
-      }
-      free(path);
-    }
-  }
+        close(pidfd);
+    } // while
   (void) closedir(dir);
   fix_orphans(root_pid);
   if (print_args)

@@ -4,6 +4,7 @@ Changes in NEXT
 	* fuser: Make TCP/UDP sockets work again #57
 	* killall,pstree: Use gettime instead of uptime Debian 1066090
 	* pstree: Add -P to show path of exe !38
+	* pstree: Use openat/pidfd to stop pid wrap issues
 
 Changes in 23.7
 ===============
