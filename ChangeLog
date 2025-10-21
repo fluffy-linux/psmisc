@@ -5,6 +5,7 @@ Changes in NEXT
 	* killall,pstree: Use gettime instead of uptime Debian 1066090
 	* pstree: Add -P to show path of exe !38
 	* pstree: Use openat/pidfd to stop pid wrap issues
+	* pstree: Add -k option to show kernel threads
 
 Changes in 23.7
 ===============

@@ -8,7 +8,12 @@ Testsuites:
   - "./configure"
   - make
   - make check
-  - make clean
   tags: 
   except:
   - tags
+  artifacts:
+    paths:
+      - testsuite/*.log
+      - testsuite/*.sum
+  after_script:
+    - make clean

@@ -75,6 +75,8 @@ extern const char *__progname;
 #define DEFAULT_ROOT_PID 1
 #endif /* __FreeBSD__ */
 
+#define KTHREADD_PID 2
+
 /* UTF-8 defines by Johan Myreen, updated by Ben Winslow */
 #define UTF_V        "\342\224\202"        /* U+2502, Vertical line drawing char */
 #define UTF_VR        "\342\224\234"        /* U+251C, Vertical and right */
@@ -195,7 +197,8 @@ static int *more = NULL;
 
 static int print_args = 0, compact = 1, user_change = 0, pids = 0, pgids = 0,
     show_parents = 0, by_pid = 0, trunc = 1, wait_end = 0, ns_change = 0,
-    thread_names = 0, hide_threads = 0, show_paths = 0;
+    thread_names = 0, hide_threads = 0, show_paths = 0,
+    kthreads = 0;
 static int show_scontext = 0;
 static int output_width = 132;
 static int cur_x = 1;
@@ -1014,6 +1017,7 @@ static void dump_by_user(PROC * current, uid_t uid)
     if (current->uid == uid) {
         if (dumped)
             putchar('\n');
+        printf("dump tree pid=%d uid=%d\n", current->pid, uid);
         dump_tree(current, 0, 1, 1, 1, uid, 0);
         dumped = 1;
         return;
@@ -1314,7 +1318,7 @@ static void fix_orphans(const pid_t root_pid)
         root = new_proc("?", root_pid, 0);
     }
     for (walk = list; walk; walk = walk->next) {
-        if (walk->pid == 1 || walk->pid == 0)
+        if (walk->pid == 1 || walk->pid == 0 || walk->pid == KTHREADD_PID)
             continue;
         if (walk->parent == NULL) {
             add_child(root, walk);
@@ -1347,6 +1351,7 @@ static void usage(void)
              "  -h, --highlight-all highlight current process and its ancestors\n"
              "  -H PID, --highlight-pid=PID\n"
              "                      highlight this process and its ancestors\n"
+             "  -k, --kthreads      show kernel threads\n"
              "  -l, --long          don't truncate long lines\n"));
     fprintf(stderr, _(
              "  -n, --numeric-sort  sort output by PID\n"
@@ -1407,6 +1412,7 @@ int main(int argc, char **argv)
         {"vt100", 0, NULL, 'G'},
         {"highlight-all", 0, NULL, 'h'},
         {"highlight-pid", 1, NULL, 'H'},
+        {"kthreads", 0, NULL, 'k'},
         {"long", 0, NULL, 'l'},
         {"numeric-sort", 0, NULL, 'n'},
         {"ns-sort", 1, NULL, 'N' },
@@ -1465,7 +1471,7 @@ int main(int argc, char **argv)
     }
 
     while ((c =
-            getopt_long(argc, argv, "aAcC:GhH:nN:pglsStTuUVZP", options,
+            getopt_long(argc, argv, "aAcC:GhH:nN:pgklsStTuUVZP", options,
                         NULL)) != -1)
         switch (c) {
         case 'a':
@@ -1507,6 +1513,9 @@ int main(int argc, char **argv)
             }
             if (!(highlight = atoi(optarg)))
                 usage();
+            break;
+        case 'k':
+            kthreads = 1;
             break;
         case 'l':
             trunc = 0;
@@ -1596,9 +1605,11 @@ int main(int argc, char **argv)
     if (nsid != NUM_NS) {
         sort_by_namespace(NULL, nsid, &nsroot);
         dump_by_namespace(nsroot);
-    } else if (!pw)
+    } else if (!pw) {
         dump_tree(find_proc(pid), 0, 1, 1, 1, 0, 0);
-    else {
+        if (kthreads)
+            dump_tree(find_proc(KTHREADD_PID), 0, 1, 1, 1, 0, 0);
+    } else {
         dump_by_user(find_proc(root_pid), pw->pw_uid);
         if (!dumped) {
             fprintf(stderr, _("No processes found.\n"));
