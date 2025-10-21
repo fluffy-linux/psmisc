@@ -1,39 +1,18 @@
 .\"
 .\" Copyright 1993-2002 Werner Almesberger
-.\"           2002-2021 Craig Small
+.\"           2002-2025 Craig Small
 .\" This program is free software; you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
 .\" the Free Software Foundation; either version 2 of the License, or
 .\" (at your option) any later version.
 .\"
-.TH PSTREE 1 "2021-06-21" "psmisc" "User Commands"
+.TH PSTREE 1 2025-10-21 psmisc "User Commands"
 .SH NAME
 pstree \- display a tree of processes
 .SH SYNOPSIS
-.ad l
 .B pstree
-.RB [ \-a  , \ \-\-arguments ]
-.RB [ \-c  , \ \-\-compact\-not ]
-.RB [ \-C  , \ \-\-color\ \fIattr\fB ]
-.RB [ \-g  , \ \-\-show\-pgids ]
-.RB [ \-h  , \ \-\-highlight\-all  , \ \-H \fI\ pid\fB  \fR, \fB\ \-\-highlight\-pid\ \fIpid\fB \fR]
-.RB [ \-l  , \ \-\-long ]
-.RB [ \-n  , \ \-\-numeric\-sort ]
-.RB [ \-N  , \ \-\-ns\-sort\ \fIns\fB ]
-.RB [ \-p  , \ \-\-show\-pids ]
-.RB [ \-s  , \ \-\-show\-parents ]
-.RB [ \-S  , \ \-\-ns-changes ]
-.RB [ \-t  , \ \-\-thread-names ]
-.RB [ \-T  , \ \-\-hide-threads ]
-.RB [ \-u  , \ \-\-uid\-changes ]
-.RB [ \-Z  , \ \-\-security\-context ]
-.RB [ \-P  , \ \-\-show\-paths ]
-.RB [ \-A  , \ \-\-ascii  , \ \-G  , \ \-\-vt100  , \ \-U  , \ \-\-unicode ]
-.RB [ \fIpid\fB  , \ \fIuser\fR]
-.br
-.B pstree
-.BR \-V  , \ \-\-version
-.ad b
+.RI [ option " .\|.\|.\|\&]"
+.RI [ pid " , " user ]
 .SH DESCRIPTION
 .B pstree
 shows running processes as a tree.  The tree is rooted at either
@@ -88,32 +67,40 @@ will attempt to build the tree without this information, showing process
 names as question marks.
 
 .SH OPTIONS
-.IP \fB\-a\fP
+.TP
+\fB\-a\fR, \fB\-\-arguments\fR
 Show command line arguments.  If the command line of a process is
 swapped out, that process is shown in parentheses.
 .B \-a
 implicitly disables compaction for processes but not threads.
-.IP \fB\-A\fP
+.TP
+\fB\-A\fR, \fB\-\-ascii\fR
 Use ASCII characters to draw the tree.
-.IP \fB\-c\fP
+.TP
+\fB\-c\fR, \fB\-\-compact\-not\fR
 Disable compaction of identical subtrees.  By default, subtrees are
 compacted whenever possible.
-.IP \fB\-C\fP
+.TP
+\fB\-C\fR, \fB\-\-color=\fITYPE\fR
 Color the process name by given attribute. Currently \fBpstree\fR
 only accepts the value \fBage\fR which colors by process age.
 Processes newer than 60 seconds are green,
 newer than an hour yellow and the remaining red.
-.IP \fB\-g\fP
+.TP
+\fB\-g\fR, \fB\-\-show\-pgids\fR
 Show PGIDs.  Process Group IDs are shown as decimal numbers in
 parentheses after each process name.
 If both PIDs and PGIDs are displayed then PIDs are shown first.
-.IP \fB\-G\fP
+.TP
+\fB\-G\fR, \fB\-\-vt100\fR
 Use VT100 line drawing characters.
-.IP \fB\-h\fP
+.TP
+\fB\-h\fR, \fB\-\-hightlight\-all\fR
 Highlight the current process and its ancestors.  This is a no-op if
 the terminal doesn't support highlighting or if neither the current
 process nor any of its ancestors are in the subtree being shown.
-.IP \fB\-H\fP
+.TP
+\fB\-H\fR, \fB\-\-highlight\-pid=\fIPID\fR
 Like
 .BR \-h ,
 but highlight the specified process instead.  Unlike with
@@ -123,51 +110,64 @@ fails when using
 .B \-H
 if highlighting is not
 available.
-.IP \fB\-l\fP
+.TP
+\fB\-l\fR, \fB\-\-long\fR
 Display long lines.  By default, lines are truncated to either the COLUMNS
 environment variable or the display width.  If neither of these methods work,
 the default of 132 columns is used.
-.IP \fB\-n\fP
+.TP
+\fB\-n\fR, \fB\-\-numeric\-sort\fR
 Sort processes with the same parent by PID instead of by name. 
 (Numeric sort.)
-.IP \fB\-N\fP
-Show individual trees for each namespace of the type specified.  The
+.TP
+\fB\-N\fR, \fB\-\-ns-sort=\fITYPE\fR
+Show individual trees for each namespace of \fITYPE\fR.  The
 available types are:
 .IR ipc ", " mnt ", " net ", " pid ", " time ", " user ", " uts .
 Regular users don't
 have access to other users' processes information, so the output will be
 limited.
-.IP \fB\-p\fP
+.TP
+\fB\-p\fR, \fB\-\-show\-pids\fR
 Show PIDs.  PIDs are shown as decimal numbers in parentheses after each
 process name.
 .B \-p
 implicitly disables compaction.
-.IP \fB\-s\fP
+.TP
+\fB\-P\fR \fB\-\-show\-paths\fR
+Show the full path to the running process on disk.
+.TP
+\fB\-s\fR, \fB\-\-show\-parents\fR
 Show parent processes of the specified process.
-.IP \fB\-S\fP
+.TP
+\fB\-S\fR, \fB\-\-ns\-changes\fR
 Show namespaces transitions.  Like \fB\-N\fR, the output is limited when running
 as a regular user.
-.IP \fB\-t\fP
+.TP
+\fB\-t\fR, \fB\-\-thread\-names\fR
 Show full names for threads when available.
-.IP \fB\-T\fP
+.TP
+\fB\-T\fR, \fB\-\-hide\-threads\fR
 Hide threads and only show processes.
-.IP \fB\-u\fP
+.TP
+\fB\-u\fR, \fB\-\-uid\-changes\fR
 Show uid transitions.  Whenever the uid of a process differs from the
 uid of its parent, the new uid is shown in parentheses after the
 process name.
-.IP \fB\-U\fP
+.TP
+\fB\-U\fR, \fB\-\-unicode\fR
 Use UTF-8 (Unicode) line drawing characters.  Under Linux 1.1-54 and
 above, UTF-8 mode is entered on the console with
 .B echo \-e '\\033%8'
 and left with
 .BR "echo \-e '\\033%@'" .
-.IP \fB\-V\fP
+.TP
+\fB\-V\fR, \fB\-\-version\fR
 Display version information.
-.IP \fB\-Z\fP
+.TP
+\fB\-Z\fR, \fB\-\-security\-context\fR
 Show the current security attributes of the process. For SELinux systems this
 will be the security context.
-.IP \fB\-P\fP
-Show the full path to the running process on disk.
 .SH FILES
 .TP
 /proc
@@ -178,4 +178,3 @@ Some character sets may be incompatible with the VT100 characters.
 .BR ps (1),
 .BR top (1),
 .BR proc (5).
-.\"{{{}}}
