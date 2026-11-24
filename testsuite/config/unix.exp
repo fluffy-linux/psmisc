@@ -33,7 +33,7 @@ proc expect_nothing { test } {
 
 proc kill_process pid {
     set cmdline "kill $pid"
-    if { [catch { exec /bin/sh -c $cmdline } msg]} {
+    if { [catch { exec /sw/bash/bin/bash -c $cmdline } msg]} {
         warning "Could not kill process: $msg\n"
     }
 }
